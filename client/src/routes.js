@@ -425,7 +425,7 @@ const routes = [
   { path: "/index-blockchain", component: Blockchain },
   { path: "/index-crypto-two", component: CryptoTwo },
 
-  { path: "/page-aboutus", component: PageAboutUs, isTopbarDark: true },
+  { path: "/about", component: PageAboutUs, isTopbarDark: true },
   { path: "/page-aboutus-two", component: PageAboutusTwo },
   { path: "/page-history", component: PageHistory, isTopbarDark: true },
   { path: "/page-pricing", component: PagePricing, isTopbarDark: true },
@@ -433,7 +433,7 @@ const routes = [
   { path: "/page-team", component: PageTeam, isTopbarDark: true },
 
   //Help Center
-  { path: "/helpcenter-overview", component: HelpCenterOverview, isTopbarDark: true },
+  { path: "/support", component: HelpCenterOverview, isTopbarDark: true },
   { path: "/helpcenter-faqs", component: HelpCenterFaqs, isTopbarDark: true },
   { path: "/helpcenter-guides", component: HelpCenterGuides, isTopbarDark: true },
   { path: "/helpcenter-support-request", component: HelpCenterSupportRequest, isTopbarDark: true },
@@ -489,7 +489,7 @@ const routes = [
   { path: "/page-case-detail", component: CaseDetail, isTopbarDark: true },
 
   //Page Contact
-  { path: "/page-contact-one", component: PageContactOne, isTopbarDark: true },
+  { path: "/contact", component: PageContactOne, isTopbarDark: true },
   { path: "/page-contact-three", component: PageContactThree, isTopbarDark: true },
   { path: "/page-contact-two", component: PageContactTwo, isTopbarDark: true },
 
@@ -509,7 +509,8 @@ const routes = [
 
   //Index root
 
-  { path: "/", component: Root, isWithoutLayout: true, exact: true },
+  { path: "/root", component: Root, isWithoutLayout: true, exact: true },
+  { path: "/", component: VideoCall, isTopbarDark: true },
   { component: PageError, isWithoutLayout: true, exact: false },
 ];
 

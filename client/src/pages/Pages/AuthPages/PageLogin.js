@@ -183,7 +183,7 @@ class PageLogin extends Component {
                               Don't have an account ?
                             </small>{" "}
                             <Link
-                              to="/page-signup"
+                              to="/auth-signup"
                               className="text-dark fw-bold"
                             >
                               Sign Up

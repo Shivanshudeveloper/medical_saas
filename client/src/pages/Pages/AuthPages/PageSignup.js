@@ -234,7 +234,7 @@ class PageSignUp extends Component {
                               Already have an account ?
                             </small>{" "}
                             <Link
-                              to="/page-login"
+                              to="/auth-login"
                               className="text-dark fw-bold"
                             >
                               Sign In
