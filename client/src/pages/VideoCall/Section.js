@@ -14,12 +14,11 @@ export default class Section extends Component {
                         <Row className="mt-5 align-items-center position-relative" style={{ zIndex : '1'}}>
                             <Col lg={6}>
                                 <div className="title-heading text-center text-lg-start">
-                                    <span className="badge rounded-lg bg-soft-primary">Videocall</span>
-                                    <h4 className="heading fw-bold mb-3 mt-3">Team Chat, <br /> Virtual Meetings, <br /> File sharing and more...</h4>
-                                    <p className="para-desc text-muted mx-auto mx-lg-start mb-0">Launch your campaign and benefit from our expertise on designing and managing conversion centered bootstrap v5 html page.</p>
+                                    <h4 className="heading fw-bold mb-3 mt-3">NEO,</h4>
+                                    <h6 className="fw-bold mb-3 mt-3">FOR THE MODERN THERAPIST & COUNSELOR </h6>
+                                    <p className="para-desc text-muted mx-auto mx-lg-start mb-0">Take control of your sessions. Neo is your one tool to streamline your counseling and therapy practice.</p>
                                     <div className="mt-3">
-                                        <Link to="#" className="btn btn-primary me-2 mt-2">Try For Free</Link>
-                                        <Link to="#" className="btn btn-soft-primary mt-2">Get a live video</Link>
+                                        <Link to="#" className="btn btn-soft-primary mt-2">Getting Started</Link>
                                         <p className="mt-3 mb-0 text-muted">*No credit card required</p>
                                     </div>
                                 </div>

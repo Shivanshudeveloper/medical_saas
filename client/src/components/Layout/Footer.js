@@ -60,7 +60,7 @@ class Footer extends Component {
                     height="24"
                     alt=""
                   /> */}
-                  Company Logo
+                  <img src='https://res.cloudinary.com/dx9dnqzaj/image/upload/v1626758727/medical/Manah_Monogram48x48_sw6u7v.png'/>
                 </Link>
                 <p className={this.props.isLight ? "mt-4 text-muted" : "mt-4"}>
                   Start working with Landrick that can provide everything you

@@ -597,7 +597,7 @@ class Topbar extends Component {
                 <a className="logo" href="index.html">
                   {/* <img src={logodark} height="24" className="logo-light-mode" alt="" />
                   <img src={logolight} height="24" className="logo-dark-mode" alt="" /> */}
-                  Company Logo
+                  <img style={{width: '30px', heigth: '30px'}} src='https://res.cloudinary.com/dx9dnqzaj/image/upload/v1626758727/medical/Manah_Monogram48x48_sw6u7v.png'/>
                 </a>
               ) :
                 <a className="logo" href="index.html">
@@ -606,7 +606,7 @@ class Topbar extends Component {
                     <img src={logolight} className="l-light" height="24" alt="" />
                   </span>
                   <img src={logolight} height="24" className="logo-dark-mode" alt="" /> */}
-                  Company Logo
+                  <img style={{width: '30px', heigth: '30px'}} src='https://res.cloudinary.com/dx9dnqzaj/image/upload/v1626758727/medical/Manah_Monogram48x48_sw6u7v.png'/>
                 </a>
               }
             </div>
