@@ -2,49 +2,121 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { Col, Container, Row } from 'reactstrap'
 
+import { Button } from '@material-ui/core';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import TextField from '@material-ui/core/TextField';                
+
 //import images
 import cta from '../../assets/images/video/cta.png';
 
 export default class Encryption extends Component {
     render() {
         return (
-            <React.Fragment>
-                <Container className="mt-100 mt-60">
-                    <Row className="align-items-center">
-                        <Col lg={{ size: 6, order: 1 }} className="order-2 mt-4 mt-lg-0 pt-2 pt-lg-0">
-                            <div className="section-title me-lg-5">
-                                <h4 className="title mb-4">Keep calls private with end-to-end encryption</h4>
-                                <p className="text-muted">This prevents repetitive patterns from impairing the overall visual impression and facilitates the comparison of different typefaces. Furthermore, it is advantageous when the dummy text is relatively realistic.</p>
-                                <ul className="list-unstyled text-muted">
-                                    <li className="mb-0"><span className="text-primary h5 me-2"><i className="uil uil-check-circle align-middle"></i></span>Digital Marketing Solutions for Tomorrow</li>
-                                    <li className="mb-0"><span className="text-primary h5 me-2"><i className="uil uil-check-circle align-middle"></i></span>Create your own skin to match your brand</li>
-                                </ul>
-                                <Link to="#" className="mt-3 h6 text-primary">Find Out More <i className="uil uil-angle-right-b"></i></Link>
-                            </div>
-                        </Col>
-
-                        <Col lg={{ size: 6, order: 2 }} className="order-1">
-                            <img src={cta} className="img-fluid" alt="" />
-                        </Col>
-                    </Row>
-                </Container>
-
-                <Container className="mt-100 mt-60">
-                    <Row className="justify-content-center">
-                        <Col xs={12}>
-                            <div className="section-title text-center">
-                                <h4 className="title mb-4">Get started with <span className="text-primary fw-bold">Landrick</span> for free</h4>
-                                <p className="text-muted para-desc mx-auto">Start working with <span className="text-primary fw-bold">Landrick</span> that can provide everything you need to generate awareness, drive traffic, connect.</p>
-
-                                <div className="mt-4">
-                                    <Link to="#" className="btn btn-primary m-1"><i className="uil uil-apple"></i> App Store</Link>
-                                    <Link to="#" className="btn btn-outline-primary m-1"><i className="uil uil-google-play"></i> Play Store</Link>
+           <>
+           <Container >
+               <Row className='mt-5'>
+                   <Col lg={4}>
+                        <Card style={{borderColor: '#4D61FC', borderWidth: '2px', boxShadow: '2px 2px 2px #888888'}} variant="outlined">
+                            <CardContent>
+                                <div style={{textAlign: 'center'}}>
+                                    <h3>Starting Up</h3>
+                                    <p>Perfect if you are just starting your practice</p>
+                                    <br></br>
+                                    <h6>INR 1999/year</h6>
                                 </div>
-                            </div>
-                        </Col>
-                    </Row>
-                </Container>
-            </React.Fragment>
+                                <hr></hr>
+                                <div style={{textAlign: 'center'}}>
+                                    <h6>Number of clients per month</h6>
+                                    <p>Less than 10 </p>
+                                    <hr></hr>
+                                    <h6>Premium features</h6>
+                                    <p>Additional </p>
+                                    <hr></hr>
+                                    <h6>Custom Reports </h6>
+                                    <p>Not Included</p>
+
+                                    <Button style={{borderColor: 'black', borderWidth: '3px'}} className="mt-3" variant="outlined"><b>Start Now</b></Button>
+
+                                </div>
+                            </CardContent>
+                        </Card>
+                   </Col>
+                   <Col lg={4}>
+                        <Card  style={{borderColor: '#4D61FC', borderWidth: '5px', boxShadow: '10px 10px 10px #888888'}} variant="outlined">
+                            <CardContent>
+                                <div style={{textAlign: 'center'}}>
+                                    <h3>GROWING PRACTICE</h3>
+                                    <p>Ideal for professionals with 3-5 years of practice</p>
+                                    <h6>INR 6999/year</h6>
+                                </div>
+                                <hr></hr>
+                                <div style={{textAlign: 'center'}}>
+                                    <h6>Number of clients per month</h6>
+                                    <p>10-50  </p>
+                                    <hr></hr>
+                                    <h6>Premium features</h6>
+                                    <p>Limited  </p>
+                                    <hr></hr>
+                                    <h6>Custom Reports </h6>
+                                    <p>Limited </p>
+
+                                    <Button style={{backgroundColor: 'black', color: 'white'}} className="mt-3" variant="contained"><b>Start Now</b></Button>
+
+                                </div>
+                            </CardContent>
+                        </Card>
+                   </Col>
+                   <Col lg={4}>
+                        <Card style={{borderColor: '#4D61FC', borderWidth: '2px', boxShadow: '2px 2px 2px #888888'}} variant="outlined">
+                            <CardContent>
+                                <div style={{textAlign: 'center'}}>
+                                    <h3>Established</h3>
+                                    <p>Perfect for professionals with more than 5 years of experience</p>
+                                    <h6>INR 16999/year</h6>
+                                </div>
+                                <hr></hr>
+                                <div style={{textAlign: 'center'}}>
+                                    <h6>Number of clients per month</h6>
+                                    <p>More than 50  </p>
+                                    <hr></hr>
+                                    <h6>Premium features</h6>
+                                    <p>Included  </p>
+                                    <hr></hr>
+                                    <h6>Custom Reports </h6>
+                                    <p>Included </p>
+
+                                    <Button style={{borderColor: 'black', borderWidth: '3px'}} className="mt-3" variant="outlined"><b>Start Now</b></Button>
+
+                                </div>
+                            </CardContent>
+                        </Card> 
+                   </Col>
+               </Row>
+           </Container>
+            <div className="mt-5" style={{backgroundColor: '#4D61FC', padding: '5% 10%'}}>
+               <Row className="mt-5" style={{backgroundColor: 'white',borderStyle: 'solid', borderWidth: '1px', borderColor: 'black', padding: '3%', borderRadius: '20px'}}>
+                   <Col lg={4}>   
+                        <h4><b>Are you ready to start? Sign up now and get 50% off on your subscription</b></h4>
+                        <p style={{margin: '0'}}>Sign up now for early access.</p>
+                        <p>No credit card required.</p>
+                   </Col>
+                   <Col lg={8}>
+                    <div style={{marginTop: '10%'}}>
+                   <TextField
+                        style={{ width: '80%', margin: '0'}}
+                        fullWidth
+                        margin="normal"
+                        variant="outlined"
+                    />
+                    <Button style={{float: 'right', backgroundColor: '#4D61FC', color: 'white', height: '50px'}} variant="contained" >
+                        Subscribe
+                    </Button>
+                    </div>
+                   </Col>
+               </Row>
+            </div>
+            </>
         )
     }
 }
