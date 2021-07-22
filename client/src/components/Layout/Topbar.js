@@ -598,6 +598,7 @@ class Topbar extends Component {
                   {/* <img src={logodark} height="24" className="logo-light-mode" alt="" />
                   <img src={logolight} height="24" className="logo-dark-mode" alt="" /> */}
                   <img style={{width: '30px', heigth: '30px'}} src='https://res.cloudinary.com/dx9dnqzaj/image/upload/v1626758727/medical/Manah_Monogram48x48_sw6u7v.png'/>
+                  <span style={{fontSize: '20px'}}> Manah</span>
                 </a>
               ) :
                 <a className="logo" href="index.html">
@@ -609,6 +610,7 @@ class Topbar extends Component {
                   <img style={{width: '30px', heigth: '30px'}} src='https://res.cloudinary.com/dx9dnqzaj/image/upload/v1626758727/medical/Manah_Monogram48x48_sw6u7v.png'/>
                 </a>
               }
+              
             </div>
             {(() => {
               if (this.props.location.pathname === "/index-developer") {

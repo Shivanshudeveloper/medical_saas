@@ -29,7 +29,7 @@ export default class Features extends Component {
                     <Row className="justify-content-center">
                         <Col>
                             <Row>
-                                <Col md={3} className="mt-4 pt-2">
+                                <Col lg={3} className="mt-4 pt-2">
                                     <Card>
                                         <CardContent>
                                             <h5 style={{fontWeight: 'bold'}}>Accept Payments Online</h5>
@@ -48,7 +48,7 @@ export default class Features extends Component {
                                     </Card>
                                 </Col>
 
-                                <Col md={3} className="mt-4 pt-2">
+                                <Col lg={3} className="mt-4 pt-2">
                                     <Card>
                                         <CardContent>
                                             <h5 style={{fontWeight: 'bold'}}>Built for Remote Sessions</h5>
@@ -66,8 +66,8 @@ export default class Features extends Component {
                                     </Card>
                                 </Col>
 
-                                <Col md={3} className="mt-4 pt-2">
-                                    <Card>
+                                <Col lg={3} className="mt-4 pt-2">
+                                    <Card variant="outlined" style={{borderColor: '#4D61FC', borderWidth: '3px'}}>
                                         <CardContent>
                                             <h5 style={{fontWeight: 'bold'}}>Send Reminders</h5>
                                             <p style={{color: 'rgba(48,48,48,0.8)'}}>Remind clients to schedule next session, gently. By email, sms or whatsapp, automatically without having to do the manual work</p>
@@ -84,7 +84,7 @@ export default class Features extends Component {
                                     </Card>
                                 </Col>
 
-                                <Col md={3} className="mt-4 pt-2">
+                                <Col lg={3} className="mt-4 pt-2">
                                     <Card>
                                         <CardContent>
                                             <h5 style={{fontWeight: 'bold'}}>Progress Reports</h5>
@@ -103,8 +103,8 @@ export default class Features extends Component {
                                 </Col>
                             </Row>
                             <Row>
-                                <Col md={3} className="mt-4 pt-2">
-                                    <Card>
+                                <Col lg={3} className="mt-4 pt-2">
+                                    <Card variant="outlined" style={{borderColor: '#4D61FC', borderWidth: '3px'}}>
                                         <CardContent>
                                             <h5 style={{fontWeight: 'bold'}}>Host Workshops & Webinars</h5>
                                             <p style={{color: 'rgba(48,48,48,0.8)'}}>Interested in conducting workshops and webinars? You can do all of it here, including registration, ticketing and followup.</p>
@@ -122,8 +122,8 @@ export default class Features extends Component {
                                     </Card>
                                 </Col>
 
-                                <Col md={3} className="mt-4 pt-2">
-                                    <Card>
+                                <Col lg={3} className="mt-4 pt-2">
+                                    <Card variant="outlined" style={{borderColor: '#4D61FC', borderWidth: '3px'}}>
                                         <CardContent>
                                             <h5 style={{fontWeight: 'bold'}}>Create Content</h5>
                                             <p style={{color: 'rgba(48,48,48,0.8)'}}>Post articles, import social media posts, build your mailing list and share interesting content with your clients and beyond.</p>
@@ -142,8 +142,8 @@ export default class Features extends Component {
                                     </Card>
                                 </Col>
 
-                                <Col md={3} className="mt-4 pt-2">
-                                    <Card>
+                                <Col lg={3} className="mt-4 pt-2">
+                                    <Card variant="outlined" style={{borderColor: '#4D61FC', borderWidth: '3px'}}>
                                         <CardContent>
                                             <h5 style={{fontWeight: 'bold'}}>Build a Community</h5>
                                             <p style={{color: 'rgba(48,48,48,0.8)'}}>All the tools you need to build, engage and grow a thriving community is here. Just plug and play</p>
@@ -163,7 +163,7 @@ export default class Features extends Component {
                                     </Card>
                                 </Col>
 
-                                <Col md={3} className="mt-4 pt-2">
+                                <Col lg={3} className="mt-4 pt-2">
                                     <Card>
                                         <CardContent>
                                             <h5 style={{fontWeight: 'bold'}}>Want something else?</h5>

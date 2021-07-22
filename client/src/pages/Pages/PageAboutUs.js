@@ -1,3 +1,4 @@
+
 // React Basic and Bootstrap
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
@@ -31,15 +32,15 @@ class PageAboutUs extends Component {
         { id: 3, name: "About Us" },
       ],
       keyfeatures: [
-        { icon: "monitor", title: "Fully Responsive" },
-        { icon: "heart", title: "Browser Compatibility" },
-        { icon: "eye", title: "Retina Ready" },
-        { icon: "bold", title: "Based On Bootstrap 5" },
-        { icon: "feather", title: "Feather Icons" },
-        { icon: "code", title: "Built With SASS" },
-        { icon: "user-check", title: "W3c Valid Code" },
-        { icon: "git-merge", title: "Flaticon Icons" },
-        { icon: "settings", title: "Easy to customize" },
+        { icon: "", title: "Accept Payments Online" },
+        { icon: "", title: "Built for Remote Sessions" },
+        { icon: "", title: "Send Reminders" },
+        { icon: "", title: "Progress Reports" },
+        { icon: "", title: "Host Workshops & Webinars" },
+        { icon: "", title: "Create Content" },
+        { icon: "", title: "Build a Community" },
+        { icon: "", title: "Want something else?" },
+        // example for icon { icon: "settings", title: "Easy to customize" },
       ],
       candidates: [
         {
@@ -205,11 +206,11 @@ class PageAboutUs extends Component {
               {/* key features */}
               <KeyFeatureBox keyfeatures={this.state.keyfeatures} />
 
-              <Col xs={12} className="text-center mt-4 pt-2">
+              {/* <Col xs={12} className="text-center mt-4 pt-2">
                 <Link to="#" className="btn btn-primary">
                   See More <i className="mdi mdi-arrow-right"></i>
                 </Link>
-              </Col>
+              </Col> */}
             </Row>
           </Container>
         </section>
