@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Col, Container, Row } from 'reactstrap'
+import Timeline from './TimelineMed'
 
 //import images
 import client1 from "../../assets/images/client/amazon.svg";
@@ -26,7 +27,7 @@ export default class Client extends Component {
     render() {
         return (
             <React.Fragment>
-                <section className="py-5 border-top">
+                {/* <section className="py-5 border-top">
                     <Container>
                         <Row className="justify-content-center" id="counter">
                             <Col xs={12} className="text-center">
@@ -59,6 +60,13 @@ export default class Client extends Component {
                             </Col>
                         </Row>
                     </Container>
+                </section> */}
+                <div style={{textAlign: 'center'}}>
+                    <h3 style={{fontWeight: 'bold'}}>How It Works</h3>
+                    <p>Everything you need, in one place with NEO</p>
+                </div>
+                <section className="py-5">
+                    <Timeline />
                 </section>
             </React.Fragment>
         )
