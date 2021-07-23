@@ -107,6 +107,7 @@ export default class Encryption extends Component {
                         style={{ width: '80%', margin: '0'}}
                         fullWidth
                         margin="normal"
+                        placeholder="Email Address"
                         variant="outlined"
                     />
                     <Button style={{float: 'right', backgroundColor: '#4D61FC', color: 'white', height: '50px'}} variant="contained" >
