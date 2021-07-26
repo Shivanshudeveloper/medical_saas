@@ -1,3 +1,4 @@
+import react from "react"
 import {
   Box,
   Button,
@@ -5,12 +6,29 @@ import {
   CardContent,
   TextField,
   InputAdornment,
-  SvgIcon
+  SvgIcon,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle
 } from '@material-ui/core';
+import { makeStyles } from "@material-ui/core/styles";
 import { Search as SearchIcon } from 'react-feather';
 
-const CustomerListToolbar = (props) => (
-  <Box {...props}>
+const CustomerListToolbar = (props) => {
+  const [open, setOpen] = react.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  return (
+    <Box {...props}>
     <Box
       sx={{
         display: 'flex',
@@ -26,10 +44,67 @@ const CustomerListToolbar = (props) => (
       <Button
         color="primary"
         variant="contained"
+        onClick={handleClickOpen}
       >
         Add customer
       </Button>
     </Box>
+    <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+        <DialogTitle id="form-dialog-title">Add A Customer</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Please provide customer details
+          </DialogContentText>
+          <TextField
+            autoFocus
+            margin="dense"
+            id="Name"
+            label="Name"
+            type="text"
+            fullWidth
+          />
+          <TextField
+            
+            margin="dense"
+            id="email"
+            label="Email"
+            type="email"
+            fullWidth
+          />
+          <TextField
+            
+            margin="dense"
+            id="location"
+            label="Location"
+            type="text"
+            fullWidth
+          />
+          <TextField
+            
+            margin="dense"
+            id="title"
+            label="Phone"
+            type="text"
+            fullWidth
+          />
+          <TextField
+            
+            margin="dense"
+            id="regDate"
+            label="Registration Date"
+            type="date"
+            fullWidth
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            Cancel
+          </Button>
+          <Button onClick={handleClose} color="primary">
+            Add
+          </Button>
+        </DialogActions>
+      </Dialog>
     <Box sx={{ mt: 3 }}>
       <Card>
         <CardContent>
@@ -56,6 +131,7 @@ const CustomerListToolbar = (props) => (
       </Card>
     </Box>
   </Box>
-);
+  )
+};
 
 export default CustomerListToolbar;
