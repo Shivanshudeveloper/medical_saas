@@ -15,7 +15,7 @@ const WishList_Model = require('../models/WishList');
 const OtherStore_Model = require('../models/OtherStore');
 const WeekProducts_Model = require('../models/WeekProducts');
 
-const Project_Model = require('../models/Projects');
+const User_Model = require('../models/User');
 
 function isNumeric(str) {
     if (typeof str != "string") return false // we only process strings!  
@@ -1663,36 +1663,37 @@ router.get('/getuniversititesfiltersconditionaloffers/:conditionaloffers', (req,
 });
 
 // Database CRUD Operations
-// @POST Request to POST project data
+// @POST Request to POST user data
 // POST 
-router.post('/addproject', (req, res) => {
+
+router.post('/adduser', (req, res) => {
     const body = req.body
 
     if (!body) {
         return res.status(400).json({
             success: false,
-            error: 'You must provide a project',
+            error: 'no user provided',
         })
     }
 
-    const proj = new Project_Model(body)
+    const user = new User_Model(body)
 
-    if (!proj) {
+    if (!user) {
         return res.status(400).json({ success: false, error: err })
     }
 
-    proj
+    user
         .save()
         .then(() => {
             return res.status(201).json({
                 success: true,
-                message: 'Project created!',
+                message: 'user created!',
             })
         })
         .catch(error => {
             return res.status(400).json({
                 error,
-                message: 'Project not created!',
+                message: 'user not created!',
             })
         })
 });

@@ -5,6 +5,7 @@ import "firebase/auth";
 import "firebase/messaging";
 import "firebase/analytics";
 import 'firebase/firestore';
+
 var firebaseConfig = {
     apiKey: "AIzaSyAAau1u0Kj73GQO7RuUs_m9ciSR3o38qa8",
     authDomain: "shared-dbac4.firebaseapp.com",
@@ -15,6 +16,7 @@ var firebaseConfig = {
     appId: "1:28242124973:web:b29d5d451159e243652624",
     measurementId: "G-425R3Z3H22"
 };
+
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
