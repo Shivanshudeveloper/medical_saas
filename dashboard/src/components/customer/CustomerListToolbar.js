@@ -35,12 +35,6 @@ const CustomerListToolbar = (props) => {
         justifyContent: 'flex-end'
       }}
     >
-      <Button>
-        Import
-      </Button>
-      <Button sx={{ mx: 1 }}>
-        Export
-      </Button>
       <Button
         color="primary"
         variant="contained"
@@ -88,13 +82,25 @@ const CustomerListToolbar = (props) => {
             fullWidth
           />
           <TextField
-            
             margin="dense"
             id="regDate"
             label="Registration Date"
             type="date"
             fullWidth
           />
+
+          <TextField
+            style={{ marginTop: '10px' }}
+            id="outlined-multiline-static"
+            label="Description (Opstional)"
+            multiline
+            rows={4}
+            variant="outlined"
+            fullWidth
+          />
+
+          <Button style={{ marginTop: '10px' }} size="large" fullWidth variant="outlined">Upload a Profile Picture</Button>
+
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">

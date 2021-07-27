@@ -37,15 +37,14 @@ const items = [
     title: 'Dashboard'
   },
   {
-    href: '/app/notes',
-    icon: ClipboardIcon,
-    title: 'Notes'
-  },
-
-  {
     href: '/app/customers',
     icon: UsersIcon,
     title: 'Customers'
+  },
+  {
+    href: '/app/notes',
+    icon: ClipboardIcon,
+    title: 'Notes'
   },
   // {
   //   href: '/app/products',
