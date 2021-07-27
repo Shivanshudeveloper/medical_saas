@@ -16,6 +16,7 @@ const OtherStore_Model = require('../models/OtherStore');
 const WeekProducts_Model = require('../models/WeekProducts');
 
 const User_Model = require('../models/User');
+const Notes_Model = require('../models/Notes');
 
 function isNumeric(str) {
     if (typeof str != "string") return false // we only process strings!  
@@ -1698,8 +1699,8 @@ router.post('/adduser', (req, res) => {
         })
 });
 
-router.get('/getallprojects', (req, res) => {
-    Project_Model.find({},(err, data_) => {
+router.get('/getallusers', (req, res) => {
+    User_Model.find({},(err, data_) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
@@ -1713,13 +1714,45 @@ router.get('/getallprojects', (req, res) => {
     .catch(err => res.status(400).json(`Error: ${err}`))
 });
 
-router.get('/getproject/:id', (req, res) => {
+router.get('/getuser/:id', (req, res) => {
     let { id } = req.params;
-    Project_Model.find({ '_id': id })
+    User_Model.find({ '_id': id })
         .then(data => {
             res.status(200).json(data);
         })
         .catch(err => res.status(400).json(`Error: ${err}`))
+});
+
+router.post('/addnote', (req, res) => {
+    const body = req.body
+
+    if (!body) {
+        return res.status(400).json({
+            success: false,
+            error: 'no note provided',
+        })
+    }
+
+    const note = new Notes_Model(body)
+
+    if (!note) {
+        return res.status(400).json({ success: false, error: err })
+    }
+
+    note
+        .save()
+        .then(() => {
+            return res.status(201).json({
+                success: true,
+                message: 'note created!',
+            })
+        })
+        .catch(error => {
+            return res.status(400).json({
+                error,
+                message: 'note not created!',
+            })
+        })
 });
 
 module.exports = router;

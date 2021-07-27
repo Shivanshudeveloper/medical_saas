@@ -13,7 +13,8 @@ import {
   TableHead,
   TablePagination,
   TableRow,
-  Typography
+  Typography,
+  Button
 } from '@material-ui/core';
 import getInitials from 'src/utils/getInitials';
 
@@ -26,7 +27,7 @@ const CustomerListResults = ({ customers, ...rest }) => {
     let newSelectedCustomerIds;
 
     if (event.target.checked) {
-      newSelectedCustomerIds = customers.map((customer) => customer.id);
+      newSelectedCustomerIds = customers.map((customer) => customer._id);
     } else {
       newSelectedCustomerIds = [];
     }
@@ -101,13 +102,13 @@ const CustomerListResults = ({ customers, ...rest }) => {
               {customers.slice(0, limit).map((customer) => (
                 <TableRow
                   hover
-                  key={customer.id}
-                  selected={selectedCustomerIds.indexOf(customer.id) !== -1}
+                  key={customer._id}
+                  selected={selectedCustomerIds.indexOf(customer._id) !== -1}
                 >
                   <TableCell padding="checkbox">
                     <Checkbox
-                      checked={selectedCustomerIds.indexOf(customer.id) !== -1}
-                      onChange={(event) => handleSelectOne(event, customer.id)}
+                      checked={selectedCustomerIds.indexOf(customer._id) !== -1}
+                      onChange={(event) => handleSelectOne(event, customer._id)}
                       value="true"
                     />
                   </TableCell>
@@ -119,7 +120,7 @@ const CustomerListResults = ({ customers, ...rest }) => {
                       }}
                     >
                       <Avatar
-                        src={customer.avatarUrl}
+                        src={customer.image}
                         sx={{ mr: 2 }}
                       >
                         {getInitials(customer.name)}
@@ -136,13 +137,18 @@ const CustomerListResults = ({ customers, ...rest }) => {
                     {customer.email}
                   </TableCell>
                   <TableCell>
-                    {`${customer.address.city}, ${customer.address.state}, ${customer.address.country}`}
+                    {customer.location}
                   </TableCell>
                   <TableCell>
                     {customer.phone}
                   </TableCell>
                   <TableCell>
-                    {moment(customer.createdAt).format('DD/MM/YYYY')}
+                    {moment(customer.regDate).format('DD/MM/YYYY')}
+                  </TableCell>
+                  <TableCell>
+                  <Button href={`/app/profile?id=${customer._id}`} variant="contained" color="primary">
+                    See More
+                  </Button>
                   </TableCell>
                 </TableRow>
               ))}
