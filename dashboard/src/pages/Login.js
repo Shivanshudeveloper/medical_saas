@@ -1,7 +1,7 @@
-import { Link as RouterLink, useNavigate } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
-import * as Yup from 'yup';
-import { Formik } from 'formik';
+import { Link as RouterLink, useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
+import * as Yup from "yup";
+import { Formik } from "formik";
 import {
   Box,
   Button,
@@ -9,10 +9,10 @@ import {
   Grid,
   Link,
   TextField,
-  Typography
-} from '@material-ui/core';
-import FacebookIcon from 'src/icons/Facebook';
-import GoogleIcon from 'src/icons/Google';
+  Typography,
+} from "@material-ui/core";
+import FacebookIcon from "src/icons/Facebook";
+import GoogleIcon from "src/icons/Google";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -20,29 +20,32 @@ const Login = () => {
   return (
     <>
       <Helmet>
-        <title>Login | Material Kit</title>
+        <title>Login</title>
       </Helmet>
       <Box
         sx={{
-          backgroundColor: 'background.default',
-          display: 'flex',
-          flexDirection: 'column',
-          height: '100%',
-          justifyContent: 'center'
+          backgroundColor: "background.default",
+          display: "flex",
+          flexDirection: "column",
+          height: "100%",
+          justifyContent: "center",
         }}
       >
         <Container maxWidth="sm">
           <Formik
             initialValues={{
-              email: 'demo@devias.io',
-              password: 'Password123'
+              email: "demo@devias.io",
+              password: "Password123",
             }}
             validationSchema={Yup.object().shape({
-              email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
-              password: Yup.string().max(255).required('Password is required')
+              email: Yup.string()
+                .email("Must be a valid email")
+                .max(255)
+                .required("Email is required"),
+              password: Yup.string().max(255).required("Password is required"),
             })}
             onSubmit={() => {
-              navigate('/app/dashboard', { replace: true });
+              navigate("/app/dashboard", { replace: true });
             }}
           >
             {({
@@ -52,14 +55,11 @@ const Login = () => {
               handleSubmit,
               isSubmitting,
               touched,
-              values
+              values,
             }) => (
               <form onSubmit={handleSubmit}>
                 <Box sx={{ mb: 3 }}>
-                  <Typography
-                    color="textPrimary"
-                    variant="h2"
-                  >
+                  <Typography color="textPrimary" variant="h2">
                     Sign in
                   </Typography>
                   <Typography
@@ -70,15 +70,8 @@ const Login = () => {
                     Sign in on the internal platform
                   </Typography>
                 </Box>
-                <Grid
-                  container
-                  spacing={3}
-                >
-                  <Grid
-                    item
-                    xs={12}
-                    md={6}
-                  >
+                <Grid container spacing={3}>
+                  <Grid item xs={12} md={6}>
                     <Button
                       color="primary"
                       fullWidth
@@ -90,11 +83,7 @@ const Login = () => {
                       Login with Facebook
                     </Button>
                   </Grid>
-                  <Grid
-                    item
-                    xs={12}
-                    md={6}
-                  >
+                  <Grid item xs={12} md={6}>
                     <Button
                       fullWidth
                       startIcon={<GoogleIcon />}
@@ -109,7 +98,7 @@ const Login = () => {
                 <Box
                   sx={{
                     pb: 1,
-                    pt: 3
+                    pt: 3,
                   }}
                 >
                   <Typography
@@ -158,17 +147,9 @@ const Login = () => {
                     Sign in now
                   </Button>
                 </Box>
-                <Typography
-                  color="textSecondary"
-                  variant="body1"
-                >
-                  Don&apos;t have an account?
-                  {' '}
-                  <Link
-                    component={RouterLink}
-                    to="/register"
-                    variant="h6"
-                  >
+                <Typography color="textSecondary" variant="body1">
+                  Don&apos;t have an account?{" "}
+                  <Link component={RouterLink} to="/register" variant="h6">
                     Sign up
                   </Link>
                 </Typography>

@@ -1,37 +1,18 @@
-import react, { useState, useEffect } from "react"
+import react, { useState, useEffect } from "react";
 import {
   Box,
   Button,
-  Card,
-  CardContent,
   TextField,
-  InputAdornment,
-  SvgIcon,
   Dialog,
   DialogActions,
   DialogContent,
   DialogContentText,
-  DialogTitle
-} from '@material-ui/core';
-import { makeStyles } from "@material-ui/core/styles";
-import { Search as SearchIcon } from 'react-feather';
-
-import Dropzone from 'react-dropzone';
-
-import { firestore, storage } from '../../Firebase/index';
-
-import { v4 as uuid4 } from 'uuid';
-
+  DialogTitle,
+} from "@material-ui/core";
+import Dropzone from "react-dropzone";
+import { firestore, storage } from "../../Firebase/index";
+import { v4 as uuid4 } from "uuid";
 import axios from "axios";
-
-// name,
-// email,
-// location,
-// phone,
-// regDate,
-// description,
-// image,
-// date
 
 const CustomerListToolbar = (props) => {
   const [open, setOpen] = react.useState(false);
@@ -44,7 +25,7 @@ const CustomerListToolbar = (props) => {
     setOpen(false);
   };
 
-  const [file,setFile] = useState([])
+  const [file, setFile] = useState([]);
 
   const [user, setUser] = useState({
     name: "",
@@ -54,87 +35,95 @@ const CustomerListToolbar = (props) => {
     regDate: "",
     description: "",
     image: "",
-})
+  });
 
-const changeEle = (event) => {
-  const {name, value} = event.target;
-  setUser(prevValue => {
+  const changeEle = (event) => {
+    const { name, value } = event.target;
+    setUser((prevValue) => {
       return {
-          ...prevValue,
-          [name]: value
-      }
-  })
-}
+        ...prevValue,
+        [name]: value,
+      };
+    });
+  };
 
-useEffect(() => {
-  if (file.length > 0) {
+  useEffect(() => {
+    if (file.length > 0) {
       onSubmit();
-  } else {
+    } else {
       console.log("N");
-  }
-}, [file]);
+    }
+  }, [file]);
 
-const handleDrop = async (acceptedFiles) => {
-  setFile(acceptedFiles.map(file => file));
-}
+  const handleDrop = async (acceptedFiles) => {
+    setFile(acceptedFiles.map((file) => file));
+  };
 
-const onSubmit = () => {
-  if (file.length > 0) {
-      file.forEach(file => {
-          const timeStamp = Date.now();
-          var uniquetwoKey = uuid4();
-          uniquetwoKey = uniquetwoKey + timeStamp;
-          const uploadTask = storage.ref(`users/${uniquetwoKey}/${file.name}`).put(file);
-          uploadTask.on('state_changed', (snapshot) => {
-              const progress =  Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
-              console.log(`Uploading ${progress} %`);
+  const onSubmit = () => {
+    if (file.length > 0) {
+      file.forEach((file) => {
+        const timeStamp = Date.now();
+        var uniquetwoKey = uuid4();
+        uniquetwoKey = uniquetwoKey + timeStamp;
+        const uploadTask = storage
+          .ref(`users/${uniquetwoKey}/${file.name}`)
+          .put(file);
+        uploadTask.on(
+          "state_changed",
+          (snapshot) => {
+            const progress = Math.round(
+              (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+            );
+            console.log(`Uploading ${progress} %`);
           },
           (error) => {
-              console.log(error)
+            console.log(error);
           },
           async () => {
-              // When the Storage gets Completed
-              const filePath = await uploadTask.snapshot.ref.getDownloadURL();
-              console.log('File Uploaded');
-              setUser((prevVal) => ({...prevVal, "image": filePath}));
-          });
-      })
-  } else {
-      console.log('No File Selected Yet');
-  }
-}
+            // When the Storage gets Completed
+            const filePath = await uploadTask.snapshot.ref.getDownloadURL();
+            console.log("File Uploaded");
+            setUser((prevVal) => ({ ...prevVal, image: filePath }));
+          }
+        );
+      });
+    } else {
+      console.log("No File Selected Yet");
+    }
+  };
 
-const submitUser = () => {
-  axios.post('http://localhost:5000/api/v1/main/adduser', user).then(res=>{
-    console.log(res);
-    handleClose()
-  }).catch(err => {
-    console.log('error');
-  })
-}
+  const submitUser = () => {
+    axios
+      .post("http://localhost:5000/api/v1/main/adduser", user)
+      .then((res) => {
+        console.log(res);
+        handleClose();
+      })
+      .catch((err) => {
+        console.log("error");
+      });
+  };
 
   return (
     <Box {...props}>
-    <Box
-      sx={{
-        display: 'flex',
-        justifyContent: 'flex-end'
-      }}
-    >
-      <Button
-        color="primary"
-        variant="contained"
-        onClick={handleClickOpen}
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "flex-end",
+        }}
       >
-        Add customer
-      </Button>
-    </Box>
-    <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+        <Button color="primary" variant="contained" onClick={handleClickOpen}>
+          Add customer
+        </Button>
+      </Box>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="form-dialog-title"
+      >
         <DialogTitle id="form-dialog-title">Add A Customer</DialogTitle>
         <DialogContent>
-          <DialogContentText>
-            Please provide customer details
-          </DialogContentText>
+          <DialogContentText>Please provide customer details</DialogContentText>
           <TextField
             autoFocus
             margin="dense"
@@ -142,16 +131,19 @@ const submitUser = () => {
             label="Name"
             type="text"
             fullWidth
-            name ="name" value={user.name} onChange={changeEle}
+            name="name"
+            value={user.name}
+            onChange={changeEle}
           />
           <TextField
-            
             margin="dense"
             id="email"
             label="Email"
             type="email"
             fullWidth
-            name ="email" value={user.email} onChange={changeEle}
+            name="email"
+            value={user.email}
+            onChange={changeEle}
           />
 
           <TextField
@@ -160,7 +152,9 @@ const submitUser = () => {
             label="Location"
             type="text"
             fullWidth
-            name ="location" value={user.location} onChange={changeEle}
+            name="location"
+            value={user.location}
+            onChange={changeEle}
           />
 
           <TextField
@@ -169,7 +163,9 @@ const submitUser = () => {
             label="Phone"
             type="text"
             fullWidth
-            name ="phone" value={user.phone} onChange={changeEle}
+            name="phone"
+            value={user.phone}
+            onChange={changeEle}
           />
           <TextField
             margin="dense"
@@ -177,29 +173,39 @@ const submitUser = () => {
             //label="Registration Date"
             type="date"
             fullWidth
-            name ="regDate" value={user.regDate} onChange={changeEle}
+            name="regDate"
+            value={user.regDate}
+            onChange={changeEle}
           />
 
           <TextField
-            style={{ marginTop: '10px' }}
+            style={{ marginTop: "10px" }}
             id="outlined-multiline-static"
             label="Description (Optional)"
             multiline
             rows={4}
             variant="outlined"
             fullWidth
-            name ="description" value={user.description} onChange={changeEle}
+            name="description"
+            value={user.description}
+            onChange={changeEle}
           />
 
           <Dropzone onDrop={handleDrop}>
-                {({ getRootProps, getInputProps }) => (
-                    <div {...getRootProps({ className: "dropzone" })}>
-                        <input {...getInputProps()} />
-                        <Button style={{ marginTop: '10px' }} size="large" fullWidth variant="outlined">Upload a Profile Picture</Button>
-                    </div>
-                )}
+            {({ getRootProps, getInputProps }) => (
+              <div {...getRootProps({ className: "dropzone" })}>
+                <input {...getInputProps()} />
+                <Button
+                  style={{ marginTop: "10px" }}
+                  size="large"
+                  fullWidth
+                  variant="outlined"
+                >
+                  Upload a Profile Picture
+                </Button>
+              </div>
+            )}
           </Dropzone>
-
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
@@ -210,33 +216,8 @@ const submitUser = () => {
           </Button>
         </DialogActions>
       </Dialog>
-    <Box sx={{ mt: 3 }}>
-      <Card>
-        <CardContent>
-          <Box sx={{ maxWidth: 500 }}>
-            <TextField
-              fullWidth
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <SvgIcon
-                      fontSize="small"
-                      color="action"
-                    >
-                      <SearchIcon />
-                    </SvgIcon>
-                  </InputAdornment>
-                )
-              }}
-              placeholder="Search customer"
-              variant="outlined"
-            />
-          </Box>
-        </CardContent>
-      </Card>
     </Box>
-  </Box>
-  )
+  );
 };
 
 export default CustomerListToolbar;
