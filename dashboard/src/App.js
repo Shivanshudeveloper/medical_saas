@@ -6,6 +6,10 @@ import 'src/mixins/chartjs';
 import theme from 'src/theme';
 import routes from 'src/routes';
 import './App.css'
+import "./assets/css/materialdesignicons.min.css";
+import "./Apps.scss";
+
+import "./assets/css/colors/default.css";
 
 const App = () => {
   const routing = useRoutes(routes);

@@ -1,18 +1,22 @@
-import { Link as RouterLink, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
-import * as Yup from "yup";
-import { Formik } from "formik";
+import React from "react"
 import {
-  Box,
-  Button,
   Container,
-  Grid,
-  Link,
-  TextField,
-  Typography,
-} from "@material-ui/core";
-import FacebookIcon from "src/icons/Facebook";
-import GoogleIcon from "src/icons/Google";
+  Row,
+  Col,
+  Input,
+  Label,
+  Button,
+  Card,
+  CardBody,
+} from "reactstrap";
+import { AvForm, AvField } from "availity-reactstrap-validation";
+
+//Import Icons
+import FeatherIcon from "feather-icons-react";
+
+import loginImg from "../assets/images/user/login.svg";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -22,142 +26,179 @@ const Login = () => {
       <Helmet>
         <title>Login</title>
       </Helmet>
-      <Box
-        sx={{
-          backgroundColor: "background.default",
-          display: "flex",
-          flexDirection: "column",
-          height: "100%",
-          justifyContent: "center",
-        }}
-      >
-        <Container maxWidth="sm">
-          <Formik
-            initialValues={{
-              email: "demo@devias.io",
-              password: "Password123",
-            }}
-            validationSchema={Yup.object().shape({
-              email: Yup.string()
-                .email("Must be a valid email")
-                .max(255)
-                .required("Email is required"),
-              password: Yup.string().max(255).required("Password is required"),
-            })}
-            onSubmit={() => {
-              navigate("/app/dashboard", { replace: true });
-            }}
-          >
-            {({
-              errors,
-              handleBlur,
-              handleChange,
-              handleSubmit,
-              isSubmitting,
-              touched,
-              values,
-            }) => (
-              <form onSubmit={handleSubmit}>
-                <Box sx={{ mb: 3 }}>
-                  <Typography color="textPrimary" variant="h2">
-                    Sign in
-                  </Typography>
-                  <Typography
-                    color="textSecondary"
-                    gutterBottom
-                    variant="body2"
-                  >
-                    Sign in on the internal platform
-                  </Typography>
-                </Box>
-                <Grid container spacing={3}>
-                  <Grid item xs={12} md={6}>
-                    <Button
-                      color="primary"
-                      fullWidth
-                      startIcon={<FacebookIcon />}
-                      onClick={handleSubmit}
-                      size="large"
-                      variant="contained"
-                    >
-                      Login with Facebook
-                    </Button>
-                  </Grid>
-                  <Grid item xs={12} md={6}>
-                    <Button
-                      fullWidth
-                      startIcon={<GoogleIcon />}
-                      onClick={handleSubmit}
-                      size="large"
-                      variant="contained"
-                    >
-                      Login with Google
-                    </Button>
-                  </Grid>
-                </Grid>
-                <Box
-                  sx={{
-                    pb: 1,
-                    pt: 3,
-                  }}
-                >
-                  <Typography
-                    align="center"
-                    color="textSecondary"
-                    variant="body1"
-                  >
-                    or login with email address
-                  </Typography>
-                </Box>
-                <TextField
-                  error={Boolean(touched.email && errors.email)}
-                  fullWidth
-                  helperText={touched.email && errors.email}
-                  label="Email Address"
-                  margin="normal"
-                  name="email"
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  type="email"
-                  value={values.email}
-                  variant="outlined"
-                />
-                <TextField
-                  error={Boolean(touched.password && errors.password)}
-                  fullWidth
-                  helperText={touched.password && errors.password}
-                  label="Password"
-                  margin="normal"
-                  name="password"
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  type="password"
-                  value={values.password}
-                  variant="outlined"
-                />
-                <Box sx={{ py: 2 }}>
-                  <Button
-                    color="primary"
-                    disabled={isSubmitting}
-                    fullWidth
-                    size="large"
-                    type="submit"
-                    variant="contained"
-                  >
-                    Sign in now
-                  </Button>
-                </Box>
-                <Typography color="textSecondary" variant="body1">
-                  Don&apos;t have an account?{" "}
-                  <Link component={RouterLink} to="/register" variant="h6">
-                    Sign up
-                  </Link>
-                </Typography>
-              </form>
-            )}
-          </Formik>
-        </Container>
-      </Box>
+      <React.Fragment>
+        <div className="back-to-home rounded d-none d-sm-block">
+          <Link to="/" className="btn btn-icon btn-soft-primary">
+            <i>
+              <FeatherIcon icon="home" className="icons" />
+            </i>
+          </Link>
+        </div>
+        <section className="bg-home d-flex align-items-center">
+          <Container>
+            <Row className="align-items-center">
+              <Col lg="7" md="6">
+                <div className="me-lg-5">
+                  <img
+                   src={loginImg}
+                    className="img-fluid d-block mx-auto"
+                    alt="loading it wait a sec"
+                  />
+                </div>
+              </Col>
+              <Col lg="5" md="6">
+                <Card className="login-page bg-white shadow rounded border-0">
+                  <CardBody>
+                    <div className="card-title text-center">
+                      <h4 className="mb-4">Login</h4>
+                    </div>
+                    <AvForm className="login-form mt-4">
+                      <Row>
+                        <Col lg="12">
+                          <div className="mb-3">
+                            <Label className="form-label" htmlFor="email">
+                              Your Email <span className="text-danger">*</span>
+                            </Label>
+                            <div className="form-icon position-relative">
+                              <i>
+                                <FeatherIcon
+                                  icon="user"
+                                  className="fea icon-sm icons"
+                                />
+                              </i>
+                            </div>
+                            <AvField
+                              type="text"
+                              className="form-control ps-5"
+                              name="email"
+                              id="email"
+                              placeholder="Email"
+                              required
+                              errorMessage=""
+                              validate={{
+                                required: {
+                                  value: true,
+                                  errorMessage: "Please enter your email",
+                                },
+                                pattern: {
+                                  value:
+                                    "^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$",
+                                  errorMessage: "E-Mail is not valid!",
+                                },
+                              }}
+                            />
+                          </div>
+                        </Col>
+
+                        <Col lg="12">
+                          <div className="mb-3">
+                            <Label className="form-label" htmlFor="password">
+                              Password <span className="text-danger">*</span>
+                            </Label>
+                            <div className="form-icon position-relative">
+                              <i>
+                                <FeatherIcon
+                                  icon="lock"
+                                  className="fea icon-sm icons"
+                                />
+                              </i>
+                            </div>
+                            <AvField
+                              type="text"
+                              className="form-control ps-5"
+                              name="password"
+                              id="password"
+                              placeholder="Password"
+                              required
+                              errorMessage=""
+                              validate={{
+                                required: {
+                                  value: true,
+                                  errorMessage: "Please enter Password",
+                                },
+                                minLength: {
+                                  value: 6,
+                                  errorMessage:
+                                    "Your password must be between 6 and 8 characters",
+                                },
+                                maxLength: {
+                                  value: 16,
+                                  errorMessage:
+                                    "Your password must be between 6 and 8 characters",
+                                },
+                              }}
+                            />
+                          </div>
+                        </Col>
+
+                        <Col lg="12">
+                          <div className="d-flex justify-content-between">
+                            <div className="mb-3">
+                              <div className="form-check">
+                                <Input
+                                  type="checkbox"
+                                  className="form-check-input"
+                                  id="customCheck1"
+                                />
+                                <Label
+                                  className="form-check-label"
+                                  htmlFor="customCheck1"
+                                >
+                                  Remember me
+                                </Label>
+                              </div>
+                            </div>
+                            <p className="forgot-pass mb-0">
+                              <Link
+                                to="auth-re-password"
+                                className="text-dark fw-bold"
+                              >
+                                Forgot password ?
+                              </Link>
+                            </p>
+                          </div>
+                        </Col>
+                        <Col lg="12" className="mb-0">
+                          <div className="d-grid">
+                            <Button color="primary">
+                              Sign in
+                          </Button>
+                          </div>
+                        </Col>
+                        <Col lg="12" className="mt-4 text-center">
+                          <h6>Or Login With</h6>
+                          <Row>
+                            
+
+                            <div className="col-12 mt-3">
+                              <div className="d-grid">
+                                <Link to="#" className="btn btn-light"><i className="mdi mdi-google text-danger"></i> Google</Link>
+                              </div>
+                            </div>
+                          </Row>
+                        </Col>
+                        <Col xs="12" className="text-center">
+                          <p className="mb-0 mt-3">
+                            <small className="text-dark me-2">
+                              Don't have an account ?
+                            </small>{" "}
+                            <Link
+                              to="/register"
+                              className="text-dark fw-bold"
+                            >
+                              Sign Up
+                            </Link>
+                          </p>
+                        </Col>
+                      </Row>
+                    </AvForm>
+                  </CardBody>
+                </Card>
+              </Col>
+            </Row>
+          </Container>
+        </section>
+      </React.Fragment>
     </>
   );
 };
