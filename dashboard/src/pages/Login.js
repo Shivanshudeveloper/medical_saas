@@ -21,6 +21,17 @@ import loginImg from "../assets/images/user/login.svg";
 const Login = () => {
   const navigate = useNavigate();
 
+  const [email, setemail] = React.useState("demo@demo.com");
+  const [pwd, setpwd] = React.useState("demo@1234");
+
+  const checkUser = () => {
+    if (email === "demo@demo.com" && pwd === "demo@1234") {
+        window.location.href = "/app/dashboard"
+    } else {
+      alert("Wront Email or Password");
+    }
+  }
+
   return (
     <>
       <Helmet>
@@ -72,6 +83,8 @@ const Login = () => {
                               className="form-control ps-5"
                               name="email"
                               id="email"
+                              value={email}
+                              onChange={(e) => setemail(e.target.value)}
                               placeholder="Email"
                               required
                               errorMessage=""
@@ -109,6 +122,9 @@ const Login = () => {
                               name="password"
                               id="password"
                               placeholder="Password"
+                              value={pwd}
+                              type="password"
+                              onChange={(e) => setpwd(e.target.value)}
                               required
                               errorMessage=""
                               validate={{
@@ -160,7 +176,7 @@ const Login = () => {
                         </Col>
                         <Col lg="12" className="mb-0">
                           <div className="d-grid">
-                            <Button color="primary">
+                            <Button onClick={checkUser} color="primary">
                               Sign in
                           </Button>
                           </div>

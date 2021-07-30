@@ -51,9 +51,9 @@ export default function NotesToolbar() {
   return (
     <div>
       <div style={{textAlign: 'right'}}>
-      <Button variant="contained" color="primary" onClick={handleClickOpen}>
+      {/* <Button variant="contained" color="primary" onClick={handleClickOpen}>
         Add Notes
-      </Button>
+      </Button> */}
       </div>
       <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
         <AppBar className={classes.appBar}>

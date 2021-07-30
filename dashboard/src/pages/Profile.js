@@ -300,15 +300,15 @@ const Profile = () => {
   };
 
   const sig_note = (data, idx) => {
-    var temp_note = data.note.slice(0,200)+'...'
+    var temp_note = data.note.slice(0,800)
     return (
       <>
       <Card className='mt-2'>
         <CardHeader title={`Note ${idx+1}`} />
         <CardContent>
             {renderHTML(temp_note)}
-            <Button color="primary" onClick={() => handleClickOpenNotesModal(data.note)}>
-              See more
+            <Button color="primary" variant="outlined" onClick={() => handleClickOpenNotesModal(data.note)}>
+              View more
             </Button>
         </CardContent>
       </Card>
@@ -440,7 +440,7 @@ const Profile = () => {
           <h3 style={{ marginTop: '10px' }}>Notes</h3>
           <Grid container spacing={3}>
             <Grid item lg={12} md={12} xs={12}>
-              {userNotes.length === 0 ? <div>Loading...</div> : userNotes.map(sig_note)}
+              {userNotes.length === 0 ? <div></div> : userNotes.map(sig_note)}
             </Grid>
           </Grid>
 

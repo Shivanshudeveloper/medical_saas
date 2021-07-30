@@ -36,7 +36,7 @@ const CustomerList = () => {
       <Container maxWidth={false}>
         <CustomerListToolbar />
         <Box sx={{ pt: 3 }}>
-          {customers.length===0?<div>Loading...</div>:<CustomerListResults customers={customers} />}
+          {customers.length===0?<div></div>:<CustomerListResults customers={customers} />}
         </Box>
       </Container>
     </Box>
