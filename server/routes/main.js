@@ -2456,4 +2456,13 @@ router.post("/addnote", (req, res) => {
     });
 });
 
+router.get("/getusernotes/:id", (req, res) => {
+  let { id } = req.params;
+  Notes_Model.find({ id: id })
+    .then((data) => {
+      res.status(200).json(data);
+    })
+    .catch((err) => res.status(400).json(`Error: ${err}`));
+});
+
 module.exports = router;

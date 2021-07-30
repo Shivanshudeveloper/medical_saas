@@ -26,6 +26,8 @@ import getInitials from "src/utils/getInitials";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+import { API_SERVICE } from "../../config/URI";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     padding: "2px 4px",
@@ -111,7 +113,7 @@ const CustomerListResults = ({ customers, ...rest }) => {
   const searchPost = async () => {
     if (search.trim()) {
       const data = await axios.get(
-        `http://localhost:5000/api/v1/main/searchuser?searchQuery=${
+        `${API_SERVICE}/api/v1/main/searchuser?searchQuery=${
           search || "none"
         }`
       );

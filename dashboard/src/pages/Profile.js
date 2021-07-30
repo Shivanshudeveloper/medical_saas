@@ -36,6 +36,10 @@ import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { Avatar, Typography } from "@material-ui/core";
 import { Editor } from "@tinymce/tinymce-react";
 
+import renderHTML from 'react-render-html';
+
+import { API_SERVICE } from "../config/URI";
+
 const useStyles = makeStyles((theme) => ({
   appBar: {
     position: "relative",
@@ -74,13 +78,23 @@ const Profile = () => {
   };
 
   const [user, setUser] = useState([]);
+  const [userNotes, setUserNotes] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
     const { id } = queryString.parse(window.location.search);
     // console.log(id);
-    axios.get(`http://localhost:5000/api/v1/main/getuser/${id}`).then((res) => {
+    axios.get(`${API_SERVICE}/api/v1/main/getuser/${id}`).then((res) => {
       setUser(res.data[0]);
+    });
+  }, []);
+
+  useEffect(() => {
+    const { id } = queryString.parse(window.location.search);
+    // console.log(id);
+    axios.get(`${API_SERVICE}/api/v1/main/getusernotes/${id}`).then((res) => {
+      setUserNotes(res.data);
+      console.log(res.data);
     });
   }, []);
 
@@ -121,7 +135,7 @@ const Profile = () => {
       try {
         await axios
           .patch(
-            `http://localhost:5000/api/v1/main/updateuser/${userData._id}`,
+            `${API_SERVICE}/api/v1/main/updateuser/${userData._id}`,
             userData
           )
           .then((res) => {
@@ -273,10 +287,22 @@ const Profile = () => {
     );
   };
 
+  const sig_note = (data, idx) => {
+    return (
+      <Card className='mt-2'>
+        <CardHeader title={`Note ${idx+1}`} />
+        <CardContent>
+            {renderHTML(data.note)}
+        </CardContent>
+      </Card>
+    );
+  };
+
   const [note, setNote] = useState("");
 
   const saveData = () => {
     let temp = {
+      id: user._id,
       name: user.name,
       email: user.email,
       location: user.location,
@@ -287,10 +313,15 @@ const Profile = () => {
       note: note,
     };
     axios
-      .post("http://localhost:5000/api/v1/main/addnote", temp)
+      .post(`${API_SERVICE}/api/v1/main/addnote`, temp)
       .then((res) => {
-        console.log(res);
+        const { id } = queryString.parse(window.location.search);
+        axios.get(`${API_SERVICE}/api/v1/main/getusernotes/${id}`).then((res) => {
+          setUserNotes(res.data);
+          console.log(res.data);
+        });
         handleClose();
+        setNote("");
       })
       .catch((err) => {
         console.log(err);
@@ -374,6 +405,11 @@ const Profile = () => {
           </Grid>
 
           <h3 style={{ marginTop: '10px' }}>Notes</h3>
+          <Grid container spacing={3}>
+            <Grid item lg={12} md={12} xs={12}>
+              {userNotes.length === 0 ? <div>Loading...</div> : userNotes.map(sig_note)}
+            </Grid>
+          </Grid>
 
         </Container>
       </Box>

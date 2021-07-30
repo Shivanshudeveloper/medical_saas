@@ -14,6 +14,12 @@ import { firestore, storage } from "../../Firebase/index";
 import { v4 as uuid4 } from "uuid";
 import axios from "axios";
 
+import Snackbar from '@material-ui/core/Snackbar';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
+
+import { API_SERVICE } from "../../config/URI";
+
 const CustomerListToolbar = (props) => {
   const [open, setOpen] = react.useState(false);
 
@@ -23,6 +29,21 @@ const CustomerListToolbar = (props) => {
 
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const [openS, setOpenS] = react.useState(false);
+  const [textS, setTextS] = react.useState("");
+
+  const handleClickS = () => {
+    setOpenS(true);
+  };
+
+  const handleCloseS = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpenS(false);
   };
 
   const [file, setFile] = useState([]);
@@ -74,7 +95,8 @@ const CustomerListToolbar = (props) => {
             const progress = Math.round(
               (snapshot.bytesTransferred / snapshot.totalBytes) * 100
             );
-            console.log(`Uploading ${progress} %`);
+            setOpenS(true);
+            setTextS(`Uploading ${progress} %`)
           },
           (error) => {
             console.log(error);
@@ -82,7 +104,7 @@ const CustomerListToolbar = (props) => {
           async () => {
             // When the Storage gets Completed
             const filePath = await uploadTask.snapshot.ref.getDownloadURL();
-            console.log("File Uploaded");
+            setTextS("File Uploaded");
             setUser((prevVal) => ({ ...prevVal, image: filePath }));
           }
         );
@@ -94,10 +116,11 @@ const CustomerListToolbar = (props) => {
 
   const submitUser = () => {
     axios
-      .post("http://localhost:5000/api/v1/main/adduser", user)
+      .post(`${API_SERVICE}/api/v1/main/adduser`, user)
       .then((res) => {
-        props.location.reload();
+        // props.location.reload();
         handleClose();
+        window.location.reload(); 
       })
       .catch((err) => {
         console.log("error");
@@ -105,6 +128,7 @@ const CustomerListToolbar = (props) => {
   };
 
   return (
+    <>
     <Box {...props}>
       <Box
         sx={{
@@ -217,6 +241,25 @@ const CustomerListToolbar = (props) => {
         </DialogActions>
       </Dialog>
     </Box>
+
+    <Snackbar
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left',
+        }}
+        open={openS}
+        autoHideDuration={3000}
+        onClose={handleCloseS}
+        message={textS}
+        action={
+          <react.Fragment>
+            <IconButton size="small" aria-label="close" color="inherit" onClick={handleClose}>
+              <CloseIcon fontSize="small" />
+            </IconButton>
+          </react.Fragment>
+        }
+      />
+    </>
   );
 };
 

@@ -4,6 +4,9 @@ import CustomerListResults from 'src/components/customer/CustomerListResults';
 import CustomerListToolbar from 'src/components/customer/CustomerListToolbar';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+
+import { API_SERVICE } from "../config/URI";
+
 // import customers from 'src/__mocks__/customers';
 
 const CustomerList = () => {
@@ -11,7 +14,7 @@ const CustomerList = () => {
   const [customers, setCustomers] = useState([])
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/v1/main/getallusers').then(res=>{
+    axios.get(`${API_SERVICE}/api/v1/main/getallusers`).then(res=>{
       setCustomers((res.data.data).reverse());
     }).catch(err=>{
       console.log("error");
