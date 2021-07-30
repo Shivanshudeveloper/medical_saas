@@ -81,6 +81,18 @@ const Profile = () => {
   const [userNotes, setUserNotes] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
 
+  const [openNotesModal, setOpenNotesModal] = useState(false);
+  const [userModaNote, setUserModalNote] = useState([]);
+
+  const handleClickOpenNotesModal = (note_) => {
+    setUserModalNote(note_);
+    setOpenNotesModal(true);
+  };
+
+  const handleCloseNotesModal = () => {
+    setOpenNotesModal(false);
+  };
+
   useEffect(() => {
     const { id } = queryString.parse(window.location.search);
     // console.log(id);
@@ -288,13 +300,35 @@ const Profile = () => {
   };
 
   const sig_note = (data, idx) => {
+    var temp_note = data.note.slice(0,200)+'...'
     return (
+      <>
       <Card className='mt-2'>
         <CardHeader title={`Note ${idx+1}`} />
         <CardContent>
-            {renderHTML(data.note)}
+            {renderHTML(temp_note)}
+            <Button color="primary" onClick={() => handleClickOpenNotesModal(data.note)}>
+              See more
+            </Button>
         </CardContent>
       </Card>
+      <Dialog fullScreen open={openNotesModal} onClose={handleCloseNotesModal} TransitionComponent={Transition}>
+        <AppBar className={classes.appBar}>
+          <Toolbar>
+            <Typography id={`note${idx+1}`} variant="h6" className={classes.title}>
+              {`Note`}
+            </Typography>
+            <IconButton edge="start" color="inherit" onClick={handleCloseNotesModal} aria-label="close">
+              <CloseIcon />
+            </IconButton>
+          </Toolbar>
+        </AppBar>
+        <Container style={{marginTop: '10vh'}}>
+          {renderHTML(String(userModaNote))}
+        </Container>
+        
+      </Dialog>
+      </>
     );
   };
 
@@ -318,7 +352,6 @@ const Profile = () => {
         const { id } = queryString.parse(window.location.search);
         axios.get(`${API_SERVICE}/api/v1/main/getusernotes/${id}`).then((res) => {
           setUserNotes(res.data);
-          console.log(res.data);
         });
         handleClose();
         setNote("");
