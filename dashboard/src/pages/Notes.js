@@ -5,7 +5,7 @@ import NotesToolbar from "src/components/notes/NotesToolbar";
 const Notes = () => (
   <>
     <Helmet>
-      <title>Customers </title>
+      <title>Notes </title>
     </Helmet>
     <Box
       sx={{

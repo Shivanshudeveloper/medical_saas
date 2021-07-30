@@ -15,6 +15,7 @@ import Slide from '@material-ui/core/Slide';
 
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { Editor } from "@tinymce/tinymce-react";
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -33,6 +34,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 export default function NotesToolbar() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+  const [note, setNote] = React.useState("");
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -41,6 +43,10 @@ export default function NotesToolbar() {
   const handleClose = () => {
     setOpen(false);
   };
+
+  const handleChangeEditor = (content, editor) => {
+    setNote(content);
+  }
 
   return (
     <div>
@@ -63,24 +69,26 @@ export default function NotesToolbar() {
           </Toolbar>
         </AppBar>
         <div style={{margin: "5% 1% 1% 1%", height: "80vh"}}>
-        <CKEditor
-          editor={ ClassicEditor }
-          data="<p>Hello from CKEditor 5!</p>"
-          onReady={ editor => {
-            // You can store the "editor" and use when it is needed.
-            console.log( 'Editor is ready to use!', editor );
-          } }
-          onChange={ ( event, editor ) => {
-              const data = editor.getData();
-              console.log( { event, editor, data } );
-          } }
-          onBlur={ ( event, editor ) => {
-              console.log( 'Blur.', editor );
-          } }
-          onFocus={ ( event, editor ) => {
-              console.log( 'Focus.', editor );
-          } }
-        />
+            <Editor
+                apiKey="azhogyuiz16q8om0wns0u816tu8k6517f6oqgs5mfl36hptu"
+                plugins="wordcount"
+                value={note}
+                init={{
+                    height: 500,
+                    menubar: false,
+                    plugins: [
+                        'advlist autolink lists link image charmap print preview anchor',
+                        'searchreplace visualblocks code fullscreen',
+                        'insertdatetime media table paste code help wordcount'
+                      ],
+                    toolbar: 'undo redo | formatselect | ' +
+                      'bold italic backcolor | alignleft aligncenter ' +
+                      'alignright alignjustify | bullist numlist outdent indent | ' +
+                      'removeformat | help',
+                    content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
+                }}
+                onEditorChange={handleChangeEditor}
+            />
         </div>
       </Dialog>
     </div>

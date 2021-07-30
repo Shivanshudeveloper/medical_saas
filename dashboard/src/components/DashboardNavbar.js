@@ -37,7 +37,7 @@ const DashboardNavbar = ({ onMobileNavOpen, ...rest }) => {
               <NotificationsIcon />
             </Badge>
           </IconButton>
-          <IconButton color="inherit">
+          <IconButton onClick={() => window.location.href = "https://medical-saas.vercel.app/"} color="inherit">
             <InputIcon />
           </IconButton>
         </Hidden>

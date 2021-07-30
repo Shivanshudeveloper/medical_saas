@@ -130,12 +130,13 @@ const CustomerListResults = ({ customers, ...rest }) => {
           display: "flex",
           margin: "15px",
           marginLeft: "auto",
+          padding: '2px'
         }}
       >
         <InputBase
           className={classes.input}
-          placeholder="Search Users"
-          inputProps={{ "aria-label": "search google maps" }}
+          placeholder="Search Customers By Name, Email, Location, Phone"
+          inputProps={{ "aria-label": "search customers" }}
           value={search}
           onKeyPress={handleKeyPress}
           onChange={(e) => {

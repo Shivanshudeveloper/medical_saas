@@ -34,6 +34,7 @@ import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 import { Avatar, Typography } from "@material-ui/core";
+import { Editor } from "@tinymce/tinymce-react";
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -140,7 +141,7 @@ const Profile = () => {
             <Grid item md={6} xs={12}>
               <TextField
                 fullWidth
-                label="First name"
+                placeholder="First name"
                 name="firstName"
                 onChange={(e) =>
                   setUserData({ ...userData, name: e.target.value })
@@ -155,7 +156,7 @@ const Profile = () => {
             <Grid item md={6} xs={12}>
               <TextField
                 fullWidth
-                label="Email Address"
+                placeholder="Email Address"
                 name="email"
                 onChange={(e) =>
                   setUserData({ ...userData, email: e.target.value })
@@ -170,7 +171,7 @@ const Profile = () => {
             <Grid item md={6} xs={12}>
               <TextField
                 fullWidth
-                label="Phone Number"
+                placeholder="Phone Number"
                 name="phone"
                 onChange={(e) =>
                   setUserData({ ...userData, phone: e.target.value })
@@ -185,7 +186,7 @@ const Profile = () => {
             <Grid item md={6} xs={12}>
               <TextField
                 fullWidth
-                label="Location"
+                placeholder="Location"
                 name="country"
                 onChange={(e) =>
                   setUserData({ ...userData, location: e.target.value })
@@ -200,7 +201,7 @@ const Profile = () => {
             <Grid item md={6} xs={12}>
               <TextField
                 fullWidth
-                label="Registeration Date"
+                placeholder="Registeration Date"
                 onChange={(e) =>
                   setUserData({ ...userData, regDate: e.target.value })
                 }
@@ -226,6 +227,7 @@ const Profile = () => {
             <Button
               variant="contained"
               fullWidth
+              size="large"
               color="primary"
               onClick={editDetails}
             >
@@ -233,8 +235,9 @@ const Profile = () => {
             </Button>
           )}
           <Button
-            variant="contained"
+            variant="outlined"
             fullWidth
+            size="large"
             color={isEditing ? "secondary" : "primary"}
             style={{ marginTop: "10px" }}
             onClick={() => {
@@ -274,16 +277,15 @@ const Profile = () => {
 
   const saveData = () => {
     let temp = {
-      name: user[0].name,
-      email: user[0].email,
-      location: user[0].location,
-      phone: user[0].phone,
-      regDate: user[0].regDate,
-      description: user[0].description,
-      image: user[0].image,
+      name: user.name,
+      email: user.email,
+      location: user.location,
+      phone: user.phone,
+      regDate: user.regDate,
+      description: user.description,
+      image: user.image,
       note: note,
     };
-    console.log(temp);
     axios
       .post("http://localhost:5000/api/v1/main/addnote", temp)
       .then((res) => {
@@ -294,6 +296,10 @@ const Profile = () => {
         console.log(err);
       });
   };
+
+  const handleChangeEditor = (content, editor) => {
+    setNote(content);
+  }
 
   return (
     <>
@@ -326,24 +332,25 @@ const Profile = () => {
             </Toolbar>
           </AppBar>
           <div style={{ margin: "5% 1% 1% 1%", height: "80vh" }}>
-            <CKEditor
-              editor={ClassicEditor}
-              data="<p>Hello from CKEditor 5!</p>"
-              onReady={(editor) => {
-                // You can store the "editor" and use when it is needed.
-                console.log("Editor is ready to use!", editor);
-              }}
-              onChange={(event, editor) => {
-                const data = editor.getData();
-                console.log({ event, editor, data });
-                setNote(data);
-              }}
-              onBlur={(event, editor) => {
-                console.log("Blur.", editor);
-              }}
-              onFocus={(event, editor) => {
-                console.log("Focus.", editor);
-              }}
+            <Editor
+                apiKey="azhogyuiz16q8om0wns0u816tu8k6517f6oqgs5mfl36hptu"
+                plugins="wordcount"
+                value={note}
+                init={{
+                    height: 500,
+                    menubar: false,
+                    plugins: [
+                        'advlist autolink lists link image charmap print preview anchor',
+                        'searchreplace visualblocks code fullscreen',
+                        'insertdatetime media table paste code help wordcount'
+                      ],
+                    toolbar: 'undo redo | formatselect | ' +
+                      'bold italic backcolor | alignleft aligncenter ' +
+                      'alignright alignjustify | bullist numlist outdent indent | ' +
+                      'removeformat | help',
+                    content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
+                }}
+                onEditorChange={handleChangeEditor}
             />
           </div>
         </Dialog>
@@ -360,13 +367,14 @@ const Profile = () => {
       >
         <Container maxWidth="lg">
           <Grid container spacing={3}>
-            <Grid item lg={4} md={6} xs={12}>
+            <Grid item lg={12} md={12} xs={12}>
               {!user ? <div>Loading...</div> : <Img user={user} />}
-            </Grid>
-            <Grid item lg={8} md={6} xs={12}>
               {!user ? <div>Loading...</div> : <Fun user={user} />}
             </Grid>
           </Grid>
+
+          <h3 style={{ marginTop: '10px' }}>Notes</h3>
+
         </Container>
       </Box>
     </>

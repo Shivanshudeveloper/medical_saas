@@ -96,7 +96,7 @@ const CustomerListToolbar = (props) => {
     axios
       .post("http://localhost:5000/api/v1/main/adduser", user)
       .then((res) => {
-        console.log(res);
+        props.location.reload();
         handleClose();
       })
       .catch((err) => {
@@ -128,7 +128,7 @@ const CustomerListToolbar = (props) => {
             autoFocus
             margin="dense"
             id="Name"
-            label="Name"
+            placeholder="Name"
             type="text"
             fullWidth
             name="name"
@@ -138,7 +138,7 @@ const CustomerListToolbar = (props) => {
           <TextField
             margin="dense"
             id="email"
-            label="Email"
+            placeholder="Email"
             type="email"
             fullWidth
             name="email"
@@ -149,7 +149,7 @@ const CustomerListToolbar = (props) => {
           <TextField
             margin="dense"
             id="location"
-            label="Location"
+            placeholder="Location"
             type="text"
             fullWidth
             name="location"
@@ -160,7 +160,7 @@ const CustomerListToolbar = (props) => {
           <TextField
             margin="dense"
             id="title"
-            label="Phone"
+            placeholder="Phone"
             type="text"
             fullWidth
             name="phone"
@@ -170,7 +170,7 @@ const CustomerListToolbar = (props) => {
           <TextField
             margin="dense"
             id="regDate"
-            //label="Registration Date"
+            //placeholder="Registration Date"
             type="date"
             fullWidth
             name="regDate"
@@ -181,7 +181,7 @@ const CustomerListToolbar = (props) => {
           <TextField
             style={{ marginTop: "10px" }}
             id="outlined-multiline-static"
-            label="Description (Optional)"
+            placeholder="Description (Optional)"
             multiline
             rows={4}
             variant="outlined"

@@ -12,7 +12,7 @@ const CustomerList = () => {
 
   useEffect(() => {
     axios.get('http://localhost:5000/api/v1/main/getallusers').then(res=>{
-      setCustomers(res.data.data)
+      setCustomers((res.data.data).reverse());
     }).catch(err=>{
       console.log("error");
     })
