@@ -998,15 +998,15 @@ class Topbar extends Component {
               } else {
                 return (
                   <div className="buy-button">
-                    <Link
-                      to="/auth-login"
+                    <a
+                      href="https://medical-saas-dashboard.vercel.app/login"
                       target="_blank"
                       rel="noopener noreferrer"
                       id="buyButton"
                       className="btn btn-primary"
                     >
                       Go to Console
-                    </Link>
+                    </a>
                   </div>
                 );
               }
