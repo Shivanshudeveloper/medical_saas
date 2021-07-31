@@ -10,10 +10,7 @@ import {
   CardContent,
   Button,
 } from "@material-ui/core";
-import AccountProfile from "src/components/account/AccountProfile";
-import AccountProfileDetails from "src/components/account/AccountProfileDetails";
-import SettingsNotifications from "src/components/settings/SettingsNotifications";
-import SettingsPassword from "src/components/settings/SettingsPassword";
+
 import { useState, useEffect } from "react";
 import moment from "moment";
 
@@ -29,15 +26,13 @@ import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 import Slide from "@material-ui/core/Slide";
 import Snackbar from "@material-ui/core/Snackbar";
-
-import { CKEditor } from "@ckeditor/ckeditor5-react";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-
+import Paper from '@material-ui/core/Paper';
 import { Avatar, Typography } from "@material-ui/core";
 import { Editor } from "@tinymce/tinymce-react";
-
 import renderHTML from 'react-render-html';
-
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
 import { API_SERVICE } from "../config/URI";
 
 const useStyles = makeStyles((theme) => ({
@@ -63,6 +58,7 @@ const Profile = () => {
   };
   const handleClose = () => {
     setOpenNotes(false);
+    setsteps(1);
   };
 
   const handleClickSnackBar = () => {
@@ -272,6 +268,9 @@ const Profile = () => {
           >
             {!isEditing ? "Edit Details" : "Cancel"}
           </Button>
+          <Button size="large" style={{ marginTop: '10px' }} fullWidth color="primary">
+            View Treatment Plan
+          </Button>
         </CardContent>
         <Snackbar
           anchorOrigin={{
@@ -333,6 +332,7 @@ const Profile = () => {
   };
 
   const [note, setNote] = useState("");
+  const [steps, setsteps] = useState(1);
 
   const saveData = () => {
     let temp = {
@@ -359,6 +359,8 @@ const Profile = () => {
       .catch((err) => {
         console.log(err);
       });
+
+    setsteps(1);
   };
 
   const handleChangeEditor = (content, editor) => {
@@ -390,32 +392,207 @@ const Profile = () => {
                 <CloseIcon />
               </IconButton>
               <Typography variant="h6" className={classes.title}></Typography>
-              <Button autoFocus color="inherit" onClick={saveData}>
-                save
-              </Button>
             </Toolbar>
           </AppBar>
+
           <div style={{ margin: "5% 1% 1% 1%", height: "80vh" }}>
-            <Editor
-                apiKey="azhogyuiz16q8om0wns0u816tu8k6517f6oqgs5mfl36hptu"
-                plugins="wordcount"
-                value={note}
-                init={{
-                    height: 500,
-                    menubar: false,
-                    plugins: [
-                        'advlist autolink lists link image charmap print preview anchor',
-                        'searchreplace visualblocks code fullscreen',
-                        'insertdatetime media table paste code help wordcount'
-                      ],
-                    toolbar: 'undo redo | formatselect | ' +
-                      'bold italic backcolor | alignleft aligncenter ' +
-                      'alignright alignjustify | bullist numlist outdent indent | ' +
-                      'removeformat | help',
-                    content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
-                }}
-                onEditorChange={handleChangeEditor}
-            />
+
+            {
+              steps === 1 ? (
+                <>
+                  <Container maxWidth="md">
+                    <center style={{ marginBottom: '40px', marginTop: '20px' }}>
+                      <h3>
+                        Continue With
+                      </h3>
+                    </center>
+                    <Grid container spacing={3}>
+                      <Grid item xs={12} sm={6}>
+                        <Paper style={{ padding: '20px' }}>
+                          <center>
+                            <h4>
+                              Patient's Treatment Plan
+                            </h4>
+
+                            <img src="https://img.icons8.com/color/68/000000/brief.png"/>
+
+                            <br />
+                            <br />
+
+                            <Button size="large" color="primary" onClick={() => setsteps(3)}>
+                              Continue
+                            </Button>
+                          </center>
+                        </Paper>
+                      </Grid>
+                      <Grid item xs={12} sm={6}>
+                        <Paper style={{ padding: '20px' }}>
+                          <center>
+                            <h4>
+                              Therapy Process Note
+                            </h4>
+
+                            <img src="https://img.icons8.com/color/68/000000/paper.png"/>
+
+                            <br />
+                            <br />
+
+                            <Button onClick={() => setsteps(2)} size="large" color="primary">
+                              Continue
+                            </Button>
+                          </center>
+                        </Paper>
+                      </Grid>
+                    </Grid>
+                  </Container>
+                </>
+              ) : (
+                steps === 2 ? (
+                  <Container maxWidth="lg">
+                    <h4>
+                    Group Therapy Process Note
+                    </h4>
+                    <Editor
+                        apiKey="azhogyuiz16q8om0wns0u816tu8k6517f6oqgs5mfl36hptu"
+                        plugins="wordcount"
+                        value={note}
+                        init={{
+                            height: 600,
+                            menubar: false,
+                            plugins: [
+                                'advlist autolink lists link image charmap print preview anchor',
+                                'searchreplace visualblocks code fullscreen',
+                                'insertdatetime media table paste code help wordcount'
+                              ],
+                            toolbar: 'undo redo | formatselect | ' +
+                              'bold italic backcolor | alignleft aligncenter ' +
+                              'alignright alignjustify | bullist numlist outdent indent | ' +
+                              'removeformat | help',
+                            content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
+                        }}
+                        onEditorChange={handleChangeEditor}
+                    />
+                    <br />
+                    <Button size="large" style={{ float: 'right' }} color="primary" variant="contained" onClick={saveData}>
+                      Submit
+                    </Button>
+                    <Button size="large" style={{ float: 'right', marginRight: '10px' }} color="primary" variant="outlined" onClick={() => setsteps(1)}>
+                      Back
+                    </Button>
+                  </Container>
+                ) : (
+                  steps === 3 ? (
+                    <Container maxWidth="lg">
+                      <h4>
+                      Patient's Treatment Plan
+                      </h4>
+                      <br />
+
+                      <h6>
+                      Diagnosis
+                      </h6>
+                      <Grid container spacing={3}>
+                        <Grid item xs={12} sm={6}>
+                          <TextField id="outlined-basic" fullWidth placeholder="Description" variant="outlined" />
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                          <TextField id="outlined-basic" fullWidth placeholder="Diagnostic justification and/or assessment measures" variant="outlined" />
+                        </Grid>
+
+                        <Grid item xs={12} mt={1} sm={12}>
+                          <TextField id="outlined-basic" multiline rows={5} fullWidth placeholder="Presenting Problem" variant="outlined" />
+                        </Grid>
+
+                        <Grid item xs={12} mt={1} sm={12}>
+                          <TextField id="outlined-basic" multiline rows={5} fullWidth placeholder="Treatment Goals" variant="outlined" />
+                        </Grid>
+
+                        <Grid item xs={12} mt={1} sm={12}>
+                          <InputLabel id="demo-simple-select-label">Estimated Completion</InputLabel>
+                          <Select
+                            fullWidth
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                          >
+                            <MenuItem value="1 Week">1 Week</MenuItem>
+                            <MenuItem value="2 Weeks">2 Weeks</MenuItem>
+                            <MenuItem value="3 Weeks">3 Weeks</MenuItem>
+                            <MenuItem value="1 Month">1 Month</MenuItem>
+                            <MenuItem value="2 Months">2 Months</MenuItem>
+                            <MenuItem value="3 Months">3 Months</MenuItem>
+                            <MenuItem value="4 Months">4 Months</MenuItem>
+                            <MenuItem value="5 Months">5 Months</MenuItem>
+                            <MenuItem value="6 Months">6 Months</MenuItem>
+                            <MenuItem value="7 Months">7 Months</MenuItem>
+                            <MenuItem value="8 Months">8 Months</MenuItem>
+                            <MenuItem value="9 Months">9 Months</MenuItem>
+                            <MenuItem value="10 Months">10 Months</MenuItem>
+                            <MenuItem value="11 Months">11 Months</MenuItem>
+                            <MenuItem value="12 Months">12 Months</MenuItem>
+                          </Select>
+
+                        </Grid>
+
+                        <Grid item xs={12} mt={1} sm={12}>
+                          <TextField id="outlined-basic" multiline rows={5} fullWidth placeholder="Objective" variant="outlined" />
+                        </Grid>
+
+                        <Grid item xs={12} mt={1} sm={12}>
+                          <TextField id="outlined-basic" multiline rows={5} fullWidth placeholder="Treatment Strategy / Interventions" variant="outlined" />
+                        </Grid>
+
+                        <Grid item xs={12} mt={1} sm={12}>
+                          <InputLabel id="demo-simple-select-label">Estimated Completion</InputLabel>
+                          <Select
+                            fullWidth
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                          >
+                            <MenuItem value="1 Week">1 Week</MenuItem>
+                            <MenuItem value="2 Weeks">2 Weeks</MenuItem>
+                            <MenuItem value="3 Weeks">3 Weeks</MenuItem>
+                            <MenuItem value="1 Month">1 Month</MenuItem>
+                            <MenuItem value="2 Months">2 Months</MenuItem>
+                            <MenuItem value="3 Months">3 Months</MenuItem>
+                            <MenuItem value="4 Months">4 Months</MenuItem>
+                            <MenuItem value="5 Months">5 Months</MenuItem>
+                            <MenuItem value="6 Months">6 Months</MenuItem>
+                            <MenuItem value="7 Months">7 Months</MenuItem>
+                            <MenuItem value="8 Months">8 Months</MenuItem>
+                            <MenuItem value="9 Months">9 Months</MenuItem>
+                            <MenuItem value="10 Months">10 Months</MenuItem>
+                            <MenuItem value="11 Months">11 Months</MenuItem>
+                            <MenuItem value="12 Months">12 Months</MenuItem>
+                          </Select>
+
+                        </Grid>
+
+
+                        <Grid item xs={12} mt={1} sm={12}>
+                          <TextField id="outlined-basic" multiline rows={5} fullWidth placeholder="Prescribed Frequency of Treatment" variant="outlined" />
+                        </Grid>
+                      </Grid>
+                      <br />
+
+                      <Button size="large" style={{ float: 'right' }} color="primary" variant="contained" onClick={saveData}>
+                        Submit
+                      </Button>
+                      <Button size="large" style={{ float: 'right', marginRight: '10px' }} color="primary" variant="outlined" onClick={() => setsteps(1)}>
+                        Back
+                      </Button>
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+
+                    </Container>
+                  ) : null
+                )
+              ) 
+            }
+
+
+            
           </div>
         </Dialog>
       </div>
