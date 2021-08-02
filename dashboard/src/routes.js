@@ -12,6 +12,9 @@ import Settings from 'src/pages/Settings';
 import Profile from 'src/pages/Profile';
 import Notes from './pages/Notes';
 
+import SingleNote from './pages/SingleNote'
+import SingleTreatment from './pages/SingleTreatment';
+
 const routes = [
   {
     path: 'app',
@@ -20,6 +23,8 @@ const routes = [
       // { path: 'account', element: <Account /> },
       { path: 'customers', element: <CustomerList /> },
       { path: 'notes', element: <Notes /> },
+      { path: 'singlenote', element: <SingleNote /> },
+      { path: 'singletreatment', element: <SingleTreatment /> },
       { path: 'dashboard', element: <Dashboard /> },
       // { path: 'products', element: <ProductList /> },
       { path: 'settings', element: <Settings /> },

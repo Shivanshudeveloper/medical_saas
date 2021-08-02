@@ -102,7 +102,7 @@ const Profile = () => {
     // console.log(id);
     axios.get(`${API_SERVICE}/api/v1/main/getusernotes/${id}`).then((res) => {
       setUserNotes(res.data);
-      console.log(res.data);
+      // console.log(res.data);
     });
   }, []);
 
@@ -268,9 +268,126 @@ const Profile = () => {
           >
             {!isEditing ? "Edit Details" : "Cancel"}
           </Button>
-          <Button size="large" style={{ marginTop: '10px' }} fullWidth color="primary">
+
+          <Button size="large" style={{ marginTop: '10px' }} fullWidth color="primary" onClick={handleClickOpen_}>
             View Treatment Plan
           </Button>
+
+          <Dialog fullScreen open={open_} onClose={handleClose_} TransitionComponent={Transition}>
+            <AppBar className={classes.appBar}>
+              <Toolbar>
+                <Typography variant="h6" className={classes.title}>
+                Treatment Plan
+                </Typography>
+                <IconButton edge="start" color="inherit" onClick={handleClose_} aria-label="close">
+                  <CloseIcon />
+                </IconButton>
+              </Toolbar>
+            </AppBar>
+            <div>
+            
+            { treatment_ === undefined ? <div></div>:(
+
+            <Container maxWidth="lg">
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <h4>
+                      Patient's Treatment Plan
+                      </h4>
+                      <Grid container spacing={3}>
+                        <Grid item xs={12} sm={6}>
+                          <TextField id="outlined-basic" fullWidth placeholder="Description" variant="outlined" name= "desc" value={treatment_.desc}/>
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                          <TextField id="outlined-basic" fullWidth placeholder="Diagnostic justification and/or assessment measures" variant="outlined" name= "justification" value={treatment_.justification} />
+                        </Grid>
+
+                        <Grid item xs={12} mt={1} sm={12}>
+                          <TextField id="outlined-basic" multiline rows={5} fullWidth placeholder="Presenting Problem" variant="outlined" name= "problem" value={treatment_.problem} />
+                        </Grid>
+
+                        <Grid item xs={12} mt={1} sm={12}>
+                          <TextField id="outlined-basic" multiline rows={5} fullWidth placeholder="Treatment Goals" variant="outlined" name= "goals" value={treatment_.goals} />
+                        </Grid>
+
+                        <Grid item xs={12} mt={1} sm={12}>
+                          <InputLabel id="demo-simple-select-label">Estimated Completion</InputLabel>
+                          <Select
+                            fullWidth
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            name= "estComp1" value={treatment_.estComp1} 
+                          >
+                            <MenuItem value="1 Week">1 Week</MenuItem>
+                            <MenuItem value="2 Weeks">2 Weeks</MenuItem>
+                            <MenuItem value="3 Weeks">3 Weeks</MenuItem>
+                            <MenuItem value="1 Month">1 Month</MenuItem>
+                            <MenuItem value="2 Months">2 Months</MenuItem>
+                            <MenuItem value="3 Months">3 Months</MenuItem>
+                            <MenuItem value="4 Months">4 Months</MenuItem>
+                            <MenuItem value="5 Months">5 Months</MenuItem>
+                            <MenuItem value="6 Months">6 Months</MenuItem>
+                            <MenuItem value="7 Months">7 Months</MenuItem>
+                            <MenuItem value="8 Months">8 Months</MenuItem>
+                            <MenuItem value="9 Months">9 Months</MenuItem>
+                            <MenuItem value="10 Months">10 Months</MenuItem>
+                            <MenuItem value="11 Months">11 Months</MenuItem>
+                            <MenuItem value="12 Months">12 Months</MenuItem>
+                          </Select>
+
+                        </Grid>
+
+                        <Grid item xs={12} mt={1} sm={12}>
+                          <TextField id="outlined-basic" multiline rows={5} fullWidth placeholder="Objective" variant="outlined" name= "obj" value={treatment_.obj} />
+                        </Grid>
+
+                        <Grid item xs={12} mt={1} sm={12}>
+                          <TextField id="outlined-basic" multiline rows={5} fullWidth placeholder="Treatment Strategy / Interventions" variant="outlined" name= "strat" value={treatment_.strat} />
+                        </Grid>
+
+                        <Grid item xs={12} mt={1} sm={12}>
+                          <InputLabel id="demo-simple-select-label">Estimated Completion</InputLabel>
+                          <Select
+                            fullWidth
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            name= "estComp2" value={treatment_.estComp2} 
+                          >
+                            <MenuItem value="1 Week">1 Week</MenuItem>
+                            <MenuItem value="2 Weeks">2 Weeks</MenuItem>
+                            <MenuItem value="3 Weeks">3 Weeks</MenuItem>
+                            <MenuItem value="1 Month">1 Month</MenuItem>
+                            <MenuItem value="2 Months">2 Months</MenuItem>
+                            <MenuItem value="3 Months">3 Months</MenuItem>
+                            <MenuItem value="4 Months">4 Months</MenuItem>
+                            <MenuItem value="5 Months">5 Months</MenuItem>
+                            <MenuItem value="6 Months">6 Months</MenuItem>
+                            <MenuItem value="7 Months">7 Months</MenuItem>
+                            <MenuItem value="8 Months">8 Months</MenuItem>
+                            <MenuItem value="9 Months">9 Months</MenuItem>
+                            <MenuItem value="10 Months">10 Months</MenuItem>
+                            <MenuItem value="11 Months">11 Months</MenuItem>
+                            <MenuItem value="12 Months">12 Months</MenuItem>
+                          </Select>
+
+                        </Grid>
+
+                        <Grid item xs={12} mt={1} sm={12}>
+                          <TextField id="outlined-basic" multiline rows={5} fullWidth placeholder="Prescribed Frequency of Treatment" variant="outlined" name= "freq" value={treatment_.freq} />
+                        </Grid>
+                      </Grid>
+                      <br />
+
+                      <Button size="large" style={{ float: 'right', marginRight: '10px', marginBottom: '10px' }} color="primary" variant="outlined" onClick={() => handleClose_()}>
+                        Back
+                      </Button>
+              </Container>
+
+            )}
+            </div>
+          </Dialog>
         </CardContent>
         <Snackbar
           anchorOrigin={{
@@ -365,6 +482,95 @@ const Profile = () => {
 
   const handleChangeEditor = (content, editor) => {
     setNote(content);
+  }
+
+  const [openSn, setOpenSn] = React.useState(false);
+
+  const handleClickSn = () => {
+    setOpenSn(true);
+  };
+
+  const handleCloseSn = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpenSn(false);
+  };
+
+  //Patient's Treatment Plan form data
+
+  const [treatment, setTreatment] = useState({
+    userId: "",
+    desc: "",
+    justification: "",
+    problem: "",
+    goals: "",
+    estComp1: "",
+    obj: "",
+    strat: "",
+    estComp2: "",
+    freq: ""
+  })
+
+  const [treatment_, setTreatment_] = useState([])
+
+  const [open_, setOpen_] = useState(false);
+
+  const handleClickOpen_ = () => {
+    setOpen_(true);
+  };
+
+  const handleClose_ = () => {
+    setOpen_(false);
+  };
+
+  const changeEle = (event) => {
+    const {name, value} = event.target;
+    setTreatment(prevValue => {
+        return {
+            ...prevValue,
+            [name]: value
+        }
+    })
+    // console.log(treatment);
+  }
+
+  useEffect(() => {
+    const { id } = queryString.parse(window.location.search);
+    axios.get(`${API_SERVICE}/api/v1/main/gettreatment/${id}`).then((res) => {
+      setTreatment_(res.data[0]);
+    }).catch(err=>{
+      console.log(err);
+    })
+  }, []);
+
+  const saveTreatment = () => {
+    const { id } = queryString.parse(window.location.search);
+    treatment.userId = id;
+    axios.post(`${API_SERVICE}/api/v1/main/addtreatment`,treatment).then((res) => {
+      handleClose()
+      setOpenSn(true);
+      axios.get(`${API_SERVICE}/api/v1/main/gettreatment/${id}`).then((res) => {
+        setTreatment_(res.data[0]);
+      }).catch(err=>{
+        console.log(err);
+      })
+      setTreatment({
+        userId: "",
+        desc: "",
+        justification: "",
+        problem: "",
+        goals: "",
+        estComp1: "",
+        obj: "",
+        strat: "",
+        estComp2: "",
+        freq: ""
+      })
+    }).catch(err => {
+      console.log(err);
+    })
   }
 
   return (
@@ -493,18 +699,18 @@ const Profile = () => {
                       </h6>
                       <Grid container spacing={3}>
                         <Grid item xs={12} sm={6}>
-                          <TextField id="outlined-basic" fullWidth placeholder="Description" variant="outlined" />
+                          <TextField id="outlined-basic" fullWidth placeholder="Description" variant="outlined" name= "desc" value={treatment.desc} onChange={changeEle}/>
                         </Grid>
                         <Grid item xs={12} sm={6}>
-                          <TextField id="outlined-basic" fullWidth placeholder="Diagnostic justification and/or assessment measures" variant="outlined" />
+                          <TextField id="outlined-basic" fullWidth placeholder="Diagnostic justification and/or assessment measures" variant="outlined" name= "justification" value={treatment.justification} onChange={changeEle}/>
                         </Grid>
 
                         <Grid item xs={12} mt={1} sm={12}>
-                          <TextField id="outlined-basic" multiline rows={5} fullWidth placeholder="Presenting Problem" variant="outlined" />
+                          <TextField id="outlined-basic" multiline rows={5} fullWidth placeholder="Presenting Problem" variant="outlined" name= "problem" value={treatment.problem} onChange={changeEle}/>
                         </Grid>
 
                         <Grid item xs={12} mt={1} sm={12}>
-                          <TextField id="outlined-basic" multiline rows={5} fullWidth placeholder="Treatment Goals" variant="outlined" />
+                          <TextField id="outlined-basic" multiline rows={5} fullWidth placeholder="Treatment Goals" variant="outlined" name= "goals" value={treatment.goals} onChange={changeEle}/>
                         </Grid>
 
                         <Grid item xs={12} mt={1} sm={12}>
@@ -513,6 +719,7 @@ const Profile = () => {
                             fullWidth
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"
+                            name= "estComp1" value={treatment.estComp1} onChange={changeEle}
                           >
                             <MenuItem value="1 Week">1 Week</MenuItem>
                             <MenuItem value="2 Weeks">2 Weeks</MenuItem>
@@ -534,11 +741,11 @@ const Profile = () => {
                         </Grid>
 
                         <Grid item xs={12} mt={1} sm={12}>
-                          <TextField id="outlined-basic" multiline rows={5} fullWidth placeholder="Objective" variant="outlined" />
+                          <TextField id="outlined-basic" multiline rows={5} fullWidth placeholder="Objective" variant="outlined" name= "obj" value={treatment.obj} onChange={changeEle}/>
                         </Grid>
 
                         <Grid item xs={12} mt={1} sm={12}>
-                          <TextField id="outlined-basic" multiline rows={5} fullWidth placeholder="Treatment Strategy / Interventions" variant="outlined" />
+                          <TextField id="outlined-basic" multiline rows={5} fullWidth placeholder="Treatment Strategy / Interventions" variant="outlined" name= "strat" value={treatment.strat} onChange={changeEle}/>
                         </Grid>
 
                         <Grid item xs={12} mt={1} sm={12}>
@@ -547,6 +754,7 @@ const Profile = () => {
                             fullWidth
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"
+                            name= "estComp2" value={treatment.estComp2} onChange={changeEle}
                           >
                             <MenuItem value="1 Week">1 Week</MenuItem>
                             <MenuItem value="2 Weeks">2 Weeks</MenuItem>
@@ -569,12 +777,12 @@ const Profile = () => {
 
 
                         <Grid item xs={12} mt={1} sm={12}>
-                          <TextField id="outlined-basic" multiline rows={5} fullWidth placeholder="Prescribed Frequency of Treatment" variant="outlined" />
+                          <TextField id="outlined-basic" multiline rows={5} fullWidth placeholder="Prescribed Frequency of Treatment" variant="outlined" name= "freq" value={treatment.freq} onChange={changeEle}/>
                         </Grid>
                       </Grid>
                       <br />
 
-                      <Button size="large" style={{ float: 'right' }} color="primary" variant="contained" onClick={saveData}>
+                      <Button size="large" style={{ float: 'right' }} color="primary" variant="contained" onClick={saveTreatment}>
                         Submit
                       </Button>
                       <Button size="large" style={{ float: 'right', marginRight: '10px' }} color="primary" variant="outlined" onClick={() => setsteps(1)}>
@@ -589,13 +797,29 @@ const Profile = () => {
                   ) : null
                 )
               ) 
-            }
-
-
-            
+            }      
           </div>
         </Dialog>
       </div>
+
+      <Snackbar
+              anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'left',
+              }}
+            open={openSn}
+            autoHideDuration={3000}
+            onClose={handleCloseSn}
+            message="Treatment Saved"
+            action={
+              <React.Fragment>
+              <IconButton size="small" aria-label="close" color="inherit" onClick={handleCloseSn}>
+                <CloseIcon fontSize="small" />
+              </IconButton>
+            </React.Fragment>
+            }
+      />
+
       <Helmet>
         <title>Settings </title>
       </Helmet>

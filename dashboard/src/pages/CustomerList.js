@@ -12,10 +12,12 @@ import { API_SERVICE } from "../config/URI";
 const CustomerList = () => {
 
   const [customers, setCustomers] = useState([])
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     axios.get(`${API_SERVICE}/api/v1/main/getallusers`).then(res=>{
       setCustomers((res.data.data).reverse());
+      setLoading(false)
     }).catch(err=>{
       console.log("error");
     })
@@ -36,7 +38,7 @@ const CustomerList = () => {
       <Container maxWidth={false}>
         <CustomerListToolbar />
         <Box sx={{ pt: 3 }}>
-          {customers.length===0?<div></div>:<CustomerListResults customers={customers} />}
+          {loading === true?<div style={{textAlign: 'center'}}><h3>Loading...</h3></div>:<CustomerListResults customers={customers} />}
         </Box>
       </Container>
     </Box>
