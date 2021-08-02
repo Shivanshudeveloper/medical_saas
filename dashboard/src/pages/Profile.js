@@ -656,7 +656,7 @@ const Profile = () => {
                 steps === 2 ? (
                   <Container maxWidth="lg">
                     <h4>
-                    Group Therapy Process Note
+                    Therapy Process Note
                     </h4>
                     <Editor
                         apiKey="azhogyuiz16q8om0wns0u816tu8k6517f6oqgs5mfl36hptu"
