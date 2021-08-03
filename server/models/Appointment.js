@@ -12,6 +12,9 @@ const appointmentschema = new mongoose.Schema({
   date: {
     type: String,
   },
+  apptFor: {
+    type: String,
+  },
 });
 const appointment = mongoose.model("appointment", appointmentschema);
 module.exports = appointment;

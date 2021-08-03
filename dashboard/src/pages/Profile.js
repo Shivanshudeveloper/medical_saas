@@ -779,6 +779,7 @@ const Profile = () => {
                     initialView="dayGridMonth"
                     weekends={false}
                     events={eventList}
+                    height={720}
                   />
                 </div>
                 <div

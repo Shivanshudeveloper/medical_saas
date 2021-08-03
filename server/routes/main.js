@@ -2508,13 +2508,15 @@ router.get("/gettreatment/:id", (req, res) => {
     .catch((err) => res.status(400).json(`Error: ${err}`));
 });
 
-router.post("/addappointment/:id", (req, res) => {
+router.post("/addappointment/:id", async (req, res) => {
   let { id } = req.params;
   let { eventDate, eventName } = req.body;
+  const user = await User_Model.findById(id);
   const appointment = new Appointment_Model({
     title: eventName,
     date: eventDate,
     userId: id,
+    apptFor: eventName + " for " + user.name,
   });
 
   appointment
@@ -2537,6 +2539,17 @@ router.get("/getappointments/:id", (req, res) => {
   let { id } = req.params;
   Appointment_Model.find({ userId: id })
     .then((data) => {
+      res.status(200).json(data);
+    })
+    .catch((err) => res.status(400).json(`Error: ${err}`));
+});
+
+router.get("/getallappointments", (req, res) => {
+  Appointment_Model.find()
+    .then(async (data) => {
+      await data.forEach(async (d) => {
+        d.title = d.apptFor;
+      });
       res.status(200).json(data);
     })
     .catch((err) => res.status(400).json(`Error: ${err}`));

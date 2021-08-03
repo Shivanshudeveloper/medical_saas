@@ -57,6 +57,11 @@ const items = [
   //   title: 'Account'
   // },
   {
+    href: "/app/calender",
+    icon: UserIcon,
+    title: "All Appointments",
+  },
+  {
     href: "/app/settings",
     icon: SettingsIcon,
     title: "Settings",
