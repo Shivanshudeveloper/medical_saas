@@ -30,6 +30,8 @@
     "@ckeditor/ckeditor5-react": "^3.0.2",
     "@emotion/react": "^11.1.5",
     "@emotion/styled": "^11.1.5",
+    "@fullcalendar/daygrid": "^5.9.0",
+    "@fullcalendar/react": "^5.9.0",
     "@material-ui/core": "^5.0.0-alpha.28",
     "@material-ui/icons": "^5.0.0-alpha.28",
     "@material-ui/styles": "^4.10.0",

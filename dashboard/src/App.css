@@ -1,3 +1,6 @@
 .ck-editor__editable_inline {
-    min-height: 550px;
+  min-height: 550px;
+}
+.fc .fc-toolbar.fc-header-toolbar {
+  margin-top: 5rem;
 }
