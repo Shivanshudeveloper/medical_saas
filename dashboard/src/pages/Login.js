@@ -184,14 +184,14 @@ const Login = () => {
                                 </Label>
                               </div>
                             </div>
-                            <p className="forgot-pass mb-0">
+                            {/* <p className="forgot-pass mb-0">
                               <Link
                                 to="auth-re-password"
                                 className="text-dark fw-bold"
                               >
                                 Forgot password ?
                               </Link>
-                            </p>
+                            </p> */}
                           </div>
                         </Col>
                         <Col lg="12" className="mb-0">
@@ -201,25 +201,13 @@ const Login = () => {
                             </Button>
                           </div>
                         </Col>
-                        <Col lg="12" className="mt-4 text-center">
-                          <h6>Or Login With</h6>
-                          <Row>
-                            <div className="col-12 mt-3">
-                              <div className="d-grid">
-                                <Link to="#" className="btn btn-light">
-                                  <i className="mdi mdi-google text-danger"></i>{" "}
-                                  Google
-                                </Link>
-                              </div>
-                            </div>
-                          </Row>
-                        </Col>
+                        
                         <Col xs="12" className="text-center">
                           <p className="mb-0 mt-3">
                             <small className="text-dark me-2">
                               Don't have an account ?
                             </small>{" "}
-                            <Link to="/register" className="text-dark fw-bold">
+                            <Link to="https://medical-saas.vercel.app/" className="text-dark fw-bold">
                               Sign Up
                             </Link>
                           </p>
