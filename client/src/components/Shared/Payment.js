@@ -21,6 +21,7 @@ import { AvForm, AvField } from 'availity-reactstrap-validation';
 import axios from 'axios';
 import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
 import { API_SERVICE } from '../../config/URI';
+import { auth } from '../../Firebase/index';
 
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -30,7 +31,7 @@ import FeatherIcon from 'feather-icons-react';
 const useStyles = makeStyles({
   root: {
     maxWidth: 500,
-    marginTop: '4px',
+    marginTop: '15px',
   },
   content: {
     display: 'flex',
@@ -54,8 +55,11 @@ const Payment = () => {
   const [fName, setFName] = useState('');
   const [lName, setLName] = useState('');
   const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [amount, setAmount] = useState('');
   const [paysubmit, setPaySubmit] = useState(false);
+  const [isRegistered, setisRegistered] = useState(false);
+  const [isUser, setisUser] = useState(false);
   const [open, setOpen] = useState(false);
 
   const stripe = useStripe();
@@ -84,7 +88,6 @@ const Payment = () => {
       return;
     }
 
-    handleClick();
     setPaySubmit(true);
 
     const res = await axios.post(`${API_SERVICE}/api/v1/main/charges`, {
@@ -103,7 +106,10 @@ const Payment = () => {
       },
     });
 
-    window.location.href = `https://medical-saas-dashboard.vercel.app/login`;
+    handleClick();
+
+    // window.location.href = `https://medical-saas-dashboard.vercel.app/login`;
+    window.location.href = `https://localhost:3000/login`;
   };
 
   const handleClick = () => {
@@ -116,6 +122,30 @@ const Payment = () => {
     }
 
     setOpen(false);
+  };
+
+  const register = (event) => {
+    event.preventDefault();
+    auth
+      .createUserWithEmailAndPassword(email, password)
+      .then((result) => {
+        var user = result.user;
+        console.log(user);
+        // Profile Picture being set by default
+        user
+          .updateProfile({
+            displayName: `${fName} ${lName}`,
+          })
+          .then(() => {
+            console.log('Profile Photo URL Added');
+            setisRegistered(true);
+          })
+          .catch((err) => console.log(err));
+      })
+      .catch(function (error) {
+        var errorMessage = error.message;
+        // setMessage(errorMessage);
+      });
   };
 
   return (
@@ -231,6 +261,75 @@ const Payment = () => {
                       </div>
                     </Col>
 
+                    <Col lg="12">
+                      <div className="mb-3">
+                        <Label className="form-label" htmlFor="password">
+                          Password <span className="text-danger">*</span>
+                        </Label>
+                        <div className="form-icon position-relative">
+                          <i>
+                            <FeatherIcon
+                              icon="lock"
+                              className="fea icon-sm icons"
+                            />
+                          </i>
+                        </div>
+                        <AvField
+                          type="text"
+                          className="form-control ps-5"
+                          name="password"
+                          id="password"
+                          placeholder="Password"
+                          value={password}
+                          type="password"
+                          onChange={(e) => setPassword(e.target.value)}
+                          required
+                          errorMessage=""
+                          validate={{
+                            required: {
+                              value: true,
+                              errorMessage: 'Please enter Password',
+                            },
+                            minLength: {
+                              value: 6,
+                              errorMessage:
+                                'Your password must be between 6 and 8 characters',
+                            },
+                            maxLength: {
+                              value: 16,
+                              errorMessage:
+                                'Your password must be between 6 and 8 characters',
+                            },
+                          }}
+                        />
+                      </div>
+                    </Col>
+
+                    <Col md="12">
+                      <div className="d-grid">
+                        <Button
+                          color="primary"
+                          disabled={isUser}
+                          onClick={register}
+                        >
+                          Register
+                        </Button>
+                      </div>
+                    </Col>
+
+                    <Col md="12">
+                      <Label
+                        style={{ cursor: 'pointer' }}
+                        className="form-label"
+                        onClick={() => {
+                          setisUser((prev) => !prev);
+                          setisRegistered((prev) => !prev);
+                        }}
+                      >
+                        Already a User? Click here.
+                      </Label>
+                    </Col>
+
                     <Col md="12">
                       <center>
                         <div className={classes.root}>
@@ -269,7 +368,7 @@ const Payment = () => {
                         <Button
                           color="primary"
                           onClick={confirmPayment}
-                          disabled={paysubmit || (email === '' && true)}
+                          disabled={paysubmit || (!isRegistered && true)}
                         >
                           {paysubmit ? 'Confirming Payment' : 'Apply'}
                         </Button>

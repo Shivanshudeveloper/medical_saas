@@ -1,8 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const stripe = require("stripe")(
-  "sk_test_51IdwfeH8KzFo5uc9YHKzp2HOPkZJvH0ij0qhWeg0wQ17G73o5fVJYjMkWOfAmWUgjVZe0DesJvrQKbmAPSacXsVP00qMXnEqFr"
-);
 const { v4: uuidv4 } = require("uuid");
 // Getting Module
 const University_Model = require("../models/University");
@@ -2527,13 +2524,14 @@ router.get("/gettreatment/:id", (req, res) => {
 
 router.post("/addappointment/:id", async (req, res) => {
   let { id } = req.params;
-  let { eventDate, eventName } = req.body;
+  let { eventDate, eventName, clientFor } = req.body;
   const user = await User_Model.findById(id);
   const appointment = new Appointment_Model({
     title: eventName,
     date: eventDate,
     userId: id,
     apptFor: eventName + " for " + user.name,
+    clientFor,
   });
 
   appointment
@@ -2561,8 +2559,9 @@ router.get("/getappointments/:id", (req, res) => {
     .catch((err) => res.status(400).json(`Error: ${err}`));
 });
 
-router.get("/getallappointments", (req, res) => {
-  Appointment_Model.find()
+router.get("/getallappointments/:id", (req, res) => {
+  let { id } = req.params;
+  Appointment_Model.find({ clientFor: id })
     .then(async (data) => {
       await data.forEach(async (d) => {
         d.title = d.apptFor;

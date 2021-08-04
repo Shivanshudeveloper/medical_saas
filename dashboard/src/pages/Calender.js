@@ -11,9 +11,11 @@ import { API_SERVICE } from "../config/URI";
 const Calender = () => {
   const [eventList, setEventList] = useState([]);
 
+  const clientFor = sessionStorage.getItem("userId");
+  const userName = sessionStorage.getItem("userName");
   useEffect(() => {
     axios
-      .get(`${API_SERVICE}/api/v1/main/getallappointments`)
+      .get(`${API_SERVICE}/api/v1/main/getallappointments/${clientFor}`)
       .then((res) => {
         setEventList(res.data);
       })
@@ -24,6 +26,7 @@ const Calender = () => {
 
   return (
     <Card>
+      <h3>Welcome {userName}</h3>
       <div style={{ maxWidth: "80%", margin: "0 auto" }}>
         <FullCalendar
           plugins={[dayGridPlugin, listPlugin]}

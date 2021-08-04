@@ -4,17 +4,17 @@ import "firebase/database";
 import "firebase/auth";
 import "firebase/messaging";
 import "firebase/analytics";
-import 'firebase/firestore';
+import "firebase/firestore";
 
-var firebaseConfig = {
-    apiKey: "AIzaSyAAau1u0Kj73GQO7RuUs_m9ciSR3o38qa8",
-    authDomain: "shared-dbac4.firebaseapp.com",
-    databaseURL: "https://shared-dbac4-default-rtdb.firebaseio.com",
-    projectId: "shared-dbac4",
-    storageBucket: "shared-dbac4.appspot.com",
-    messagingSenderId: "28242124973",
-    appId: "1:28242124973:web:b29d5d451159e243652624",
-    measurementId: "G-425R3Z3H22"
+const firebaseConfig = {
+  apiKey: "AIzaSyBSEx2-ykPTb70keLZh3LAuDtQT2VyCsco",
+  authDomain: "evencloud-26d32.firebaseapp.com",
+  databaseURL: "https://evencloud-26d32.firebaseio.com",
+  projectId: "evencloud-26d32",
+  storageBucket: "evencloud-26d32.appspot.com",
+  messagingSenderId: "599725599274",
+  appId: "1:599725599274:web:8f9a716ca577fc72a1f153",
+  measurementId: "G-VSJNQ5LYK5",
 };
 
 // Initialize Firebase
@@ -31,5 +31,12 @@ var facebookProvider = new firebase.auth.FacebookAuthProvider();
 // Authentication for Twitter
 var twitterProvider = new firebase.auth.TwitterAuthProvider();
 export {
-    firestore, auth, googleProvider, facebookProvider, twitterProvider, database, storage, firebase as default
-}
+  firestore,
+  auth,
+  googleProvider,
+  facebookProvider,
+  twitterProvider,
+  database,
+  storage,
+  firebase as default,
+};

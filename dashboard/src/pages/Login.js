@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
-import React from "react"
+import React from "react";
 import {
   Container,
   Row,
@@ -12,6 +12,7 @@ import {
   CardBody,
 } from "reactstrap";
 import { AvForm, AvField } from "availity-reactstrap-validation";
+import { auth } from "../Firebase/index";
 
 //Import Icons
 import FeatherIcon from "feather-icons-react";
@@ -24,13 +25,31 @@ const Login = () => {
   const [email, setemail] = React.useState("demo@demo.com");
   const [pwd, setpwd] = React.useState("demo@1234");
 
-  const checkUser = () => {
-    if (email === "demo@demo.com" && pwd === "demo@1234") {
-        window.location.href = "/app/dashboard"
-    } else {
-      alert("Wront Email or Password");
-    }
-  }
+  const checkUser = (e) => {
+    e.preventDefault();
+    auth
+      .signInWithEmailAndPassword(email, pwd)
+      .then(() => {
+        auth.onAuthStateChanged(function (user) {
+          console.log(user);
+          if (user) {
+            sessionStorage.setItem("userId", user.uid);
+            sessionStorage.setItem("userEmail", user.email);
+            sessionStorage.setItem("userName", user.displayName);
+            window.location.href = "/app/dashboard";
+          } else {
+            console.log(
+              "We have send a Verification Link on your Email Address"
+            );
+          }
+        });
+      })
+      .catch(function (error) {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        console.log(errorMessage);
+      });
+  };
 
   return (
     <>
@@ -51,7 +70,7 @@ const Login = () => {
               <Col lg="7" md="6">
                 <div className="me-lg-5">
                   <img
-                   src={loginImg}
+                    src={loginImg}
                     className="img-fluid d-block mx-auto"
                     alt="loading it wait a sec"
                   />
@@ -178,17 +197,18 @@ const Login = () => {
                           <div className="d-grid">
                             <Button onClick={checkUser} color="primary">
                               Sign in
-                          </Button>
+                            </Button>
                           </div>
                         </Col>
                         <Col lg="12" className="mt-4 text-center">
                           <h6>Or Login With</h6>
                           <Row>
-                            
-
                             <div className="col-12 mt-3">
                               <div className="d-grid">
-                                <Link to="#" className="btn btn-light"><i className="mdi mdi-google text-danger"></i> Google</Link>
+                                <Link to="#" className="btn btn-light">
+                                  <i className="mdi mdi-google text-danger"></i>{" "}
+                                  Google
+                                </Link>
                               </div>
                             </div>
                           </Row>
@@ -198,10 +218,7 @@ const Login = () => {
                             <small className="text-dark me-2">
                               Don't have an account ?
                             </small>{" "}
-                            <Link
-                              to="/register"
-                              className="text-dark fw-bold"
-                            >
+                            <Link to="/register" className="text-dark fw-bold">
                               Sign Up
                             </Link>
                           </p>

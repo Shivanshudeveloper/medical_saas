@@ -717,11 +717,14 @@ const Profile = () => {
       });
   };
 
+  const clientFor = sessionStorage.getItem("userId");
+
   const addAppointment = async () => {
     await axios
       .post(`${API_SERVICE}/api/v1/main/addappointment/${user._id}`, {
         eventName,
         eventDate,
+        clientFor,
       })
       .then(() => {
         setOpenDialog(false);
