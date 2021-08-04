@@ -22,6 +22,10 @@ const Notes_Model = require("../models/Notes");
 const Treatment_Model = require("../models/Treatment");
 const Appointment_Model = require("../models/Appointment");
 
+const stripe = require("stripe")(
+  "sk_test_51IdwfeH8KzFo5uc9YHKzp2HOPkZJvH0ij0qhWeg0wQ17G73o5fVJYjMkWOfAmWUgjVZe0DesJvrQKbmAPSacXsVP00qMXnEqFr"
+);
+
 function isNumeric(str) {
   if (typeof str != "string") return false; // we only process strings!
   return (
@@ -35,6 +39,19 @@ function isNumeric(str) {
 // GET
 router.get("/test", (req, res) => {
   res.send("Working");
+});
+
+router.post("/charges", async (req, res) => {
+  const { email, amount } = req.body;
+  const paymentIntent = await stripe.paymentIntents.create({
+    amount: amount * 100,
+    currency: "eur",
+    // Verify your integration in this guide by including this parameter
+    metadata: { integration_check: "accept_a_payment" },
+    receipt_email: email,
+  });
+
+  res.json({ client_secret: paymentIntent["client_secret"] });
 });
 
 // Database CRUD Operations
