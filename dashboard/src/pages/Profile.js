@@ -798,12 +798,13 @@ const Profile = () => {
                     }}
                     style={{ margin: "10px auto" }}
                   />
+
                   <TextField
-                    id="date"
-                    label="Appointment Date"
+                    id="datetime-local"
+                    label="Appointment Date and Time"
                     variant="filled"
-                    type="date"
-                    defaultValue="2021-08-06"
+                    type="datetime-local"
+                    defaultValue="2021-08-06T10:30"
                     fullWidth
                     style={{ margin: "10px auto" }}
                     onChange={(e) => setEventDate(e.target.value)}
