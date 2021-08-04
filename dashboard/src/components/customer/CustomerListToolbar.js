@@ -56,6 +56,7 @@ const CustomerListToolbar = () => {
     regDate: "",
     description: "",
     image: "",
+    clientFor: "",
   });
 
   const changeEle = (event) => {
@@ -115,6 +116,8 @@ const CustomerListToolbar = () => {
   };
 
   const submitUser = () => {
+    const userId = sessionStorage.getItem("userId");
+    user.clientFor = userId;
     axios
       .post(`${API_SERVICE}/api/v1/main/adduser`, user)
       .then((res) => {

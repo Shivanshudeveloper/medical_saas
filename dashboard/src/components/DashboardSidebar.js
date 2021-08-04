@@ -24,10 +24,13 @@ import {
 } from "react-feather";
 import NavItem from "./NavItem";
 
+const userName = sessionStorage.getItem("userName");
+const userPhoto = sessionStorage.getItem("userPhoto");
+
 const user = {
-  avatar: "/static/images/avatars/avatar_6.png",
+  avatar: userPhoto,
   // jobTitle: 'Senior Developer',
-  name: "Katarina Smith",
+  name: userName,
 };
 
 const items = [

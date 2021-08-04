@@ -2385,8 +2385,9 @@ router.post("/adduser", (req, res) => {
     });
 });
 
-router.get("/getallusers", (req, res) => {
-  User_Model.find({}, (err, data_) => {
+router.get("/getallusers/:id", (req, res) => {
+  let { id } = req.params;
+  User_Model.find({ clientFor: id }, (err, data_) => {
     if (err) {
       return res.status(400).json({ success: false, error: err });
     }

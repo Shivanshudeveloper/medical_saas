@@ -36,6 +36,7 @@ const Login = () => {
             sessionStorage.setItem("userId", user.uid);
             sessionStorage.setItem("userEmail", user.email);
             sessionStorage.setItem("userName", user.displayName);
+            sessionStorage.setItem("userPhoto", user.photoURL);
             window.location.href = "/app/dashboard";
           } else {
             console.log(

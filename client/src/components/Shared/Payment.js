@@ -51,6 +51,7 @@ const useStyles = makeStyles({
 
 const Payment = () => {
   const classes = useStyles();
+  const [message, setMessage] = useState('');
   const [title, setTitle] = useState('');
   const [fName, setFName] = useState('');
   const [lName, setLName] = useState('');
@@ -109,7 +110,7 @@ const Payment = () => {
     handleClick();
 
     // window.location.href = `https://medical-saas-dashboard.vercel.app/login`;
-    window.location.href = `https://localhost:3000/login`;
+    window.location.href = `http://localhost:3000/login`;
   };
 
   const handleClick = () => {
@@ -135,16 +136,19 @@ const Payment = () => {
         user
           .updateProfile({
             displayName: `${fName} ${lName}`,
+            photoURL:
+              'https://kittyinpink.co.uk/wp-content/uploads/2016/12/facebook-default-photo-male_1-1.jpg',
           })
           .then(() => {
             console.log('Profile Photo URL Added');
             setisRegistered(true);
+            setMessage('');
           })
           .catch((err) => console.log(err));
       })
       .catch(function (error) {
         var errorMessage = error.message;
-        // setMessage(errorMessage);
+        setMessage(errorMessage);
       });
   };
 
@@ -293,12 +297,12 @@ const Payment = () => {
                             minLength: {
                               value: 6,
                               errorMessage:
-                                'Your password must be between 6 and 8 characters',
+                                'Your password must be between 6 and 16 characters',
                             },
                             maxLength: {
                               value: 16,
                               errorMessage:
-                                'Your password must be between 6 and 8 characters',
+                                'Your password must be between 6 and 16 characters',
                             },
                           }}
                         />
@@ -315,9 +319,25 @@ const Payment = () => {
                           Register
                         </Button>
                       </div>
+                      <p
+                        style={{
+                          margin: '5px 0',
+                          textAlign: 'right',
+                          color: 'red',
+                        }}
+                      >
+                        {message}
+                      </p>
                     </Col>
 
-                    <Col md="12">
+                    <Col
+                      md="12"
+                      style={{
+                        marginTop: '15px',
+                        display: 'flex',
+                        justifyContent: 'center',
+                      }}
+                    >
                       <Label
                         style={{ cursor: 'pointer' }}
                         className="form-label"

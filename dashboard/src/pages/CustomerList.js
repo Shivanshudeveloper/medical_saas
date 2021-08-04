@@ -14,8 +14,9 @@ const CustomerList = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const userId = sessionStorage.getItem("userId");
     axios
-      .get(`${API_SERVICE}/api/v1/main/getallusers`)
+      .get(`${API_SERVICE}/api/v1/main/getallusers/${userId}`)
       .then((res) => {
         setCustomers(res.data.data.reverse());
         setLoading(false);
