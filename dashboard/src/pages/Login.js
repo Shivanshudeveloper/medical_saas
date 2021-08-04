@@ -22,8 +22,8 @@ import loginImg from "../assets/images/user/login.svg";
 const Login = () => {
   const navigate = useNavigate();
 
-  const [email, setemail] = React.useState("demo@demo.com");
-  const [pwd, setpwd] = React.useState("demo@1234");
+  const [email, setemail] = React.useState("");
+  const [pwd, setpwd] = React.useState("");
 
   const checkUser = (e) => {
     e.preventDefault();
