@@ -90,7 +90,7 @@ export default function Notes() {
                   <h4>Email&nbsp;</h4>
                 </TableCell>
                 <TableCell align="right">
-                  <h4>Group Notes&nbsp;</h4>
+                  <h4>Process Notes&nbsp;</h4>
                 </TableCell>
                 <TableCell align="right">
                   <h4>Treatment Plan&nbsp;</h4>

@@ -109,8 +109,8 @@ const Payment = () => {
 
     handleClick();
 
-    // window.location.href = `https://medical-saas-dashboard.vercel.app/login`;
-    window.location.href = `http://localhost:3000/login`;
+    window.location.href = `https://medical-saas-dashboard.vercel.app/login`;
+    // window.location.href = `http://localhost:3000/login`;
   };
 
   const handleClick = () => {
