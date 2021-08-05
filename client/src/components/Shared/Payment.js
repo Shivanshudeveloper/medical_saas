@@ -16,6 +16,8 @@ import {
 import { CardContent, Snackbar } from '@material-ui/core';
 import MuiAlert from '@material-ui/lab/Alert';
 import CardInput from './CardInput';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
 
 import { AvForm, AvField } from 'availity-reactstrap-validation';
 import axios from 'axios';
@@ -62,6 +64,7 @@ const Payment = () => {
   const [isRegistered, setisRegistered] = useState(false);
   const [isUser, setisUser] = useState(false);
   const [open, setOpen] = useState(false);
+  const [openR, setOpenR] = useState(false);
 
   const stripe = useStripe();
   const elements = useElements();
@@ -116,6 +119,9 @@ const Payment = () => {
   const handleClick = () => {
     setOpen(true);
   };
+  const handleClickR = () => {
+    setOpenR(true);
+  };
 
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
@@ -123,6 +129,7 @@ const Payment = () => {
     }
 
     setOpen(false);
+    setOpenR(false);
   };
 
   const register = (event) => {
@@ -140,9 +147,9 @@ const Payment = () => {
               'https://kittyinpink.co.uk/wp-content/uploads/2016/12/facebook-default-photo-male_1-1.jpg',
           })
           .then(() => {
-            console.log('Profile Photo URL Added');
             setisRegistered(true);
             setMessage('');
+            handleClickR();
           })
           .catch((err) => console.log(err));
       })
@@ -318,6 +325,28 @@ const Payment = () => {
                         >
                           Register
                         </Button>
+                        <Snackbar
+                          anchorOrigin={{
+                            vertical: 'bottom',
+                            horizontal: 'left',
+                          }}
+                          open={openR}
+                          autoHideDuration={6000}
+                          onClose={handleClose}
+                          message="Successfully registered. Please fill in the card details!!"
+                          action={
+                            <React.Fragment>
+                              <IconButton
+                                size="small"
+                                aria-label="close"
+                                color="inherit"
+                                onClick={handleClose}
+                              >
+                                <CloseIcon fontSize="small" />
+                              </IconButton>
+                            </React.Fragment>
+                          }
+                        />
                       </div>
                       <p
                         style={{

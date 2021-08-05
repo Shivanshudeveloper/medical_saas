@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { withRouter } from "react-router";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router';
 import {
   Container,
   Form,
@@ -9,16 +9,16 @@ import {
   Dropdown,
   DropdownMenu,
   DropdownToggle,
-  UncontrolledDropdown
-} from "reactstrap";
+  UncontrolledDropdown,
+} from 'reactstrap';
 
 //Import images
-import logodark from "../../assets/images/logo-dark.png";
-import logolight from "../../assets/images/logo-light.png";
-import shop1 from "../../assets/images/shop/product/s-1.jpg";
-import shop2 from "../../assets/images/shop/product/s-2.jpg";
-import shop3 from "../../assets/images/shop/product/s-3.jpg";
-import NavbarButtons from "../Shared/NavbarButtons";
+import logodark from '../../assets/images/logo-dark.png';
+import logolight from '../../assets/images/logo-light.png';
+import shop1 from '../../assets/images/shop/product/s-1.jpg';
+import shop2 from '../../assets/images/shop/product/s-2.jpg';
+import shop3 from '../../assets/images/shop/product/s-3.jpg';
+import NavbarButtons from '../Shared/NavbarButtons';
 
 class Topbar extends Component {
   constructor(props) {
@@ -28,10 +28,11 @@ class Topbar extends Component {
       dropdownOpenShop: false,
       navLinks: [
         //Note : each child and nested child must have unique id
-        { id: 1, title: "Home", link: "/" },
-        { id: 2, title: "About", link: "/about" },
-        { id: 3, title: "Contact", link: "/contact" },
-        { id: 4, title: "Support", link: "/support" },
+        { id: 1, title: 'Home', link: '/' },
+        { id: 2, title: 'About', link: '/about' },
+        { id: 3, title: 'Contact', link: '/contact' },
+        { id: 4, title: 'Support', link: '/support' },
+        { id: 5, title: 'Pricing', link: '/pricing' },
         // {
         //   id: 2,
         //   title: "Landing",
@@ -522,8 +523,8 @@ class Topbar extends Component {
 
   componentDidMount() {
     var matchingMenuItem = null;
-    var ul = document.getElementById("top-menu");
-    var items = ul.getElementsByTagName("a");
+    var ul = document.getElementById('top-menu');
+    var items = ul.getElementsByTagName('a');
     for (var i = 0; i < items.length; ++i) {
       if (this.props.location.pathname === items[i].pathname) {
         matchingMenuItem = items[i];
@@ -538,18 +539,18 @@ class Topbar extends Component {
   activateParentDropdown = (item) => {
     const parent = item.parentElement;
     if (parent) {
-      parent.classList.add("active"); // li
+      parent.classList.add('active'); // li
       const parent1 = parent.parentElement;
-      parent1.classList.add("active"); // li
+      parent1.classList.add('active'); // li
       if (parent1) {
         const parent2 = parent1.parentElement;
-        parent2.classList.add("active"); // li
+        parent2.classList.add('active'); // li
         if (parent2) {
           const parent3 = parent2.parentElement;
-          parent3.classList.add("active"); // li
+          parent3.classList.add('active'); // li
           if (parent3) {
             const parent4 = parent3.parentElement;
-            parent4.classList.add("active"); // li
+            parent4.classList.add('active'); // li
           }
         }
       }
@@ -562,7 +563,7 @@ class Topbar extends Component {
       //Match level 2 id
       tmpLink.id === level2_id
         ? (tmpLink.isOpenSubMenu = !tmpLink.isOpenSubMenu)
-        : false
+        : false,
     );
     this.setState({ navLinks: tmpLinks });
   };
@@ -573,13 +574,13 @@ class Topbar extends Component {
       //Match level 2 id
       tmpLink.id === level2_id
         ? tmpLink.child.map((tmpchild) =>
-          //if level1 id is matched then match level 3 id
-          tmpchild.id === level3_id
-            ? //if id is matched then update status(level 3 sub menu will be open)
-            (tmpchild.isOpenNestedSubMenu = !tmpchild.isOpenNestedSubMenu)
-            : (tmpchild.isOpenNestedSubMenu = false)
-        )
-        : false
+            //if level1 id is matched then match level 3 id
+            tmpchild.id === level3_id
+              ? //if id is matched then update status(level 3 sub menu will be open)
+                (tmpchild.isOpenNestedSubMenu = !tmpchild.isOpenNestedSubMenu)
+              : (tmpchild.isOpenNestedSubMenu = false),
+          )
+        : false,
     );
     this.setState({ navLinks: tmpLinks });
   };
@@ -592,31 +593,34 @@ class Topbar extends Component {
         <header id="topnav" className="defaultscroll sticky">
           <Container>
             <div>
-
               {this.props.hasDarkTopBar ? (
                 <a className="logo" href="index.html">
                   {/* <img src={logodark} height="24" className="logo-light-mode" alt="" />
                   <img src={logolight} height="24" className="logo-dark-mode" alt="" /> */}
-                  <img style={{width: '30px', heigth: '30px'}} src='https://res.cloudinary.com/dx9dnqzaj/image/upload/v1626758727/medical/Manah_Monogram48x48_sw6u7v.png'/>
-                  <span style={{fontSize: '20px'}}> Manah</span>
+                  <img
+                    style={{ width: '30px', heigth: '30px' }}
+                    src="https://res.cloudinary.com/dx9dnqzaj/image/upload/v1626758727/medical/Manah_Monogram48x48_sw6u7v.png"
+                  />
+                  <span style={{ fontSize: '20px' }}> Manah</span>
                 </a>
-              ) :
+              ) : (
                 <a className="logo" href="index.html">
                   {/* <span className="logo-light-mode">
                     <img src={logodark} className="l-dark" height="24" alt="" />
                     <img src={logolight} className="l-light" height="24" alt="" />
                   </span>
                   <img src={logolight} height="24" className="logo-dark-mode" alt="" /> */}
-                  <img style={{width: '30px', heigth: '30px'}} src='https://res.cloudinary.com/dx9dnqzaj/image/upload/v1626758727/medical/Manah_Monogram48x48_sw6u7v.png'/>
+                  <img
+                    style={{ width: '30px', heigth: '30px' }}
+                    src="https://res.cloudinary.com/dx9dnqzaj/image/upload/v1626758727/medical/Manah_Monogram48x48_sw6u7v.png"
+                  />
                 </a>
-              }
-              
+              )}
             </div>
             {(() => {
-              if (this.props.location.pathname === "/index-developer") {
+              if (this.props.location.pathname === '/index-developer') {
                 return <NavbarButtons />;
-              } else if (this.props.location.pathname === "/index-shop"
-              ) {
+              } else if (this.props.location.pathname === '/index-shop') {
                 return (
                   <ul className="buy-button list-inline mb-0">
                     <li className="list-inline-item mb-0">
@@ -635,7 +639,7 @@ class Topbar extends Component {
                         <DropdownMenu
                           right
                           className="dd-menu bg-white shadow rounded border-0 mt-3 py-0"
-                          style={{ width: "300px" }}
+                          style={{ width: '300px' }}
                         >
                           <Form>
                             <input
@@ -663,14 +667,14 @@ class Topbar extends Component {
                         <DropdownMenu
                           direction="left"
                           className="dd-menu bg-white shadow rounded border-0 mt-3 p-4"
-                          style={{ width: "300px" }}
+                          style={{ width: '300px' }}
                         >
                           <div className="pb-4">
                             <Link to="#" className="media align-items-center">
                               <img
                                 src={shop1}
                                 className="shadow rounded"
-                                style={{ maxWidth: "64px" }}
+                                style={{ maxWidth: '64px' }}
                                 alt=""
                               />
                               <div className="flex-1 text-start ms-3">
@@ -688,7 +692,7 @@ class Topbar extends Component {
                                 src={shop2}
                                 className="shadow rounded"
                                 alt=""
-                                style={{ maxWidth: "64px" }}
+                                style={{ maxWidth: '64px' }}
                               />
                               <div className="flex-1 text-start ms-3">
                                 <h6 className="text-dark mb-0">Bag</h6>
@@ -704,7 +708,7 @@ class Topbar extends Component {
                               <img
                                 src={shop3}
                                 className="shadow rounded"
-                                style={{ maxWidth: "64px" }}
+                                style={{ maxWidth: '64px' }}
                                 alt=""
                               />
                               <div className="flex-1 text-start ms-3">
@@ -759,23 +763,23 @@ class Topbar extends Component {
                         <DropdownMenu
                           direction="left"
                           className="dd-menu bg-white shadow rounded border-0 mt-3 py-3"
-                          style={{ width: "200px" }}
+                          style={{ width: '200px' }}
                         >
                           <Link className="dropdown-item text-dark" to="#">
-                            <i className="uil uil-user align-middle me-1"></i>{" "}
+                            <i className="uil uil-user align-middle me-1"></i>{' '}
                             Account
                           </Link>
                           <Link className="dropdown-item text-dark" to="#">
-                            <i className="uil uil-clipboard-notes align-middle me-1"></i>{" "}
+                            <i className="uil uil-clipboard-notes align-middle me-1"></i>{' '}
                             Order History
                           </Link>
                           <Link className="dropdown-item text-dark" to="#">
-                            <i className="uil uil-arrow-circle-down align-middle me-1"></i>{" "}
+                            <i className="uil uil-arrow-circle-down align-middle me-1"></i>{' '}
                             Download
                           </Link>
                           <div className="dropdown-divider my-3 border-top"></div>
                           <Link className="dropdown-item text-dark" to="#">
-                            <i className="uil uil-sign-out-alt align-middle me-1"></i>{" "}
+                            <i className="uil uil-sign-out-alt align-middle me-1"></i>{' '}
                             Logout
                           </Link>
                         </DropdownMenu>
@@ -783,40 +787,60 @@ class Topbar extends Component {
                     </li>
                   </ul>
                 );
-              } else if (this.props.location.pathname === "/index-it-solution-two") {
+              } else if (
+                this.props.location.pathname === '/index-it-solution-two'
+              ) {
                 return (
                   <ul className="buy-button list-inline mb-0">
                     <li className="list-inline-item mb-0">
                       <UncontrolledDropdown>
-                        <DropdownToggle tag="a" className="btn btn-link text-decoration-none p-0 pe-2">
+                        <DropdownToggle
+                          tag="a"
+                          className="btn btn-link text-decoration-none p-0 pe-2"
+                        >
                           <i className="uil uil-search text-muted"></i>
                         </DropdownToggle>
-                        <DropdownMenu className="dd-menu dropdown-menu-end bg-white shadow rounded border-0 mt-3 py-0" style={{ width: '240px' }}>
+                        <DropdownMenu
+                          className="dd-menu dropdown-menu-end bg-white shadow rounded border-0 mt-3 py-0"
+                          style={{ width: '240px' }}
+                        >
                           <form>
-                            <input type="text" id="text2" name="name" className="form-control border bg-white" placeholder="Search..." />
+                            <input
+                              type="text"
+                              id="text2"
+                              name="name"
+                              className="form-control border bg-white"
+                              placeholder="Search..."
+                            />
                           </form>
                         </DropdownMenu>
                       </UncontrolledDropdown>
                     </li>
                     <li className="list-inline-item mb-0">
-                      <Link to="#" className="btn btn-icon btn-primary me-1"><i className="uil uil-facebook-f icons"></i></Link>
+                      <Link to="#" className="btn btn-icon btn-primary me-1">
+                        <i className="uil uil-facebook-f icons"></i>
+                      </Link>
                     </li>
                     <li className="list-inline-item mb-0">
-                      <Link to="#" className="btn btn-icon btn-primary me-1"><i className="uil uil-github icons"></i></Link>
+                      <Link to="#" className="btn btn-icon btn-primary me-1">
+                        <i className="uil uil-github icons"></i>
+                      </Link>
                     </li>
                     <li className="list-inline-item mb-0">
-                      <Link to="#" className="btn btn-icon btn-primary me-1"><i className="uil uil-twitter icons"></i></Link>
+                      <Link to="#" className="btn btn-icon btn-primary me-1">
+                        <i className="uil uil-twitter icons"></i>
+                      </Link>
                     </li>
                     <li className="list-inline-item mb-0">
-                      <Link to="#" className="btn btn-icon btn-primary me-1"><i className="uil uil-linkedin-alt icons"></i></Link>
+                      <Link to="#" className="btn btn-icon btn-primary me-1">
+                        <i className="uil uil-linkedin-alt icons"></i>
+                      </Link>
                     </li>
                   </ul>
                 );
-              }
-
-              else if (
-                this.props.location.pathname === "/shop-grids" ||
-                this.props.location.pathname === "/shop-lists"
+              } else if (
+                this.props.location.pathname === '/shop-grids' ||
+                this.props.location.pathname === '/shop-lists'
               ) {
                 return (
                   <ul className="buy-button list-inline mb-0">
@@ -836,7 +860,7 @@ class Topbar extends Component {
                         <DropdownMenu
                           right
                           className="dd-menu bg-white shadow rounded border-0 mt-3 py-0"
-                          style={{ width: "300px" }}
+                          style={{ width: '300px' }}
                         >
                           <Form>
                             <input
@@ -864,14 +888,14 @@ class Topbar extends Component {
                         <DropdownMenu
                           direction="left"
                           className="dd-menu bg-white shadow rounded border-0 mt-3 p-4"
-                          style={{ width: "300px" }}
+                          style={{ width: '300px' }}
                         >
                           <div className="pb-4">
                             <Link to="#" className="media align-items-center">
                               <img
                                 src={shop1}
                                 className="shadow rounded"
-                                style={{ maxWidth: "64px" }}
+                                style={{ maxWidth: '64px' }}
                                 alt=""
                               />
                               <div className="flex-1 text-start ms-3">
@@ -889,7 +913,7 @@ class Topbar extends Component {
                                 src={shop2}
                                 className="shadow rounded"
                                 alt=""
-                                style={{ maxWidth: "64px" }}
+                                style={{ maxWidth: '64px' }}
                               />
                               <div className="flex-1 text-start ms-3">
                                 <h6 className="text-dark mb-0">Bag</h6>
@@ -905,7 +929,7 @@ class Topbar extends Component {
                               <img
                                 src={shop3}
                                 className="shadow rounded"
-                                style={{ maxWidth: "64px" }}
+                                style={{ maxWidth: '64px' }}
                                 alt=""
                               />
                               <div className="flex-1 text-start ms-3">
@@ -959,23 +983,23 @@ class Topbar extends Component {
                         <DropdownMenu
                           direction="left"
                           className="dd-menu bg-white shadow rounded border-0 mt-3 py-3"
-                          style={{ width: "200px" }}
+                          style={{ width: '200px' }}
                         >
                           <Link className="dropdown-item text-dark" to="#">
-                            <i className="uil uil-user align-middle me-1"></i>{" "}
+                            <i className="uil uil-user align-middle me-1"></i>{' '}
                             Account
                           </Link>
                           <Link className="dropdown-item text-dark" to="#">
-                            <i className="uil uil-clipboard-notes align-middle me-1"></i>{" "}
+                            <i className="uil uil-clipboard-notes align-middle me-1"></i>{' '}
                             Order History
                           </Link>
                           <Link className="dropdown-item text-dark" to="#">
-                            <i className="uil uil-arrow-circle-down align-middle me-1"></i>{" "}
+                            <i className="uil uil-arrow-circle-down align-middle me-1"></i>{' '}
                             Download
                           </Link>
                           <div className="dropdown-divider my-3 border-top"></div>
                           <Link className="dropdown-item text-dark" to="#">
-                            <i className="uil uil-sign-out-alt align-middle me-1"></i>{" "}
+                            <i className="uil uil-sign-out-alt align-middle me-1"></i>{' '}
                             Logout
                           </Link>
                         </DropdownMenu>
@@ -983,7 +1007,7 @@ class Topbar extends Component {
                     </li>
                   </ul>
                 );
-              } else if (this.props.location.pathname === "/index-seo-agency") {
+              } else if (this.props.location.pathname === '/index-seo-agency') {
                 return (
                   <div className="buy-button">
                     <Link
@@ -1018,7 +1042,7 @@ class Topbar extends Component {
                   to="#"
                   onClick={this.toggleLine}
                   className={
-                    this.state.isOpen ? "navbar-toggle open" : "navbar-toggle"
+                    this.state.isOpen ? 'navbar-toggle open' : 'navbar-toggle'
                   }
                 >
                   <div className="lines">
@@ -1032,7 +1056,7 @@ class Topbar extends Component {
 
             <div
               id="navigation"
-              style={{ display: this.state.isOpen ? "block" : "none" }}
+              style={{ display: this.state.isOpen ? 'block' : 'none' }}
             >
               <ul className="navigation-menu" id="top-menu">
                 {this.state.navLinks.map((navLink, key) =>
@@ -1055,8 +1079,8 @@ class Topbar extends Component {
                         <ul
                           className={
                             navLink.isOpenSubMenu
-                              ? "submenu megamenu open"
-                              : "submenu megamenu"
+                              ? 'submenu megamenu open'
+                              : 'submenu megamenu'
                           }
                         >
                           <li>
@@ -1064,11 +1088,9 @@ class Topbar extends Component {
                               {navLink.child.map((item, childKey) =>
                                 item.id < 12 ? (
                                   <li key={childKey}>
-                                    <Link to={item.link}>
-                                      {item.title}
-                                    </Link>
+                                    <Link to={item.link}>{item.title}</Link>
                                   </li>
-                                ) : null
+                                ) : null,
                               )}
                             </ul>
                           </li>
@@ -1086,7 +1108,7 @@ class Topbar extends Component {
                                       ) : null}
                                     </Link>
                                   </li>
-                                ) : null
+                                ) : null,
                               )}
                             </ul>
                           </li>
@@ -1114,7 +1136,7 @@ class Topbar extends Component {
                                       ) : null}
                                     </Link>
                                   </li>
-                                ) : null
+                                ) : null,
                               )}
                             </ul>
                           </li>
@@ -1138,7 +1160,7 @@ class Topbar extends Component {
                                       ) : null}
                                     </Link>
                                   </li>
-                                ) : null
+                                ) : null,
                               )}
                             </ul>
                           </li>
@@ -1162,7 +1184,7 @@ class Topbar extends Component {
                                       ) : null}
                                     </Link>
                                   </li>
-                                ) : null
+                                ) : null,
                               )}
                             </ul>
                           </li>
@@ -1171,7 +1193,7 @@ class Topbar extends Component {
                         // if menu is not mega menu(1grid)
                         <ul
                           className={
-                            navLink.isOpenSubMenu ? "submenu open" : "submenu"
+                            navLink.isOpenSubMenu ? 'submenu open' : 'submenu'
                           }
                         >
                           {navLink.child.map((childArray, childKey) =>
@@ -1184,11 +1206,11 @@ class Topbar extends Component {
                                     event.preventDefault();
                                     this.openNestedBlock(
                                       navLink.id,
-                                      childArray.id
+                                      childArray.id,
                                     );
                                   }}
                                 >
-                                  {childArray.title}{" "}
+                                  {childArray.title}{' '}
                                   {childArray.isNew ? (
                                     <span className="badge badge-pill badge-success">
                                       Added
@@ -1199,8 +1221,8 @@ class Topbar extends Component {
                                 <ul
                                   className={
                                     childArray.isOpenNestedSubMenu
-                                      ? "submenu open"
-                                      : "submenu"
+                                      ? 'submenu open'
+                                      : 'submenu'
                                   }
                                 >
                                   {childArray.nestedChild.map(
@@ -1208,7 +1230,7 @@ class Topbar extends Component {
                                       // nested sub menu item - Level 3
                                       <li key={nestedKey}>
                                         <Link to={nestedChildArray.link}>
-                                          {nestedChildArray.title}{" "}
+                                          {nestedChildArray.title}{' '}
                                           {nestedChildArray.isNewPage ? (
                                             <span className="badge badge-danger rounded">
                                               NEW
@@ -1221,7 +1243,7 @@ class Topbar extends Component {
                                           ) : null}
                                         </Link>
                                       </li>
-                                    )
+                                    ),
                                   )}
                                 </ul>
                               </li>
@@ -1231,7 +1253,7 @@ class Topbar extends Component {
                                   {childArray.title}
                                 </Link>
                               </li>
-                            )
+                            ),
                           )}
                         </ul>
                       )}
@@ -1240,7 +1262,7 @@ class Topbar extends Component {
                     <li key={key}>
                       <Link to={navLink.link}>{navLink.title}</Link>
                     </li>
-                  )
+                  ),
                 )}
               </ul>
               <div className="buy-menu-btn d-none">
@@ -1268,7 +1290,7 @@ class Topbar extends Component {
             <div className="text-center">
               <div
                 className="icon d-flex align-items-center justify-content-center bg-soft-danger rounded-circle mx-auto"
-                style={{ height: "95px", width: "95px" }}
+                style={{ height: '95px', width: '95px' }}
               >
                 <h1 className="mb-0">
                   <i className="uil uil-heart-break align-middle"></i>

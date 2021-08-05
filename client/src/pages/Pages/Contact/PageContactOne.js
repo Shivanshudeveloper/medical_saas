@@ -1,6 +1,6 @@
 // React Basic and Bootstrap
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import {
   Container,
   Row,
@@ -11,16 +11,16 @@ import {
   Label,
   Card,
   CardBody,
-} from "reactstrap";
+} from 'reactstrap';
 
 //Import components
-import PageBreadcrumb from "../../../components/Shared/PageBreadcrumb";
+import PageBreadcrumb from '../../../components/Shared/PageBreadcrumb';
 
 //Import Icons
-import FeatherIcon from "feather-icons-react";
+import FeatherIcon from 'feather-icons-react';
 
 // import images
-import contact from "../../../assets/images/contact.svg";
+import contact from '../../../assets/images/contact.svg';
 
 class PageContactOne extends Component {
   constructor(props) {
@@ -28,10 +28,10 @@ class PageContactOne extends Component {
     this.state = {
       pathItems: [
         //id must required
-        { id: 1, name: "Landrick", link: "/index" },
-        { id: 2, name: "Page", link: "#" },
-        { id: 3, name: "Contact", link: "#" },
-        { id: 4, name: "Contact One" },
+        { id: 1, name: 'Landrick', link: '/index' },
+        { id: 2, name: 'Page', link: '#' },
+        { id: 3, name: 'Contact', link: '#' },
+        { id: 4, name: 'Contact One' },
       ],
       Contactvisible: false,
     };
@@ -46,31 +46,31 @@ class PageContactOne extends Component {
   }
 
   componentDidMount() {
-    document.body.classList = "";
-    window.addEventListener("scroll", this.scrollNavigation, true);
+    document.body.classList = '';
+    window.addEventListener('scroll', this.scrollNavigation, true);
   }
 
   // Make sure to remove the DOM listener when the component is unmounted.
   componentWillUnmount() {
-    window.removeEventListener("scroll", this.scrollNavigation, true);
+    window.removeEventListener('scroll', this.scrollNavigation, true);
   }
 
   scrollNavigation = () => {
     var doc = document.documentElement;
     var top = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
     if (top > 80) {
-      document.getElementById("topnav").classList.add("nav-sticky");
+      document.getElementById('topnav').classList.add('nav-sticky');
     } else {
-      document.getElementById("topnav").classList.remove("nav-sticky");
+      document.getElementById('topnav').classList.remove('nav-sticky');
     }
   };
 
   sendMail() {
-    window.location.href = "mailto:contact@example.com";
+    window.location.href = 'mailto:contact@example.com';
   }
 
   callNumber() {
-    window.location.href = "tel:+152534-468-854";
+    window.location.href = 'tel:+152534-468-854';
   }
 
   render() {
@@ -214,7 +214,7 @@ class PageContactOne extends Component {
                           <Col md={6}>
                             <div className="mb-3">
                               <Label className="form-label">
-                                Your Email{" "}
+                                Your Email{' '}
                                 <span className="text-danger">*</span>
                               </Label>
                               <div className="form-icon position-relative">
@@ -288,7 +288,6 @@ class PageContactOne extends Component {
                               />
                             </div>
                             <div id="simple-msg"></div>
-
                           </Col>
                         </Row>
                       </Form>
@@ -315,7 +314,7 @@ class PageContactOne extends Component {
                     <iframe
                       title="myFrame"
                       src="//www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d39206.002432144705!2d-95.4973981212445!3d29.709510002925988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640c16de81f3ca5%3A0xf43e0b60ae539ac9!2sGerald+D.+Hines+Waterwall+Park!5e0!3m2!1sen!2sin!4v1566305861440!5m2!1sen!2sin"
-                      style={{ border: "0" }}
+                      style={{ border: '0' }}
                       className="rounded"
                       allowFullScreen
                     ></iframe>

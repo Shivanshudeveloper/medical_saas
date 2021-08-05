@@ -257,6 +257,7 @@ const EmailInvoice = React.lazy(() =>
 const HelpCenterOverview = React.lazy(() =>
   import('./pages/Pages/HelpCenter/HelpCenterOverview'),
 );
+const Pricing = React.lazy(() => import('./pages/Pages/Pricing'));
 const HelpCenterFaqs = React.lazy(() =>
   import('./pages/Pages/HelpCenter/HelpCenterFaqs'),
 );
@@ -454,6 +455,7 @@ const routes = [
   { path: '/page-team', component: PageTeam, isTopbarDark: true },
 
   //Help Center
+  { path: '/pricing', component: Pricing, isTopbarDark: true },
   { path: '/support', component: HelpCenterOverview, isTopbarDark: true },
   { path: '/helpcenter-faqs', component: HelpCenterFaqs, isTopbarDark: true },
   {

@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import {
   Container,
   Row,
@@ -11,13 +11,13 @@ import {
   FormGroup,
   Card,
   CardBody,
-} from "reactstrap";
+} from 'reactstrap';
 
 //Import Icons
-import FeatherIcon from "feather-icons-react";
+import FeatherIcon from 'feather-icons-react';
 
 //Import Components
-import SectionTitle from "../../components/Shared/SectionTitle";
+import SectionTitle from '../../components/Shared/SectionTitle';
 
 class ContactUs extends Component {
   constructor(props) {
@@ -175,12 +175,10 @@ class ContactUs extends Component {
                   data-aos="fade-up"
                   data-aos-duration="1400"
                 >
-                  Start working with{" "}
-                  <span className="text-primary fw-bold">
-                    Landrick
-                  </span>{" "}
-                  that can provide everything you need to generate awareness,
-                  drive traffic, connect.
+                  Start working with{' '}
+                  <span className="text-primary fw-bold">Landrick</span> that
+                  can provide everything you need to generate awareness, drive
+                  traffic, connect.
                 </p>
                 <Card className="border-0 bg-transparent">
                   <CardBody className="p-0">

@@ -769,9 +769,6 @@ const Profile = () => {
                     <CloseIcon />
                   </IconButton>
                   <Typography variant="h6">Book Appointment</Typography>
-                  <Button autoFocus color="inherit" onClick={handleCloseDialog}>
-                    Save
-                  </Button>
                 </Toolbar>
               </AppBar>
 

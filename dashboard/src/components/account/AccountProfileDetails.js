@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import React, { useState, useEffect } from "react";
+
 import {
   Box,
   Button,
@@ -7,176 +8,112 @@ import {
   CardHeader,
   Divider,
   Grid,
-  TextField
-} from '@material-ui/core';
+  TextField,
+} from "@material-ui/core";
+import { auth } from "../../Firebase/index";
 
-const states = [
-  {
-    value: 'alabama',
-    label: 'Alabama'
-  },
-  {
-    value: 'new-york',
-    label: 'New York'
-  },
-  {
-    value: 'san-francisco',
-    label: 'San Francisco'
-  }
-];
-
-const AccountProfileDetails = (props) => {
-  const [values, setValues] = useState({
-    firstName: 'Katarina',
-    lastName: 'Smith',
-    email: 'demo@devias.io',
-    phone: '',
-    state: 'Alabama',
-    country: 'USA'
+const AccountProfileDetails = ({ user }) => {
+  const [userDetails, setUserDetails] = useState({
+    displayName: "",
+    phoneNumber: null,
   });
 
+  useEffect(() => {
+    setUserDetails({
+      displayName: user?.displayName,
+      phoneNumber: user?.phoneNumber,
+    });
+  }, [user]);
+
+  const [edit, setEdit] = useState(true);
+
+  const updateUser = () => {
+    const user = auth.currentUser;
+    user
+      .updateProfile({
+        displayName: userDetails.displayName,
+        phoneNumber: userDetails.phoneNumber,
+      })
+      .then(() => {
+        setEdit((prev) => !prev);
+      })
+      .catch((err) => console.log(err));
+  };
+
   const handleChange = (event) => {
-    setValues({
-      ...values,
-      [event.target.name]: event.target.value
+    setUserDetails({
+      ...userDetails,
+      [event.target.name]: event.target.value,
     });
   };
 
   return (
-    <form
-      autoComplete="off"
-      noValidate
-      {...props}
-    >
+    <form autoComplete="off" noValidate>
       <Card>
-        <CardHeader
-          subheader="The information can be edited"
-          title="Profile"
-        />
+        <CardHeader subheader="The information can be edited" title="Profile" />
         <Divider />
         <CardContent>
-          <Grid
-            container
-            spacing={3}
-          >
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
-              <TextField
-                fullWidth
-                helperText="Please specify the first name"
-                placeholder="First name"
-                name="firstName"
-                onChange={handleChange}
-                required
-                value={values.firstName}
-                variant="outlined"
-              />
-            </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
-              <TextField
-                fullWidth
-                placeholder="Last name"
-                name="lastName"
-                onChange={handleChange}
-                required
-                value={values.lastName}
-                variant="outlined"
-              />
-            </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
+          <Grid container spacing={3}>
+            <Grid item xs={12}>
               <TextField
                 fullWidth
                 placeholder="Email Address"
                 name="email"
-                onChange={handleChange}
                 required
-                value={values.email}
+                disabled
+                value={userDetails.email}
                 variant="outlined"
               />
             </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                helperText="Please specify the full name"
+                placeholder="First name"
+                name="displayName"
+                onChange={handleChange}
+                required
+                disabled={edit}
+                value={userDetails.displayName}
+                variant="outlined"
+              />
+            </Grid>
+
+            {/* <Grid item md={6} xs={12}>
               <TextField
                 fullWidth
                 placeholder="Phone Number"
-                name="phone"
+                name="phoneNumber"
                 onChange={handleChange}
                 type="number"
-                value={values.phone}
+                disabled={edit}
+                value={userDetails.phoneNumber}
                 variant="outlined"
               />
-            </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
-              <TextField
-                fullWidth
-                placeholder="Country"
-                name="country"
-                onChange={handleChange}
-                required
-                value={values.country}
-                variant="outlined"
-              />
-            </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
-              <TextField
-                fullWidth
-                placeholder="Select State"
-                name="state"
-                onChange={handleChange}
-                required
-                select
-                SelectProps={{ native: true }}
-                value={values.state}
-                variant="outlined"
-              >
-                {states.map((option) => (
-                  <option
-                    key={option.value}
-                    value={option.value}
-                  >
-                    {option.label}
-                  </option>
-                ))}
-              </TextField>
-            </Grid>
+            </Grid> */}
           </Grid>
         </CardContent>
         <Divider />
         <Box
           sx={{
-            display: 'flex',
-            justifyContent: 'flex-end',
-            p: 2
+            display: "flex",
+            justifyContent: "flex-end",
+            p: 2,
           }}
         >
-          <Button
-            color="primary"
-            variant="contained"
-          >
-            Save details
-          </Button>
+          {edit ? (
+            <Button
+              color="primary"
+              variant="contained"
+              onClick={() => setEdit((prev) => !prev)}
+            >
+              Edit details
+            </Button>
+          ) : (
+            <Button color="primary" variant="contained" onClick={updateUser}>
+              Save Details
+            </Button>
+          )}
         </Box>
       </Card>
     </form>

@@ -22,6 +22,7 @@ import loginImg from "../assets/images/user/login.svg";
 const Login = () => {
   const navigate = useNavigate();
 
+  const [message, setMessage] = React.useState("");
   const [email, setemail] = React.useState("");
   const [pwd, setpwd] = React.useState("");
 
@@ -37,6 +38,7 @@ const Login = () => {
             sessionStorage.setItem("userEmail", user.email);
             sessionStorage.setItem("userName", user.displayName);
             sessionStorage.setItem("userPhoto", user.photoURL);
+            setMessage("");
             window.location.href = "/app/dashboard";
           } else {
             console.log(
@@ -48,7 +50,7 @@ const Login = () => {
       .catch(function (error) {
         var errorCode = error.code;
         var errorMessage = error.message;
-        console.log(errorMessage);
+        setMessage(errorMessage);
       });
   };
 
@@ -201,13 +203,28 @@ const Login = () => {
                             </Button>
                           </div>
                         </Col>
-                        
+                        <Col lg="12" className="mb-0">
+                          <p
+                            style={{
+                              color: "red",
+                              marginTop: "5px",
+                              fontSize: "12px",
+                              textAlign: "right",
+                            }}
+                          >
+                            {message}
+                          </p>
+                        </Col>
+
                         <Col xs="12" className="text-center">
                           <p className="mb-0 mt-3">
                             <small className="text-dark me-2">
                               Don't have an account ?
                             </small>{" "}
-                            <Link to="https://medical-saas.vercel.app/" className="text-dark fw-bold">
+                            <Link
+                              to="https://medical-saas.vercel.app/"
+                              className="text-dark fw-bold"
+                            >
                               Sign Up
                             </Link>
                           </p>

@@ -1,14 +1,14 @@
 // React Basic and Bootstrap
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { Row, Col, Container } from "reactstrap";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { Row, Col, Container } from 'reactstrap';
 
 //Import Icons
-import FeatherIcon from "feather-icons-react";
+import FeatherIcon from 'feather-icons-react';
 
 // import images
-import contactDetail from "../../../assets/images/contact-detail.jpg";
-import Topbar from "../../../components/Layout/Topbar";
+import contactDetail from '../../../assets/images/contact-detail.jpg';
+import Topbar from '../../../components/Layout/Topbar';
 
 class PageContactDetail extends Component {
   constructor(props) {
@@ -18,11 +18,11 @@ class PageContactDetail extends Component {
   }
 
   sendMail() {
-    window.location.href = "mailto:contact@example.com";
+    window.location.href = 'mailto:contact@example.com';
   }
 
   callNumber() {
-    window.location.href = "tel:+152534-468-854";
+    window.location.href = 'tel:+152534-468-854';
   }
 
   render() {
@@ -41,12 +41,10 @@ class PageContactDetail extends Component {
                 <div className="title-heading mt-5 pt-4">
                   <h1 className="heading">Let's talk about your portfolio</h1>
                   <p className="text-dark">
-                    Start working with{" "}
-                    <span className="text-primary fw-bold">
-                      Landrick
-                    </span>{" "}
-                    that can provide everything you need to generate awareness,
-                    drive traffic, connect.
+                    Start working with{' '}
+                    <span className="text-primary fw-bold">Landrick</span> that
+                    can provide everything you need to generate awareness, drive
+                    traffic, connect.
                   </p>
 
                   <div className="d-flex contact-detail align-items-center mt-3">
@@ -118,7 +116,7 @@ class PageContactDetail extends Component {
                           />
                         </i>
                       </Link>
-                    </li>{" "}
+                    </li>{' '}
                     <li className="list-inline-item">
                       <Link to="#" className="rounded">
                         <i>
@@ -128,7 +126,7 @@ class PageContactDetail extends Component {
                           />
                         </i>
                       </Link>
-                    </li>{" "}
+                    </li>{' '}
                     <li className="list-inline-item">
                       <Link to="#" className="rounded">
                         <i>
@@ -138,7 +136,7 @@ class PageContactDetail extends Component {
                           />
                         </i>
                       </Link>
-                    </li>{" "}
+                    </li>{' '}
                     <li className="list-inline-item">
                       <Link to="#" className="rounded">
                         <i>
@@ -148,7 +146,7 @@ class PageContactDetail extends Component {
                           />
                         </i>
                       </Link>
-                    </li>{" "}
+                    </li>{' '}
                     <li className="list-inline-item">
                       <Link to="#" className="rounded">
                         <i>
@@ -158,7 +156,7 @@ class PageContactDetail extends Component {
                           />
                         </i>
                       </Link>
-                    </li>{" "}
+                    </li>{' '}
                     <li className="list-inline-item">
                       <Link to="#" className="rounded">
                         <i>
@@ -168,7 +166,7 @@ class PageContactDetail extends Component {
                           />
                         </i>
                       </Link>
-                    </li>{" "}
+                    </li>{' '}
                     <li className="list-inline-item">
                       <Link to="#" className="rounded">
                         <i>
