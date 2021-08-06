@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
-import { Card } from "@material-ui/core";
 import FullCalendar from "@fullcalendar/react"; // => request placed at the top
+import { Card } from "@material-ui/core";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import listPlugin from "@fullcalendar/list";
 
@@ -24,6 +24,14 @@ const Calender = () => {
       });
   }, []);
 
+  function renderEventContent(eventInfo) {
+    return (
+      <a href={`/app/calender/${eventInfo.event.extendedProps._id}`}>
+        <div>{eventInfo.event.title}</div>
+      </a>
+    );
+  }
+
   return (
     <Card>
       <h3>Welcome {userName}</h3>
@@ -34,6 +42,7 @@ const Calender = () => {
           weekends={false}
           events={eventList}
           height={720}
+          eventContent={renderEventContent}
         />
       </div>
     </Card>

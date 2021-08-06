@@ -11,6 +11,7 @@ import Register from "src/pages/Register";
 import Settings from "src/pages/Settings";
 import Profile from "src/pages/Profile";
 import Calender from "src/pages/Calender";
+import CalenderDetails from "src/pages/CalenderDetails";
 import Notes from "./pages/Notes";
 
 import SingleNote from "./pages/SingleNote";
@@ -32,6 +33,7 @@ const routes = [
       { path: "*", element: <Navigate to="/404" /> },
       { path: "profile", element: <Profile /> },
       { path: "calender", element: <Calender /> },
+      { path: "calender/:id", element: <CalenderDetails /> },
     ],
   },
   {
