@@ -189,7 +189,7 @@ const CustomerListToolbar = () => {
           }}
         >
           <Button color="primary" variant="contained" onClick={handleClickOpen}>
-            Add customer
+            Add Client
           </Button>
         </Box>
         <Dialog
@@ -197,11 +197,9 @@ const CustomerListToolbar = () => {
           onClose={handleClose}
           aria-labelledby="form-dialog-title"
         >
-          <DialogTitle id="form-dialog-title">Add A Customer</DialogTitle>
+          <DialogTitle id="form-dialog-title">Add A Client</DialogTitle>
           <DialogContent>
-            <DialogContentText>
-              Please provide customer details
-            </DialogContentText>
+            <DialogContentText>Please provide client details</DialogContentText>
             <TextField
               autoFocus
               margin="dense"

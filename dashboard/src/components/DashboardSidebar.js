@@ -42,7 +42,7 @@ const items = [
   {
     href: "/app/customers",
     icon: UsersIcon,
-    title: "Customers",
+    title: "Clients",
   },
   {
     href: "/app/notes",

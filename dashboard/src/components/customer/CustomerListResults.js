@@ -113,9 +113,7 @@ const CustomerListResults = ({ customers, ...rest }) => {
   const searchPost = async () => {
     if (search.trim()) {
       const data = await axios.get(
-        `${API_SERVICE}/api/v1/main/searchuser?searchQuery=${
-          search || "none"
-        }`
+        `${API_SERVICE}/api/v1/main/searchuser?searchQuery=${search || "none"}`
       );
       console.log(data.data.data);
       setCustomersToDisplay(data.data.data);
@@ -132,13 +130,13 @@ const CustomerListResults = ({ customers, ...rest }) => {
           display: "flex",
           margin: "15px",
           marginLeft: "auto",
-          padding: '2px'
+          padding: "2px",
         }}
       >
         <InputBase
           className={classes.input}
-          placeholder="Search Customers By Name, Email, Location, Phone"
-          inputProps={{ "aria-label": "search customers" }}
+          placeholder="Search Client By Name, Email, Location, Phone"
+          inputProps={{ "aria-label": "search client" }}
           value={search}
           onKeyPress={handleKeyPress}
           onChange={(e) => {
