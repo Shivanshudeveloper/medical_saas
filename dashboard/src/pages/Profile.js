@@ -1030,7 +1030,7 @@ const Profile = () => {
                     <Grid item xs={12} sm={6}>
                       <Paper style={{ padding: "20px" }}>
                         <center>
-                          <h4>Therapy Process Note</h4>
+                          <h4>Therapy Progress Note</h4>
 
                           <img src="https://img.icons8.com/color/68/000000/paper.png" />
 
@@ -1052,7 +1052,7 @@ const Profile = () => {
               </>
             ) : steps === 2 ? (
               <Container maxWidth="lg">
-                <h4>Therapy Process Note</h4>
+                <h4>Therapy Progress Note</h4>
                 <br />
                 <Editor
                   apiKey="azhogyuiz16q8om0wns0u816tu8k6517f6oqgs5mfl36hptu"
