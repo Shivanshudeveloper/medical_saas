@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet";
 import { Box, Container, Grid } from "@material-ui/core";
-import Budget from "src/components/dashboard//Budget";
+import Budget from "src/components/dashboard/Appointments";
 import LatestOrders from "src/components/dashboard//LatestOrders";
 import LatestProducts from "src/components/dashboard//LatestProducts";
 import Sales from "src/components/dashboard//Sales";
