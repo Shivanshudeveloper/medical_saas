@@ -1,50 +1,78 @@
-import { Helmet } from "react-helmet";
-import { Box, Container, Grid } from "@material-ui/core";
-import Budget from "src/components/dashboard/Appointments";
-import LatestOrders from "src/components/dashboard//LatestOrders";
-import LatestProducts from "src/components/dashboard//LatestProducts";
-import Sales from "src/components/dashboard//Sales";
-import TasksProgress from "src/components/dashboard//TasksProgress";
-import TotalCustomers from "src/components/dashboard//TotalCustomers";
-import TotalProfit from "src/components/dashboard//TotalProfit";
-import TrafficByDevice from "src/components/dashboard//TrafficByDevice";
+import React, { useState, useEffect } from "react";
 
-const Dashboard = () => (
-  <>
-    <Helmet>
-      <title>Dashboard</title>
-    </Helmet>
-    <Box
-      sx={{
-        backgroundColor: "background.default",
-        minHeight: "100%",
-        py: 3,
-      }}
-    >
-      <Container maxWidth={false}>
-        <Grid container spacing={3}>
-          <Grid item lg={3} sm={6} xl={3} xs={12}>
-            <Budget />
+import { Helmet } from "react-helmet";
+import { Box, Container, Grid, Card } from "@material-ui/core";
+import Budget from "src/components/dashboard/Appointments";
+import TotalCustomers from "src/components/dashboard//TotalCustomers";
+
+import FullCalendar from "@fullcalendar/react"; // => request placed at the top
+import dayGridPlugin from "@fullcalendar/daygrid";
+import listPlugin from "@fullcalendar/list";
+
+import axios from "axios";
+import { API_SERVICE } from "../config/URI";
+
+const Dashboard = () => {
+  const [eventList, setEventList] = useState([]);
+
+  const clientFor = sessionStorage.getItem("userId");
+  const userName = sessionStorage.getItem("userName");
+  useEffect(() => {
+    axios
+      .get(`${API_SERVICE}/api/v1/main/getallappointments/${clientFor}`)
+      .then((res) => {
+        setEventList(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  function renderEventContent(eventInfo) {
+    return (
+      <a href={`/app/calender/${eventInfo.event.extendedProps._id}`}>
+        <div>{eventInfo.event.title}</div>
+      </a>
+    );
+  }
+
+  return (
+    <>
+      <Helmet>
+        <title>Dashboard</title>
+      </Helmet>
+      <Box
+        sx={{
+          backgroundColor: "background.default",
+          minHeight: "100%",
+          py: 3,
+        }}
+      >
+        <Container maxWidth={false}>
+          <Grid container spacing={3}>
+            <Grid item lg={3} sm={6} xl={3} xs={12}>
+              <Budget />
+            </Grid>
+            <Grid item lg={3} sm={6} xl={3} xs={12}>
+              <TotalCustomers />
+            </Grid>
           </Grid>
-          <Grid item lg={3} sm={6} xl={3} xs={12}>
-            <TotalCustomers />
-          </Grid>
-          <Grid item lg={3} sm={6} xl={3} xs={12}>
-            <TasksProgress />
-          </Grid>
-          <Grid item lg={3} sm={6} xl={3} xs={12}>
-            <TotalProfit sx={{ height: "100%" }} />
-          </Grid>
-          <Grid item lg={8} md={12} xl={9} xs={12}>
-            <Sales />
-          </Grid>
-          <Grid item lg={4} md={6} xl={3} xs={12}>
-            <TrafficByDevice sx={{ height: "100%" }} />
-          </Grid>
-        </Grid>
-      </Container>
-    </Box>
-  </>
-);
+          <Card style={{ marginTop: "30px" }}>
+            <div style={{ maxWidth: "100%", margin: "20px auto" }}>
+              <FullCalendar
+                plugins={[dayGridPlugin, listPlugin]}
+                initialView="listWeek"
+                weekends={false}
+                events={eventList}
+                height={720}
+                eventContent={renderEventContent}
+              />
+            </div>
+          </Card>
+        </Container>
+      </Box>
+    </>
+  );
+};
 
 export default Dashboard;

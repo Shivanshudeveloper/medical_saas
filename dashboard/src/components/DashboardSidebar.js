@@ -49,6 +49,11 @@ const items = [
     icon: ClipboardIcon,
     title: "Notes",
   },
+  {
+    href: "/app/calender",
+    icon: UserIcon,
+    title: "All Appointments",
+  },
   // {
   //   href: '/app/products',
   //   icon: ShoppingBagIcon,
@@ -59,11 +64,7 @@ const items = [
   //   icon: UserIcon,
   //   title: 'Account'
   // },
-  // {
-  //   href: "/app/dashboard",
-  //   icon: UserIcon,
-  //   title: "All Appointments",
-  // },
+
   {
     href: "/app/settings",
     icon: SettingsIcon,

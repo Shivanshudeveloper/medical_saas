@@ -4,8 +4,6 @@ import FullCalendar from "@fullcalendar/react"; // => request placed at the top
 import { Card, Grid } from "@material-ui/core";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import listPlugin from "@fullcalendar/list";
-import TotalCustomers from "../components/dashboard/TotalCustomers";
-import Appointments from "../components/dashboard/Appointments";
 
 import axios from "axios";
 import { API_SERVICE } from "../config/URI";
@@ -38,16 +36,7 @@ const Calender = () => {
     <Card style={{ padding: "20px" }}>
       <h3>Welcome {userName}</h3>
 
-      <Grid container spacing={3}>
-        <Grid item lg={3} sm={6} xl={3} xs={12}>
-          <TotalCustomers />
-        </Grid>
-        <Grid item lg={3} sm={6} xl={3} xs={12}>
-          <Appointments />
-        </Grid>
-      </Grid>
-
-      <div style={{ maxWidth: "100%", margin: "0 auto" }}>
+      <div style={{ maxWidth: "100%", margin: "0 auto", marginTop: "40px" }}>
         <FullCalendar
           plugins={[dayGridPlugin, listPlugin]}
           initialView="listWeek"
