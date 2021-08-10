@@ -55,7 +55,8 @@ const CustomerListToolbar = () => {
     phone: "",
     regDate: "",
     description: "",
-    image: "",
+    image:
+      "http://dreamvilla.life/wp-content/uploads/2017/07/dummy-profile-pic.png",
     clientFor: "",
   });
 
@@ -118,21 +119,69 @@ const CustomerListToolbar = () => {
   const submitUser = () => {
     const userId = sessionStorage.getItem("userId");
     user.clientFor = userId;
-    axios
-      .post(`${API_SERVICE}/api/v1/main/adduser`, user)
-      .then((res) => {
-        // props.location.reload();
-        handleClose();
-        window.location.reload();
-      })
-      .catch((err) => {
-        console.log("error");
-      });
+
+    if (
+      user.name === "" ||
+      user.email === "" ||
+      user.location === "" ||
+      user.phone === "" ||
+      user.regDate === ""
+    ) {
+      handleClickSnack();
+      return;
+    } else {
+      axios
+        .post(`${API_SERVICE}/api/v1/main/adduser`, user)
+        .then((res) => {
+          // props.location.reload();
+          handleClose();
+          window.location.reload();
+        })
+        .catch((err) => {
+          console.log("error");
+        });
+    }
+  };
+
+  const [openSnack, setOpenSnack] = useState(false);
+
+  const handleClickSnack = () => {
+    setOpenSnack(true);
+  };
+
+  const handleCloseSnack = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpenSnack(false);
   };
 
   return (
     <>
       <Box>
+        <Snackbar
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "left",
+          }}
+          open={openSnack}
+          autoHideDuration={6000}
+          onClose={handleCloseSnack}
+          message="Please fill all the fields!!"
+          action={
+            <react.Fragment>
+              <IconButton
+                size="small"
+                aria-label="close"
+                color="inherit"
+                onClick={handleCloseSnack}
+              >
+                <CloseIcon fontSize="small" />
+              </IconButton>
+            </react.Fragment>
+          }
+        />
         <Box
           sx={{
             display: "flex",
@@ -163,6 +212,7 @@ const CustomerListToolbar = () => {
               name="name"
               value={user.name}
               onChange={changeEle}
+              required
             />
             <TextField
               margin="dense"
