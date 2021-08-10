@@ -14,10 +14,10 @@ import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import { useState, useEffect } from "react";
 import moment from "moment";
-import HomeIcon from '@material-ui/icons/Home';
+import HomeIcon from "@material-ui/icons/Home";
 import queryString from "query-string";
 import axios from "axios";
-import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
+import KeyboardBackspaceIcon from "@material-ui/icons/KeyboardBackspace";
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Dialog from "@material-ui/core/Dialog";
@@ -35,6 +35,7 @@ import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
 import { API_SERVICE } from "../config/URI";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -745,12 +746,20 @@ const Profile = () => {
             justifyContent: "flex-end",
           }}
         >
-
-          <Button variant="contained" style={{ marginRight: '10px' }} color="primary" onClick={() => handleClickOpen(3)}>
+          <Button
+            variant="contained"
+            style={{ marginRight: "10px" }}
+            color="primary"
+            onClick={() => handleClickOpen(3)}
+          >
             Add Treatment Plan
           </Button>
 
-          <Button variant="contained" color="primary" onClick={() => handleClickOpen(2)}>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => handleClickOpen(2)}
+          >
             Add Notes
           </Button>
           <div>
@@ -787,9 +796,33 @@ const Profile = () => {
                     height={720}
                   />
                 </div>
+
                 <div
-                  style={{ width: "20%", marginTop: "5rem", padding: "20px" }}
+                  style={{ width: "20%", marginTop: "3.5rem", padding: "20px" }}
                 >
+                  <Container maxWidth="lg">
+                    <div
+                      style={{ display: "flex", justifyContent: "flex-end" }}
+                    >
+                      <IconButton
+                        color="primary"
+                        aria-label="upload picture"
+                        component="span"
+                        onClick={handleCloseDialog}
+                      >
+                        <KeyboardBackspaceIcon fontSize="large" />
+                      </IconButton>
+                      <IconButton
+                        color="primary"
+                        aria-label="upload picture"
+                        component="span"
+                        component={Link}
+                        to="/app/dashboard"
+                      >
+                        <HomeIcon fontSize="large" />
+                      </IconButton>
+                    </div>
+                  </Container>
                   <Typography variant="body1">
                     Book New Appointment for {user.name}
                   </Typography>
@@ -851,16 +884,27 @@ const Profile = () => {
             </Toolbar>
           </AppBar>
           <div style={{ margin: "5% 1% 1% 1%", height: "80vh" }}>
-          <Container maxWidth="lg">
-            <div style={{ float: 'right' }}>
-            <IconButton color="primary" aria-label="upload picture" component="span">
-              <KeyboardBackspaceIcon fontSize="large"  />
-            </IconButton>
-            <IconButton color="primary" aria-label="upload picture" component="span">
-              <HomeIcon fontSize="large"  />
-            </IconButton>
-            </div>
-          </Container>
+            <Container maxWidth="lg">
+              <div style={{ float: "right" }}>
+                <IconButton
+                  color="primary"
+                  aria-label="upload picture"
+                  component="span"
+                  onClick={handleClose}
+                >
+                  <KeyboardBackspaceIcon fontSize="large" />
+                </IconButton>
+                <IconButton
+                  color="primary"
+                  aria-label="upload picture"
+                  component="span"
+                  component={Link}
+                  to="/app/dashboard"
+                >
+                  <HomeIcon fontSize="large" />
+                </IconButton>
+              </div>
+            </Container>
             {steps === 1 ? (
               <>
                 <Container maxWidth="md">
@@ -914,6 +958,7 @@ const Profile = () => {
             ) : steps === 2 ? (
               <Container maxWidth="lg">
                 <h4>Therapy Process Note</h4>
+                <br />
                 <Editor
                   apiKey="azhogyuiz16q8om0wns0u816tu8k6517f6oqgs5mfl36hptu"
                   plugins="wordcount"
