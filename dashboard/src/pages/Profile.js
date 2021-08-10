@@ -36,6 +36,11 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
 import { API_SERVICE } from "../config/URI";
 import { Link } from "react-router-dom";
+import interactionPlugin from "@fullcalendar/interaction";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -703,7 +708,11 @@ const Profile = () => {
 
   const [eventDate, setEventDate] = useState("");
   const [eventName, setEventName] = useState("");
+  const [eventDialogName, setEventDialogName] = useState("");
   const [eventList, setEventList] = useState([]);
+  const [dateAppt, setDateAppt] = useState("");
+  const [openDateClick, setOpenDateClick] = useState(false);
+  const [timeValue, setTimeValue] = useState("07:30");
 
   const getApp = () => {
     const { id } = queryString.parse(window.location.search);
@@ -730,10 +739,49 @@ const Profile = () => {
       .then(() => {
         setOpenDialog(false);
         setEventName("");
+        setDateAppt("");
+        setTimeValue("07:30");
+        setEventDialogName("");
       })
       .catch((err) => {
         console.log(err);
       });
+  };
+
+  const addAppointmentFromDialog = async () => {
+    handleCloseDateClick();
+    await axios
+      .post(`${API_SERVICE}/api/v1/main/addappointment/${user._id}`, {
+        eventName: eventDialogName,
+        eventDate: `${dateAppt}T${timeValue}`,
+        clientFor,
+      })
+      .then(() => {
+        setOpenDialog(false);
+        setEventName("");
+        setDateAppt("");
+        setTimeValue("07:30");
+        setEventDialogName("");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const handleDateClick = (arg) => {
+    setDateAppt(arg.dateStr);
+    handleClickOpenDateClick();
+  };
+
+  const handleClickOpenDateClick = () => {
+    setOpenDateClick(true);
+  };
+
+  const handleCloseDateClick = () => {
+    setOpenDateClick(false);
+    setDateAppt("");
+    setTimeValue("07:30");
+    setEventDialogName("");
   };
 
   return (
@@ -787,16 +835,6 @@ const Profile = () => {
               </AppBar>
 
               <div style={{ display: "flex", flexDirection: "row" }}>
-                <div style={{ width: "80%", maxHeight: "700px" }}>
-                  <FullCalendar
-                    plugins={[dayGridPlugin]}
-                    initialView="dayGridMonth"
-                    weekends={false}
-                    events={eventList}
-                    height={720}
-                  />
-                </div>
-
                 <div
                   style={{ width: "20%", marginTop: "3.5rem", padding: "20px" }}
                 >
@@ -827,7 +865,7 @@ const Profile = () => {
                     Book New Appointment for {user.name}
                   </Typography>
                   <TextField
-                    label="Event"
+                    label="Agenda"
                     variant="filled"
                     fullWidth
                     value={eventName}
@@ -860,6 +898,63 @@ const Profile = () => {
                     Book
                   </Button>
                 </div>
+                <div style={{ width: "80%", maxHeight: "700px" }}>
+                  <FullCalendar
+                    plugins={[dayGridPlugin, interactionPlugin]}
+                    initialView="dayGridMonth"
+                    weekends={false}
+                    events={eventList}
+                    height={720}
+                    dateClick={handleDateClick}
+                  />
+                </div>
+
+                <Dialog open={openDateClick} onClose={handleCloseDateClick}>
+                  <DialogTitle id="alert-dialog-title">
+                    {`Book Appointment on ${dateAppt}`}
+                  </DialogTitle>
+                  <DialogContent>
+                    <DialogContentText id="alert-dialog-description">
+                      <TextField
+                        id="time"
+                        label="Agenda Time"
+                        type="time"
+                        fullWidth
+                        value={timeValue}
+                        onChange={(e) => setTimeValue(e.target.value)}
+                        InputLabelProps={{
+                          shrink: true,
+                        }}
+                        inputProps={{
+                          step: 300,
+                        }}
+                      />
+                      <br />
+                      <TextField
+                        label="Agenda"
+                        variant="filled"
+                        fullWidth
+                        value={eventDialogName}
+                        onChange={(e) => {
+                          setEventDialogName(e.target.value);
+                        }}
+                        style={{ margin: "10px auto" }}
+                      />
+                    </DialogContentText>
+                  </DialogContent>
+                  <DialogActions>
+                    <Button onClick={handleCloseDateClick} color="primary">
+                      Cancel
+                    </Button>
+                    <Button
+                      onClick={addAppointmentFromDialog}
+                      color="primary"
+                      autoFocus
+                    >
+                      Book
+                    </Button>
+                  </DialogActions>
+                </Dialog>
               </div>
             </Dialog>
           </div>
