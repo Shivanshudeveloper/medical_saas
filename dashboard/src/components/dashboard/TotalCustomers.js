@@ -33,7 +33,7 @@ const TotalCustomers = (props) => {
         <Grid container spacing={3} sx={{ justifyContent: "space-between" }}>
           <Grid item>
             <Typography color="textSecondary" gutterBottom variant="h6">
-              TOTAL CUSTOMERS
+              TOTAL CLIENTS
             </Typography>
             <Typography color="textPrimary" variant="h3">
               {customers}

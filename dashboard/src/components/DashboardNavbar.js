@@ -13,6 +13,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import NotificationsIcon from "@material-ui/icons/NotificationsOutlined";
 import InputIcon from "@material-ui/icons/Input";
 import Logo from "./Logo";
+import Button from '@material-ui/core/Button';
 
 const DashboardNavbar = ({ onMobileNavOpen, ...rest }) => {
   const [notifications] = useState([]);
@@ -25,6 +26,8 @@ const DashboardNavbar = ({ onMobileNavOpen, ...rest }) => {
         </RouterLink>
         <Box sx={{ flexGrow: 1 }} />
         <Hidden lgDown>
+          <Button color="inherit">Default</Button>
+          <Button color="inherit">Default</Button>
           <IconButton color="inherit">
             <Badge
               badgeContent={notifications.length}
