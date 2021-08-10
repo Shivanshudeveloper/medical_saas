@@ -12,13 +12,12 @@ import {
 } from "@material-ui/core";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
-
 import { useState, useEffect } from "react";
 import moment from "moment";
-
+import HomeIcon from '@material-ui/icons/Home';
 import queryString from "query-string";
 import axios from "axios";
-
+import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Dialog from "@material-ui/core/Dialog";
@@ -55,7 +54,8 @@ const Profile = () => {
   const classes = useStyles();
   const [openNotes, setOpenNotes] = React.useState(false);
   const [open, setOpen] = React.useState(false);
-  const handleClickOpen = () => {
+  const handleClickOpen = (s) => {
+    setsteps(s);
     setOpenNotes(true);
   };
   const handleClose = () => {
@@ -745,7 +745,12 @@ const Profile = () => {
             justifyContent: "flex-end",
           }}
         >
-          <Button variant="contained" color="primary" onClick={handleClickOpen}>
+
+          <Button variant="contained" style={{ marginRight: '10px' }} color="primary" onClick={() => handleClickOpen(3)}>
+            Add Treatment Plan
+          </Button>
+
+          <Button variant="contained" color="primary" onClick={() => handleClickOpen(2)}>
             Add Notes
           </Button>
           <div>
@@ -845,8 +850,17 @@ const Profile = () => {
               <Typography variant="h6" className={classes.title}></Typography>
             </Toolbar>
           </AppBar>
-
           <div style={{ margin: "5% 1% 1% 1%", height: "80vh" }}>
+          <Container maxWidth="lg">
+            <div style={{ float: 'right' }}>
+            <IconButton color="primary" aria-label="upload picture" component="span">
+              <KeyboardBackspaceIcon fontSize="large"  />
+            </IconButton>
+            <IconButton color="primary" aria-label="upload picture" component="span">
+              <HomeIcon fontSize="large"  />
+            </IconButton>
+            </div>
+          </Container>
             {steps === 1 ? (
               <>
                 <Container maxWidth="md">
