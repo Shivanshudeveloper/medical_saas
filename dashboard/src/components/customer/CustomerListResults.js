@@ -226,8 +226,9 @@ const CustomerListResults = ({ customers, ...rest }) => {
                       href={`/app/profile?id=${customer._id}`}
                       variant="contained"
                       color="primary"
+                      size="small"
                     >
-                      See More
+                      Add Notes/Book Appointment
                     </Button>
                   </TableCell>
                 </TableRow>

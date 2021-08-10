@@ -4,3 +4,6 @@
 /* .fc .fc-toolbar.fc-header-toolbar {
   margin-top: 5rem;
 } */
+.navbarButton {
+  color: white !important;
+}

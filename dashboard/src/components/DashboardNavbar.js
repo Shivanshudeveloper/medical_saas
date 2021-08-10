@@ -13,7 +13,9 @@ import MenuIcon from "@material-ui/icons/Menu";
 import NotificationsIcon from "@material-ui/icons/NotificationsOutlined";
 import InputIcon from "@material-ui/icons/Input";
 import Logo from "./Logo";
-import Button from '@material-ui/core/Button';
+import Button from "@material-ui/core/Button";
+import { Link } from "react-router-dom";
+import "../App.css";
 
 const DashboardNavbar = ({ onMobileNavOpen, ...rest }) => {
   const [notifications] = useState([]);
@@ -26,8 +28,22 @@ const DashboardNavbar = ({ onMobileNavOpen, ...rest }) => {
         </RouterLink>
         <Box sx={{ flexGrow: 1 }} />
         <Hidden lgDown>
-          <Button color="inherit">Default</Button>
-          <Button color="inherit">Default</Button>
+          <Button
+            color="inherit"
+            component={Link}
+            to="/app/customers"
+            className="navbarButton"
+          >
+            add progress notes
+          </Button>
+          <Button
+            color="inherit"
+            component={Link}
+            to="/app/customers"
+            className="navbarButton"
+          >
+            treatment plan
+          </Button>
           <IconButton color="inherit">
             <Badge
               badgeContent={notifications.length}
