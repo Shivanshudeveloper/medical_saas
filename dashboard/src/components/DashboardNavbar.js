@@ -14,11 +14,26 @@ import NotificationsIcon from "@material-ui/icons/NotificationsOutlined";
 import InputIcon from "@material-ui/icons/Input";
 import Logo from "./Logo";
 import Button from "@material-ui/core/Button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../App.css";
+
+import { auth } from "../Firebase/index";
 
 const DashboardNavbar = ({ onMobileNavOpen, ...rest }) => {
   const [notifications] = useState([]);
+  const navigate = useNavigate();
+
+  const logout = () => {
+    auth
+      .signOut()
+      .then(() => {
+        sessionStorage.clear();
+        window.location.href = "/login";
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <AppBar elevation={0} {...rest}>
@@ -53,12 +68,7 @@ const DashboardNavbar = ({ onMobileNavOpen, ...rest }) => {
               {/* <NotificationsIcon /> */}
             </Badge>
           </IconButton>
-          <IconButton
-            onClick={() =>
-              (window.location.href = "https://medical-saas.vercel.app/")
-            }
-            color="inherit"
-          >
+          <IconButton onClick={logout} color="inherit">
             <InputIcon />
           </IconButton>
         </Hidden>

@@ -17,6 +17,8 @@ import Notes from "./pages/Notes";
 import SingleNote from "./pages/SingleNote";
 import SingleTreatment from "./pages/SingleTreatment";
 
+const userId = sessionStorage.getItem("userId");
+
 const routes = [
   {
     path: "app",
@@ -27,29 +29,53 @@ const routes = [
       { path: "notes", element: <Notes /> },
       { path: "singlenote", element: <SingleNote /> },
       { path: "singletreatment", element: <SingleTreatment /> },
-      { path: "dashboard", element: <Dashboard /> },
+      {
+        path: "dashboard",
+        element: userId === null ? <Navigate to="/login" /> : <Dashboard />,
+      },
       // { path: 'products', element: <ProductList /> },
-      { path: "settings", element: <Settings /> },
+      {
+        path: "settings",
+        element: userId === null ? <Navigate to="/login" /> : <Settings />,
+      },
       { path: "*", element: <Navigate to="/404" /> },
-      { path: "profile", element: <Profile /> },
-      { path: "calender", element: <Calender /> },
-      { path: "calender/:id", element: <CalenderDetails /> },
+      {
+        path: "profile",
+        element: userId === null ? <Navigate to="/login" /> : <Profile />,
+      },
+      {
+        path: "calender",
+        element: userId === null ? <Navigate to="/login" /> : <Calender />,
+      },
+      {
+        path: "calender/:id",
+        element:
+          userId === null ? <Navigate to="/login" /> : <CalenderDetails />,
+      },
     ],
   },
   {
     path: "login",
-    element: <Login />,
+    element: userId === null ? <Login /> : <Navigate to="/app/dashboard" />,
   },
   {
     path: "register",
-    element: <Register />,
+    element: userId === null ? <Register /> : <Navigate to="/app/dashboard" />,
   },
   {
     path: "/",
     element: <MainLayout />,
     children: [
       { path: "404", element: <NotFound /> },
-      { path: "/", element: <Navigate to="/app/dashboard" /> },
+      {
+        path: "/",
+        element:
+          userId === null ? (
+            <Navigate to="/login" />
+          ) : (
+            <Navigate to="/app/dashboard" />
+          ),
+      },
       { path: "*", element: <Navigate to="/404" /> },
     ],
   },
