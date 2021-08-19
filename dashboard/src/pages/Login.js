@@ -221,12 +221,12 @@ const Login = () => {
                             <small className="text-dark me-2">
                               Don't have an account ?
                             </small>{" "}
-                            <Link
-                              to="https://medical-saas.vercel.app/"
+                            <a
+                              href="https://www.neotherapists.com/pricing"
                               className="text-dark fw-bold"
                             >
                               Sign Up
-                            </Link>
+                            </a>
                           </p>
                         </Col>
                       </Row>

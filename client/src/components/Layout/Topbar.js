@@ -1023,7 +1023,7 @@ class Topbar extends Component {
                 return (
                   <div className="buy-button">
                     <a
-                      href="https://medical-saas-dashboard.vercel.app/login"
+                      href="https://dashboard.neotherapists.com/login"
                       target="_blank"
                       rel="noopener noreferrer"
                       id="buyButton"
