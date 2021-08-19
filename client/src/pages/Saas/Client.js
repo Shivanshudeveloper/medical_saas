@@ -85,12 +85,12 @@ class Client extends Component {
               <div className="section-title mb-4 pb-2">
                 <h4 className="title mb-4">
                   Whats Our Clients Said About{" "}
-                  <span className="text-primary">Landrick</span> Project
+                  <span className="text-primary">Neo Therapists</span> Project
                 </h4>
                 <p className="text-muted para-desc mx-auto mb-0">
                   Start working with{" "}
                   <span className="text-primary fw-bold">
-                    Landrick
+                    Neo Therapists
                   </span>{" "}
                   that can provide everything you need to generate awareness,
                   drive traffic, connect.
@@ -113,7 +113,7 @@ class Client extends Component {
                 <p className="text-muted para-desc mx-auto mb-0">
                   Start working with{" "}
                   <span className="text-primary fw-bold">
-                    Landrick
+                    Neo Therapists
                   </span>{" "}
                   that can provide everything you need to generate awareness,
                   drive traffic, connect.

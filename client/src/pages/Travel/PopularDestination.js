@@ -27,7 +27,7 @@ class PopularDestination extends Component {
     this.state = {
       pathItems: [
         //id must required
-        { id: 1, name: "Landrick", link: "/index" },
+        { id: 1, name: "Neo Therapists", link: "/index" },
         { id: 2, name: "Shop", link: "#" },
         { id: 3, name: "Product Details" },
       ],
@@ -166,7 +166,7 @@ class PopularDestination extends Component {
                 <p className="text-muted mb-0 para-desc">
                   Start working with{" "}
                   <span className="text-primary fw-bold">
-                    Landrick
+                    Neo Therapists
                   </span>{" "}
                   that can provide everything you need to generate awareness,
                   drive traffic, connect.

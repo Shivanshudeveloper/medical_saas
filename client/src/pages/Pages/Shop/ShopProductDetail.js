@@ -68,7 +68,7 @@ class ShopProductDetail extends Component {
     this.state = {
       pathItems: [
         //id must required
-        { id: 1, name: "Landrick", link: "/index" },
+        { id: 1, name: "Neo Therapists", link: "/index" },
         { id: 2, name: "Shop", link: "#" },
         { id: 3, name: "Product Details" },
       ],
@@ -931,7 +931,7 @@ class ShopProductDetail extends Component {
                             <img
                               src={product.image}
                               className="img-fluid"
-                              alt="Landrick"
+                              alt="Neo Therapists"
                             />
                           </Link>
                           <Link
@@ -941,7 +941,7 @@ class ShopProductDetail extends Component {
                             <img
                               src={product.imgOverlay}
                               className="img-fluid"
-                              alt="Landrick"
+                              alt="Neo Therapists"
                             />
                           </Link>
                           <ul className="list-unstyled shop-icons">

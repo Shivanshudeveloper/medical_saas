@@ -150,7 +150,7 @@ class Home extends Component {
                   <p className="para-desc text-muted">
                     Start working with{" "}
                     <span className="text-primary fw-bold">
-                      Landrick
+                      Neo Therapists
                     </span>{" "}
                     that can provide everything you need to generate awareness,
                     drive traffic, connect.

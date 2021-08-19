@@ -116,7 +116,7 @@ export default class Feature extends Component {
                   <p className="text-muted">
                     Start working with{" "}
                     <span className="text-primary fw-bold">
-                      Landrick
+                      Neo Therapists
                     </span>{" "}
                     that can provide everything you need to generate awareness,
                     drive traffic, connect. Dummy text is text that is used in

@@ -28,7 +28,7 @@ class PageWorkClassic extends Component {
     this.state = {
       pathItems: [
         //id must required
-        { id: 1, name: "Landrick", link: "/index" },
+        { id: 1, name: "Neo Therapists", link: "/index" },
         { id: 2, name: "Pages", link: "#" },
         { id: 3, name: "Work", link: "#" },
         { id: 4, name: "Classic" },
@@ -235,7 +235,7 @@ class PageWorkClassic extends Component {
                             <img
                               src={image}
                               className="img-fluid rounded work-image"
-                              alt="Landrick"
+                              alt="Neo Therapists"
                             />
                           </Link>
                           <div className="content pt-3">

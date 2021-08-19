@@ -24,7 +24,7 @@ export default class Project extends Component {
     this.state = {
       pathItems: [
         //id must required
-        { id: 1, name: "Landrick", link: "/index" },
+        { id: 1, name: "Neo Therapists", link: "/index" },
         { id: 2, name: "Shop", link: "#" },
         { id: 3, name: "Product Details" },
       ],
@@ -159,12 +159,12 @@ export default class Project extends Component {
             >
               <div className="section-title text-md-start text-center">
                 <h4 className="title mb-4">
-                  Whats our clients said <br /> about landrick project
+                  Whats our clients said <br /> about Neo Therapists project
                 </h4>
                 <p className="text-muted mb-0 para-desc">
                   Start working with{" "}
                   <span className="text-primary fw-bold">
-                    Landrick
+                    Neo Therapists
                   </span>{" "}
                   that can provide everything you need to generate awareness,
                   drive traffic, connect.
@@ -187,7 +187,7 @@ export default class Project extends Component {
                                 <img
                                   src={reviews.img}
                                   className="avatar avatar-small me-3 rounded shadow"
-                                  alt="Landrick"
+                                  alt="Neo Therapists"
                                 />
 
                                 <div className="flex-1 content p-3 shadow rounded bg-white position-relative">
@@ -240,7 +240,7 @@ export default class Project extends Component {
                 <p className="text-muted para-desc mx-auto mb-0">
                   Start working with{" "}
                   <span className="text-primary fw-bold">
-                    Landrick
+                    Neo Therapists
                   </span>{" "}
                   that can provide everything you need to generate awareness,
                   drive traffic, connect.

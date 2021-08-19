@@ -59,7 +59,7 @@ class PageInvoice extends Component {
                       <Row>
                         <Col md="8">
                           <div className="logo-invoice mb-2">
-                            Landrick<span className="text-primary">.</span>
+                            Neo Therapists<span className="text-primary">.</span>
                           </div>
                           <Link to="#" className="text-primary h6">
                             <i>
@@ -68,7 +68,7 @@ class PageInvoice extends Component {
                                 className="fea icon-sm text-muted me-2"
                               />
                             </i>
-                            www.landrick.corp
+                            www.Neo Therapists.corp
                           </Link>
                         </Col>
 
@@ -103,7 +103,7 @@ class PageInvoice extends Component {
                                 onClick={this.sendMail}
                                 className="text-muted"
                               >
-                                info@landrick.com
+                                info@Neo Therapists.com
                               </Link>
                             </dd>
 

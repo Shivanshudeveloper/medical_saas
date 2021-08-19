@@ -22,7 +22,7 @@ class Projects extends Component {
     this.state = {
       pathItems: [
         //id must required
-        { id: 1, name: "Landrick", link: "/index" },
+        { id: 1, name: "Neo Therapists", link: "/index" },
         { id: 2, name: "Pages", link: "#" },
         { id: 3, name: "Work", link: "#" },
         { id: 4, name: "Classic" },
@@ -111,7 +111,7 @@ class Projects extends Component {
                 <p className="text-muted para-desc mb-0">
                   Start working with{" "}
                   <span className="text-primary fw-bold">
-                    Landrick
+                    Neo Therapists
                   </span>{" "}
                   that can provide everything you need to generate awareness,
                   drive traffic, connect.
@@ -199,7 +199,7 @@ class Projects extends Component {
                               <img
                                 src={image}
                                 className="img-fluid work-image"
-                                alt="Landrick"
+                                alt="Neo Therapists"
                               />
                             </Link>
                             <div className="content p-4">

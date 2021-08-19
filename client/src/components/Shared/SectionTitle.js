@@ -21,7 +21,7 @@ class SectionTitle extends Component {
                 name="sectiondesc"
               >
                 Start working with{" "}
-                <span className="text-primary fw-bold">Medical</span>{" "}
+                <span className="text-primary fw-bold">Neo Therapists</span>{" "}
                 {this.props.desc}{" "}
               </p>
             </div>

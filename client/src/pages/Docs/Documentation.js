@@ -12,7 +12,7 @@ class Documentation extends Component {
     this.state = {
       pathItems: [
         //id must required
-        { id: 1, name: "Landrick", link: "/index" },
+        { id: 1, name: "Neo Therapists", link: "/index" },
         { id: 2, name: "Docs", link: "#" },
         { id: 3, name: "Documentation" },
       ],
@@ -67,7 +67,7 @@ class Documentation extends Component {
                 <p className="text-muted h5 font-weight-normal">
                   Get Start With{" "}
                   <span className="text-primary fw-bold">
-                    Landrick
+                    Neo Therapists
                   </span>{" "}
                   in React Js. Launch your campaign and benefit from our
                   expertise on designing and managing conversion centered
@@ -79,7 +79,7 @@ class Documentation extends Component {
                 <p className="text-muted">
                   Start working with{" "}
                   <span className="text-primary fw-bold">
-                    Landrick
+                    Neo Therapists
                   </span>{" "}
                   that can provide everything you need to generate awareness,
                   drive traffic, connect.{" "}
@@ -115,7 +115,7 @@ class Documentation extends Component {
 
                 <h4 className="mt-4 pt-2">Installtion</h4>
                 <p className="text-muted">
-                  The zip file contains all js files integrated with Landrick,
+                  The zip file contains all js files integrated with Neo Therapists,
                   however you need to perform following steps to get
                   node_modules etc. Make sure you have installed node and its
                   version is greater then equal to 12. We preferred to use node version 14.15.3. You can simply switch your current
@@ -176,7 +176,7 @@ class Documentation extends Component {
                   <span className="text-danger"> &lt;title&gt;</span>
                   <span className="text-primary">
                     {" "}
-                    Landrick - Saas & Software Landing Page Template{" "}
+                    Neo Therapists - Saas & Software Landing Page Template{" "}
                   </span>
                   <span className="text-danger">&lt;/title&gt;</span> <br />
                   <span className="text-danger">

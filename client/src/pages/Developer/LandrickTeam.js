@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Button, Container, Form, FormGroup, Row } from "reactstrap";
 
-export default class landrickTeam extends Component {
+export default class Landrick extends Component {
   render() {
     return (
       <React.Fragment>
@@ -11,12 +11,12 @@ export default class landrickTeam extends Component {
             <div className="col-12">
               <div className="section-title text-center mb-4 pb-2">
                 <h4 className="title mb-4">
-                  Our rates for developer from landrick team
+                  Our rates for developer from Neo Therapists team
                 </h4>
                 <p className="para-desc mx-auto text-muted mb-0">
                   Start working with{" "}
                   <span className="text-primary fw-bold">
-                    Landrick
+                    Neo Therapists
                   </span>{" "}
                   that can provide everything you need to generate awareness,
                   drive traffic, connect.
@@ -215,7 +215,7 @@ export default class landrickTeam extends Component {
                 </h4>
                 <p className="text-muted para-desc mx-auto">
                   Start working with{" "}
-                  <span className="text-primary fw-bold">Landrick</span>{" "}
+                  <span className="text-primary fw-bold">Neo Therapists</span>{" "}
                   that can provide everything you need to generate awareness,
                   drive traffic, connect.
                 </p>

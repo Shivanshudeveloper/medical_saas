@@ -29,7 +29,7 @@ const CustomerList = () => {
   return (
     <>
       <Helmet>
-        <title>Medical</title>
+        <title>Neo Therapists</title>
       </Helmet>
       <Box
         sx={{

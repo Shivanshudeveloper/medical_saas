@@ -34,7 +34,7 @@ class PageBlogListSidebar extends Component {
     this.state = {
       pathItems: [
         //id must required
-        { id: 1, name: "Landrick", link: "/index" },
+        { id: 1, name: "Neo Therapists", link: "/index" },
         { id: 2, name: "Page", link: "#" },
         { id: 3, name: "Blog", link: "#" },
         { id: 4, name: "Blog List With Sidebar" },
@@ -179,7 +179,7 @@ class PageBlogListSidebar extends Component {
                               <img
                                 src={blog.image}
                                 className="img-fluid"
-                                alt="Landrick"
+                                alt="Neo Therapists"
                               />
                               <div className="overlay bg-dark"></div>
                               <div className="author">
@@ -284,7 +284,7 @@ class PageBlogListSidebar extends Component {
                               <img
                                 src={blog.image}
                                 className="img-fluid"
-                                alt="Landrick"
+                                alt="Neo Therapists"
                               />
                               <div className="overlay bg-dark"></div>
                               <div className="author">

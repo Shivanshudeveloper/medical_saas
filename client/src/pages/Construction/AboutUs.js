@@ -65,12 +65,12 @@ export default class AboutUs extends Component {
                   </span>
                   <h4 className="title mt-3 mb-4">
                     We are the leader <br /> in the{" "}
-                    <span className="text-primary">Landrick</span>
+                    <span className="text-primary">Neo Therapists</span>
                   </h4>
                   <p className="text-muted para-desc mx-auto">
                     Start working with{" "}
                     <span className="text-primary fw-bold">
-                      Landrick
+                      Neo Therapists
                     </span>{" "}
                     that can provide everything you need to generate awareness,
                     drive traffic, connect.

@@ -54,7 +54,7 @@ class EmailInvoice extends Component {
                 }}
               >
                 <th scope="col">
-                  <img src={logo} height="24" alt="Landrick" />
+                  <img src={logo} height="24" alt="Neo Therapists" />
                 </th>
               </tr>
             </thead>
@@ -188,7 +188,7 @@ class EmailInvoice extends Component {
                               borderTop: "1px solid #dee2e6",
                             }}
                           >
-                            Landrick Template
+                            Neo Therapists Template
                                 </td>
                           <td
                             style={{
@@ -307,7 +307,7 @@ class EmailInvoice extends Component {
                     textAlign: "center",
                   }}
                 >
-                  © 2019-20 Landrick.
+                  © 2019-20 Neo Therapists.
                       </td>
               </tr>
             </tbody>

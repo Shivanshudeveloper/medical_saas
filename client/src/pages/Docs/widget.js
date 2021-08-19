@@ -41,7 +41,7 @@ class Widget extends Component {
     this.state = {
       pathItems: [
         //id must required
-        { id: 1, name: "Landrick", link: "/index" },
+        { id: 1, name: "Neo Therapists", link: "/index" },
         { id: 2, name: "Docs", link: "#" },
         { id: 3, name: "Widget" },
       ],
@@ -205,7 +205,7 @@ class Widget extends Component {
                   <div className="content mt-3">
                     <h5 className="fw-bold">Phone</h5>
                     <p className="text-muted">
-                      Start working with Landrick that can provide everything
+                      Start working with Neo Therapists that can provide everything
                       </p>
                     <Link to="tel:+152534-468-854" className="text-primary">
                       +152 534-468-854
@@ -330,7 +330,7 @@ class Widget extends Component {
                   <img
                     src={client04}
                     className="avatar avatar-small me-3 rounded shadow"
-                    alt="Landrick"
+                    alt="Neo Therapists"
                   />
                   <Media
                     body
@@ -371,7 +371,7 @@ class Widget extends Component {
                     <img
                       src={lenovo}
                       className="img-fluid avatar avatar-ex-sm mx-auto"
-                      alt="Landrick"
+                      alt="Neo Therapists"
                     />
                     <p className="text-muted mt-4">
                       " One disadvantage of Lorum Ipsum is that in Latin certain
@@ -392,7 +392,7 @@ class Widget extends Component {
                     <img
                       src={client05}
                       className="img-fluid avatar avatar-small mt-3 rounded-circle mx-auto shadow"
-                      alt="Landrick"
+                      alt="Neo Therapists"
                     />
                     <ul className="list-unstyled mb-0 mt-3">
                       <li className="list-inline-item">
@@ -425,7 +425,7 @@ class Widget extends Component {
                     <img
                       src={client04}
                       className="img-fluid avatar avatar-small rounded-circle mx-auto shadow"
-                      alt="Landrick"
+                      alt="Neo Therapists"
                     />
                     <p className="text-muted mt-4">
                       " Thus, Lorem Ipsum has only limited suitability as a
@@ -443,7 +443,7 @@ class Widget extends Component {
                       <img
                         src={client02}
                         className="img-fluid"
-                        alt="Landrick"
+                        alt="Neo Therapists"
                       />
                     </Col>
 
@@ -544,7 +544,7 @@ class Widget extends Component {
                     <img
                       src={course1}
                       className="img-fluid rounded-top mx-auto"
-                      alt="Landrick"
+                      alt="Neo Therapists"
                     />
                     <div className="overlay-work"></div>
                     <Link to="#" className="text-white h6 preview">
@@ -608,7 +608,7 @@ class Widget extends Component {
                       <img
                         src={client01}
                         className="avatar avatar-md-sm rounded-circle shadow"
-                        alt="Landrick"
+                        alt="Neo Therapists"
                       />
                       <div className="ms-2">
                         <h6 className="mb-0">
@@ -725,7 +725,7 @@ class Widget extends Component {
                     </Col>
 
                     <Col md={{ size: 6, order: 2 }} xs={{ order: 1 }}>
-                      <img src={work15} className="img-fluid" alt="Landrick" />
+                      <img src={work15} className="img-fluid" alt="Neo Therapists" />
                       <div className="overlay bg-dark"></div>
                       <div className="author">
                         <small className="text-light user d-block">
@@ -753,13 +753,13 @@ class Widget extends Component {
                 <Card className=" shop-list border-0 position-relative overflow-hidden">
                   <div className="shop-image position-relative overflow-hidden rounded shadow">
                     <Link to="#">
-                      <img src={s14} className="img-fluid" alt="Landrick" />
+                      <img src={s14} className="img-fluid" alt="Neo Therapists" />
                     </Link>
                     <Link to="#" className="overlay-work">
                       <img
                         src={s14Overlay}
                         className="img-fluid"
-                        alt="Landrick"
+                        alt="Neo Therapists"
                       />
                     </Link>
                     <ul className="list-unstyled shop-icons">
@@ -843,7 +843,7 @@ class Widget extends Component {
                       <img
                         src={work2}
                         className="img-fluid rounded work-image"
-                        alt="Landrick"
+                        alt="Neo Therapists"
                       />
                     </Link>
                     <div className="content pt-3">
@@ -1007,7 +1007,7 @@ class Widget extends Component {
 
               <Col lg={4} md={6} className="mt-4 pt-2">
                 <Card className=" catagories overflow-hidden rounded shadow border-0">
-                  <img src={work5} className="img-fluid" alt="Landrick" />
+                  <img src={work5} className="img-fluid" alt="Neo Therapists" />
                   <CardBody>
                     <ul className="list-unstyled d-flex justify-content-between mb-0">
                       <li>
@@ -1025,7 +1025,7 @@ class Widget extends Component {
                 <Card className=" job-box rounded shadow border-0 overflow-hidden">
                   <div className="border-bottom">
                     <div className="position-relative">
-                      <img src={remote} className="img-fluid" alt="Landrick" />
+                      <img src={remote} className="img-fluid" alt="Neo Therapists" />
                       <div className="job-overlay bg-white"></div>
                     </div>
                     <h5 className="mb-0 position">
@@ -1060,7 +1060,7 @@ class Widget extends Component {
                       <img
                         src={circleCi}
                         className="avatar avatar-md-sm"
-                        alt="Landrick"
+                        alt="Neo Therapists"
                       />
                     </div>
                     <div className="company-detail text-center mt-3">
@@ -1177,7 +1177,7 @@ class Widget extends Component {
                       src={master}
                       height="60"
                       className="text-end"
-                      alt="Landrick"
+                      alt="Neo Therapists"
                     />
                     <div className="mt-4">
                       <h5 className="">•••• •••• •••• 4559</h5>
@@ -1279,7 +1279,7 @@ class Widget extends Component {
                   </i>
                   <div className="flex-1">
                     <h5 className="mt-0">
-                      How our <span className="text-primary">Landrick</span>{" "}
+                      How our <span className="text-primary">Neo Therapists</span>{" "}
                       work ?
                     </h5>
                     <p className="answer text-muted mb-0">

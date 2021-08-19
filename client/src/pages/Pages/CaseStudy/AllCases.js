@@ -23,7 +23,7 @@ class AllCases extends Component {
     this.state = {
       pathItems: [
         //id must required
-        { id: 1, name: "Landrick", link: "/index" },
+        { id: 1, name: "Neo Therapists", link: "/index" },
         { id: 2, name: "Pages", link: "#" },
         { id: 3, name: "Work", link: "#" },
         { id: 4, name: "Classic" },
@@ -135,7 +135,7 @@ class AllCases extends Component {
                     <nav aria-label="breadcrumb" className="d-inline-block">
                       <ul className="breadcrumb bg-white rounded shadow mb-0">
                         <li className="breadcrumb-item">
-                          <Link to="index">Landrick</Link>
+                          <Link to="index">Neo Therapists</Link>
                         </li>
                         <li className="breadcrumb-item">
                           <Link to="#">Pages</Link>
@@ -261,7 +261,7 @@ class AllCases extends Component {
                         <img
                           src={cases.image}
                           className="img-fluid rounded work-image"
-                          alt="Landrick"
+                          alt="Neo Therapists"
                         />
                         <CardBody>
                           <div className="content">

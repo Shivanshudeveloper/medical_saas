@@ -176,7 +176,7 @@ class ContactUs extends Component {
                   data-aos-duration="1400"
                 >
                   Start working with{' '}
-                  <span className="text-primary fw-bold">Landrick</span> that
+                  <span className="text-primary fw-bold">Neo Therapists</span> that
                   can provide everything you need to generate awareness, drive
                   traffic, connect.
                 </p>

@@ -404,7 +404,7 @@ class PageJobCandidate extends Component {
                               <img
                                 src={project.image}
                                 className="img-fluid rounded work-image"
-                                alt="Landrick"
+                                alt="Neo Therapists"
                               />
                             </Link>
                             <div className="content pt-3">

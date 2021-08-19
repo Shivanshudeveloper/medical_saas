@@ -42,7 +42,7 @@ class PageBlogDetail extends Component {
     this.state = {
       pathItems: [
         //id must required
-        { id: 1, name: "Landrick", link: "/index" },
+        { id: 1, name: "Neo Therapists", link: "/index" },
         { id: 2, name: "Pages", link: "#" },
         { id: 3, name: "Blog", link: "#" },
         { id: 4, name: "Blog Detail" },

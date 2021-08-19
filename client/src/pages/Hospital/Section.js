@@ -18,7 +18,7 @@ export default class Section extends Component {
               <Col lg={6} md={6}>
                 <div className="title-heading">
                   <span className="badge rounded-pill bg-soft-primary">
-                    <b>Medical</b>
+                    <b>Neo Therapists</b>
                   </span>
                   <h4 className="heading my-3">
                     We Take Care <br /> of Your{" "}

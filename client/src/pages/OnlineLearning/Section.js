@@ -57,7 +57,7 @@ class Section extends Component {
 
                         <h1 className="heading mb-3">
                           Start Online Learning <br /> With{" "}
-                          <span className="text-primary">: Landrick</span>
+                          <span className="text-primary">: Neo Therapists</span>
                         </h1>
                         <p className="para-desc text-muted">
                           Launch your campaign and benefit from our expertise on
@@ -99,7 +99,7 @@ class Section extends Component {
                         <img
                           src={hero}
                           className="rounded img-fluid mx-auto d-block"
-                          alt="Landrick"
+                          alt="Neo Therapists"
                         />
                         <div className="play-icon">
                           <Link

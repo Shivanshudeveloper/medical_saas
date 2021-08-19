@@ -16,7 +16,7 @@ export default class Questions extends Component {
                 <p className="text-muted mb-0 para-desc">
                   Start working with{" "}
                   <span className="text-primary fw-bold">
-                    Landrick
+                    Neo Therapists
                   </span>{" "}
                   that can provide everything you need to generate awareness,
                   drive traffic, connect.
@@ -49,13 +49,13 @@ export default class Questions extends Component {
               <div className="faq-content">
                 <div className="accordion" id="accordionExampleone">
                   <AccordianCommon
-                    question1="How our Landrick work ?"
+                    question1="How our Neo Therapists work ?"
                     answer1="There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form."
                     question2="What is the main process open account ?"
                     answer2="There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form."
                     question3="How to make unlimited data entry ?"
                     answer3="There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form."
-                    question4="Is Landrick safer to use with my account ?"
+                    question4="Is Neo Therapists safer to use with my account ?"
                     answer4="There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form."
                     question5="How can i contact your technical team ?"
                     answer5="There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form."
@@ -72,7 +72,7 @@ export default class Questions extends Component {
                 <p className="text-muted para-desc mx-auto">
                   Start working with{" "}
                   <span className="text-primary fw-bold">
-                    Landrick
+                    Neo Therapists
                   </span>{" "}
                   that can provide everything you need to generate awareness,
                   drive traffic, connect.

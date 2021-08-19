@@ -63,7 +63,7 @@ class Footer extends Component {
                   <img src='https://res.cloudinary.com/dx9dnqzaj/image/upload/v1626758727/medical/Manah_Monogram48x48_sw6u7v.png'/>
                 </Link>
                 <p className={this.props.isLight ? "mt-4 text-muted" : "mt-4"}>
-                  Start working with Landrick that can provide everything you
+                  Start working with Neo Therapists that can provide everything you
                   need to generate awareness, drive traffic, connect.
                 </p>
                 <ul className={this.props.isLight ? "list-unstyled social-icon social mb-0 m t-4" : "list-unstyled social-icon foot-social-icon mb-0 mt-4"}>

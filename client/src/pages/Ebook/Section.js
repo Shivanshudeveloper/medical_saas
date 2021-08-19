@@ -38,7 +38,7 @@ class Section extends Component {
                     The Most Comprehensive Book!{" "}
                   </h4>
                   <p className="text-muted para-desc mb-0">
-                    Start working with Landrick that can provide everything you
+                    Start working with Neo Therapists that can provide everything you
                     need to generate awareness, drive traffic, connect.
                   </p>
                   <div className="mt-4 pt-2">
@@ -62,7 +62,7 @@ class Section extends Component {
 
               <Col lg={6} md={6} className="mt-4 mt-sm-0 pt-2 pt-sm-0">
                 <div className="bg-white p-5 rounded-md">
-                  <img src={book} className="img-fluid mx-auto d-block" alt="Landrick" />
+                  <img src={book} className="img-fluid mx-auto d-block" alt="Neo Therapists" />
                 </div>
               </Col>
             </Row>

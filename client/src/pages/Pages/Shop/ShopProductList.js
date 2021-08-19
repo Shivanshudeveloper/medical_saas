@@ -62,7 +62,7 @@ class ShopProductList extends Component {
       wishlistModal: false,
       pathItems: [
         //id must required
-        { id: 1, name: "Landrick", link: "/index" },
+        { id: 1, name: "Neo Therapists", link: "/index" },
         { id: 2, name: "Shop", link: "#" },
         { id: 3, name: "Products" },
       ],
@@ -419,7 +419,7 @@ class ShopProductList extends Component {
                                 src={product.image}
                                 className="img-fluid avatar avatar-small rounded shadow"
                                 style={{ height: "auto" }}
-                                alt="Landrick"
+                                alt="Neo Therapists"
                               />
                             </Link>
                             <div className="flex-1 content ms-3">
@@ -534,7 +534,7 @@ class ShopProductList extends Component {
                                 <img
                                   src={product.imgOverlay}
                                   className="img-fluid"
-                                  alt="Landrick"
+                                  alt="Neo Therapists"
                                 />
                               </Link>
                               {product.isOutofStock && (

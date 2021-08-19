@@ -18,7 +18,7 @@ class PageJobDetail extends Component {
     this.state = {
       pathItems: [
         //id must required
-        { id: 1, name: "Landrick", link: "/index" },
+        { id: 1, name: "Neo Therapists", link: "/index" },
         { id: 2, name: "Pages", link: "#" },
         { id: 3, name: "CAREERS", link: "#" },
         { id: 4, name: "Job Detail" },
@@ -48,7 +48,7 @@ class PageJobDetail extends Component {
       <React.Fragment>
         {/* breadcrumb */}
         <PageBreadcrumb pathItems={this.state.pathItems}>
-          <img src={logo} className="avatar avatar-small" alt="Landrick" />
+          <img src={logo} className="avatar avatar-small" alt="Neo Therapists" />
           <h4 className="title mt-4 mb-3"> Back-End Developer </h4>
           <p className="para-desc mx-auto text-muted">
             Launch your campaign and benefit from our expertise on designing and

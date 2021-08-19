@@ -42,7 +42,7 @@ class SmallFeatures extends Component {
         <Container className="mt-100 mt-60">
           <Row className="align-items-center">
             <Col lg={5} md={{ size: 6, order: 2 }} xs={{ size: 12, order: 1 }}>
-              <img src={social} className="img-fluid" alt="Landrick" />
+              <img src={social} className="img-fluid" alt="Neo Therapists" />
             </Col>
 
             <Col
@@ -58,7 +58,7 @@ class SmallFeatures extends Component {
                   </i>
                 </p>
                 <SectionTitleLeft
-                  desc="Start working with Landrick that can provide everything you need to generate awareness, drive traffic, connect."
+                  desc="Start working with Neo Therapists that can provide everything you need to generate awareness, drive traffic, connect."
                   features={this.state.featuresSmall}
                   class=""
                 >

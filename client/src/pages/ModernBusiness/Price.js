@@ -169,11 +169,11 @@ class Price extends Component {
               <Col lg="7" md="6" className="mt-4 mt-sm-0 pt-2 pt-sm-0">
                 <div className="section-title ms-lg-5">
                   <h4 className="title mb-4">
-                    A better compose with landrick marketing
+                    A better compose with Neo Therapists marketing
                   </h4>
                   <p className="text-muted">
                     {" "}
-                    You can combine all the Landrick templates into a single
+                    You can combine all the Neo Therapists templates into a single
                     one, you can take a component from the Application theme and
                     use it in the Website.{" "}
                   </p>
@@ -225,7 +225,7 @@ class Price extends Component {
                             <img
                               src={client1}
                               className="img-fluid avatar avatar-small rounded-circle mx-auto shadow"
-                              alt="Landrick"
+                              alt="Neo Therapists"
                             />
                             <ul className="list-unstyled mb-0 mt-3">
                               <li className="list-inline-item">
@@ -262,7 +262,7 @@ class Price extends Component {
                             <img
                               src={client2}
                               className="img-fluid avatar avatar-small rounded-circle mx-auto shadow"
-                              alt="Landrick"
+                              alt="Neo Therapists"
                             />
                             <ul className="list-unstyled mb-0 mt-3">
                               <li className="list-inline-item">
@@ -301,7 +301,7 @@ class Price extends Component {
                             <img
                               src={client3}
                               className="img-fluid avatar avatar-small rounded-circle mx-auto shadow"
-                              alt="Landrick"
+                              alt="Neo Therapists"
                             />
                             <ul className="list-unstyled mb-0 mt-3">
                               <li className="list-inline-item">
@@ -339,7 +339,7 @@ class Price extends Component {
                             <img
                               src={client4}
                               className="img-fluid avatar avatar-small rounded-circle mx-auto shadow"
-                              alt="Landrick"
+                              alt="Neo Therapists"
                             />
                             <ul className="list-unstyled mb-0 mt-3">
                               <li className="list-inline-item">
@@ -377,7 +377,7 @@ class Price extends Component {
                             <img
                               src={client5}
                               className="img-fluid avatar avatar-small rounded-circle mx-auto shadow"
-                              alt="Landrick"
+                              alt="Neo Therapists"
                             />
                             <ul className="list-unstyled mb-0 mt-3">
                               <li className="list-inline-item">
@@ -415,7 +415,7 @@ class Price extends Component {
                             <img
                               src={client6}
                               className="img-fluid avatar avatar-small rounded-circle mx-auto shadow"
-                              alt="Landrick"
+                              alt="Neo Therapists"
                             />
                             <ul className="list-unstyled mb-0 mt-3">
                               <li className="list-inline-item">

@@ -31,7 +31,7 @@ class Price extends Component {
           price: "09",
           duration: "Day",
           desc:
-            "Start working with Landrick that can provide everything you need to generate awareness, drive traffic, connect.",
+            "Start working with Neo Therapists that can provide everything you need to generate awareness, drive traffic, connect.",
         },
         {
           id: 2,
@@ -40,7 +40,7 @@ class Price extends Component {
           price: "24",
           duration: "Full",
           desc:
-            "Start working with Landrick that can provide everything you need to generate awareness, drive traffic, connect.",
+            "Start working with Neo Therapists that can provide everything you need to generate awareness, drive traffic, connect.",
           isActive: true,
         },
         {
@@ -50,7 +50,7 @@ class Price extends Component {
           price: "16",
           duration: "Day",
           desc:
-            "Start working with Landrick that can provide everything you need to generate awareness, drive traffic, connect.",
+            "Start working with Neo Therapists that can provide everything you need to generate awareness, drive traffic, connect.",
         },
       ],
       clients: [
@@ -205,7 +205,7 @@ class Price extends Component {
                             <img
                               src={client1}
                               className="img-fluid avatar avatar-small mt-3 rounded-circle mx-auto shadow"
-                              alt="Landrick"
+                              alt="Neo Therapists"
                             />
                             <ul className="list-unstyled mb-0 mt-3">
                               <li className="list-inline-item">
@@ -241,7 +241,7 @@ class Price extends Component {
                             <img
                               src={client2}
                               className="img-fluid avatar avatar-small mt-3 rounded-circle mx-auto shadow"
-                              alt="Landrick"
+                              alt="Neo Therapists"
                             />
                             <ul className="list-unstyled mb-0 mt-3">
                               <li className="list-inline-item">
@@ -279,7 +279,7 @@ class Price extends Component {
                             <img
                               src={client3}
                               className="img-fluid avatar avatar-small mt-3 rounded-circle mx-auto shadow"
-                              alt="Landrick"
+                              alt="Neo Therapists"
                             />
                             <ul className="list-unstyled mb-0 mt-3">
                               <li className="list-inline-item">
@@ -316,7 +316,7 @@ class Price extends Component {
                             <img
                               src={client4}
                               className="img-fluid avatar avatar-small mt-3 rounded-circle mx-auto shadow"
-                              alt="Landrick"
+                              alt="Neo Therapists"
                             />
                             <ul className="list-unstyled mb-0 mt-3">
                               <li className="list-inline-item">
@@ -353,7 +353,7 @@ class Price extends Component {
                             <img
                               src={client5}
                               className="img-fluid avatar avatar-small mt-3 rounded-circle mx-auto shadow"
-                              alt="Landrick"
+                              alt="Neo Therapists"
                             />
                             <ul className="list-unstyled mb-0 mt-3">
                               <li className="list-inline-item">
@@ -390,7 +390,7 @@ class Price extends Component {
                             <img
                               src={client6}
                               className="img-fluid avatar avatar-small mt-3 rounded-circle mx-auto shadow"
-                              alt="Landrick"
+                              alt="Neo Therapists"
                             />
                             <ul className="list-unstyled mb-0 mt-3">
                               <li className="list-inline-item">

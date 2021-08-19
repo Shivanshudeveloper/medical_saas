@@ -104,14 +104,14 @@ export default class PageAboutusTwo extends Component {
                 <div className="page-next-level title-heading">
                   <h1 className="text-white title-dark"> Aboutus </h1>
                   <p className="text-white-50 para-desc mb-0 mx-auto">
-                    Start working with Landrick that can provide everything you
+                    Start working with Neo Therapists that can provide everything you
                     need to generate awareness, drive traffic, connect.
                   </p>
                   <div className="page-next">
                     <nav aria-label="breadcrumb" className="d-inline-block">
                       <ul className="breadcrumb bg-white rounded shadow mb-0">
                         <li className="breadcrumb-item">
-                          <Link to="/index">Landrick</Link>
+                          <Link to="/index">Neo Therapists</Link>
                         </li>
                         <li className="breadcrumb-item">
                           <Link to="#">Company</Link>
@@ -169,7 +169,7 @@ export default class PageAboutusTwo extends Component {
                     <p className="text-muted">
                       Start working with{" "}
                       <span className="text-primary fw-bold">
-                        Landrick
+                        Neo Therapists
                       </span>{" "}
                       that can provide everything you need to generate
                       awareness, drive traffic, connect. Dummy text is text that
@@ -216,7 +216,7 @@ export default class PageAboutusTwo extends Component {
                   <p className="text-muted mb-0 para-desc">
                     Start working with{" "}
                     <span className="text-primary fw-bold">
-                      Landrick
+                      Neo Therapists
                     </span>{" "}
                     that can provide everything you need to generate awareness,
                     drive traffic, connect.

@@ -72,14 +72,14 @@ class Features extends Component {
         <Container className="mt-100 mt-60">
           <Row className="align-items-center">
             <Col lg={5} md={6} className="mt-4 pt-2">
-              <img src={services} alt="Landrick" />
+              <img src={services} alt="Neo Therapists" />
             </Col>
 
             <Col lg={7} md={6} className="mt-4 pt-2">
               <div className="section-title ms-lg-5">
                 <SectionTitleLeft
                   title="Health Insurance"
-                  desc="You can combine all the Landrick templates into a single one, you can take a component from the Application theme and use it in the Website."
+                  desc="You can combine all the Neo Therapists templates into a single one, you can take a component from the Application theme and use it in the Website."
                   features={this.state.featuresSmall}
                   class=""
                 />
@@ -104,7 +104,7 @@ class Features extends Component {
               xs={{ order: 1 }}
               className="mt-4 pt-2"
             >
-              <img src={marketing} alt="Landrick" />
+              <img src={marketing} alt="Neo Therapists" />
             </Col>
 
             <Col
@@ -116,7 +116,7 @@ class Features extends Component {
               <div className="section-title me-lg-5">
                 <SectionTitleLeft
                   title="Investment Plans"
-                  desc="You can combine all the Landrick templates into a single one, you can take a component from the Application theme and use it in the Website."
+                  desc="You can combine all the Neo Therapists templates into a single one, you can take a component from the Application theme and use it in the Website."
                   features={this.state.featuresSmall1}
                   class=""
                 />

@@ -23,7 +23,7 @@ class PageTerms extends Component {
     this.state = {
       pathItems: [
         //id must required
-        { id: 1, name: "Landrick", link: "/index" },
+        { id: 1, name: "Neo Therapists", link: "/index" },
         { id: 2, name: "Page", link: "#" },
         { id: 3, name: "Utility", link: "#" },
         { id: 4, name: "Terms" },
@@ -262,7 +262,7 @@ class PageTerms extends Component {
                                 {" "}
                                 How our{" "}
                                 <span className="text-primary">
-                                  Landrick
+                                  Neo Therapists
                                 </span>{" "}
                                 work ?
                                 <i
@@ -376,7 +376,7 @@ class PageTerms extends Component {
                             >
                               <h6 className="title mb-0">
                                 Is{" "}
-                                <span className="text-primary">Landrick</span>{" "}
+                                <span className="text-primary">Neo Therapists</span>{" "}
                                 safer to use with my account ?
                                 <i
                                   className={
